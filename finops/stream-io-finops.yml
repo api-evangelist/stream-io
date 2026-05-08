@@ -5,20 +5,29 @@ provider: Stream
 providerId: stream-io
 created: '2026-05-08'
 modified: '2026-05-08'
-reconciled: false
+reconciled: true
 tags:
 - Realtime
 - Chat
 - Video
 - Activity Feeds
+- Moderation
 - SDK
 - FinOps
 - Cost Management
 - FOCUS
-description: FOCUS-aligned FinOps placeholder for Stream. Pipeline will replace with real billing details.
-notes: Initial scaffold — billing model has not yet been reconciled.
+description: >-
+  FOCUS-aligned FinOps profile for Stream. Stream charges a tiered subscription
+  per Monthly Active Users (MAU) per product (Chat, Video, Feeds, Moderation),
+  plus add-on usage meters for stored messages, API call overage, and CDN
+  bandwidth/storage. Billed monthly in USD; annual contracts discounted.
+notes: >-
+  Pricing is denominated per-MAU per-product, so cost allocation works best by
+  tracking unique user IDs through Stream's app/key partitioning. Stored
+  messages and CDN bytes are separately metered and visible on the invoice.
 sources:
-- https://getstream.io/
+- https://getstream.io/pricing/
+- https://getstream.io/chat/pricing/
 - https://focus.finops.org/focus-specification/v1-3/
 alignedWith:
   framework: FinOps Foundation Framework
@@ -27,9 +36,9 @@ alignedWith:
   dataSpecVersion: '1.3'
   dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
 publisherName: Stream
-serviceCategory: Realtime
+serviceCategory: Realtime Communications
 billingModel:
-  pricingCategory: To Be Reconciled
+  pricingCategory: Subscription + Usage
   billingFrequency: Monthly
   billingCurrency: USD
   chargeCategories:
@@ -37,30 +46,63 @@ billingModel:
   - Purchase
   - Adjustment
 focusColumns:
-  ServiceName: Stream
-  ServiceCategory: Realtime
+  ServiceName: Stream Chat
+  ServiceCategory: Realtime Communications
   ProviderName: Stream
   PublisherName: Stream
   InvoiceIssuerName: Stream
   BillingCurrency: USD
   ChargeCategory: Usage
+  PricingUnit: MAU
 meters:
-- name: api_usage
-  description: Catch-all meter pending reconciliation.
-  unit: varies
+- name: monthly_active_users
+  description: Unique users that opened a session in the billing month (primary meter).
+  unit: user
+  aggregation: distinct_count
+  dimensions:
+  - app_id
+  - product
+- name: stored_messages
+  description: Total messages persisted in Stream Chat.
+  unit: message
   aggregation: sum
   dimensions:
-  - account
-  - resource
+  - app_id
+- name: api_calls
+  description: Server-side API calls metered above plan-included quota.
+  unit: request
+  aggregation: sum
+  dimensions:
+  - app_id
+  - endpoint
+- name: cdn_bandwidth
+  description: Bandwidth served from Stream's CDN for attachments and media.
+  unit: GB
+  aggregation: sum
+  dimensions:
+  - app_id
+- name: cdn_storage
+  description: Storage of attachments on Stream's CDN.
+  unit: GB-month
+  aggregation: avg
+  dimensions:
+  - app_id
+- name: video_minutes
+  description: Per-participant video/audio minutes for Stream Video.
+  unit: minute
+  aggregation: sum
+  dimensions:
+  - app_id
+  - call_id
 principles:
 - name: Visibility
-  description: Pull provider invoices or usage exports until a self-serve usage feed is documented.
+  description: Inspect Stream Dashboard usage tab and the monthly invoice to track MAU and usage meters.
 - name: Allocation
-  description: Tag invoice line items to consuming business units in your FinOps store.
+  description: Use distinct app keys per product/team and embed cost-center IDs into user metadata for downstream allocation.
 - name: Optimization
-  description: Levers depend on the provider's billing model; review at renewal once reconciled.
+  description: Right-size MAU tier annually; archive cold messages, prune stale users, offload large attachments to your own CDN where economical.
 - name: Accountability
-  description: Assign a contract owner to review billing against negotiated terms.
+  description: Assign per-app owners; review MAU vs. tier ceiling monthly to avoid overage.
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

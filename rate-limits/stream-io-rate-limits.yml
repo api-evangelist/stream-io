@@ -15,21 +15,46 @@ tags:
 - Rate Limiting
 - Quotas
 - Throttling
-description: Placeholder rate-limit artifact for Stream. Replace with real limits once researched.
-notes: Initial scaffold — limits have not yet been reconciled.
+description: >-
+  Stream applies per-endpoint rate limits keyed off the API key and (for many
+  endpoints) the user. Specific numeric limits are not published as a single
+  table; Stream returns 429 with X-Ratelimit-Limit / X-Ratelimit-Remaining /
+  X-Ratelimit-Reset headers and recommends honoring Retry-After.
+notes: >-
+  Stream's docs describe limits as "per-endpoint, per-API-key" with higher
+  ceilings on paid tiers; exact ceilings are not enumerated in public docs and
+  remain unreconciled. Confirmed headers and 429 contract are reflected here.
 sources:
-- https://getstream.io/
+- https://getstream.io/chat/docs/rest/
+- https://getstream.io/chat/docs/node/rate_limits/
+- https://getstream.github.io/protocol/?urls.primaryName=Chat
 responseCodes:
   throttled: 429
+headers:
+- name: X-Ratelimit-Limit
+  description: Per-window quota for the endpoint.
+- name: X-Ratelimit-Remaining
+  description: Calls remaining in the current window.
+- name: X-Ratelimit-Reset
+  description: Epoch seconds when the window resets.
 limits:
-- name: Default
-  scope: account
-  metric: varies
-  limit: see provider documentation
-  notes: Pending reconciliation.
+- name: Per endpoint, per API key
+  scope: api_key
+  metric: requests
+  limit: see Stream docs
+  timeFrame: window
+  notes: Limits vary by endpoint; paid plans receive higher ceilings. Custom limits available on Enterprise.
+- name: Per endpoint, per user
+  scope: user
+  metric: requests
+  limit: see Stream docs
+  timeFrame: window
+  notes: Some endpoints are additionally throttled per user-id.
 policies:
 - name: Backoff Strategy
-  description: Clients should implement exponential backoff with jitter and honor any Retry-After header.
+  description: Honor Retry-After header on 429 responses; use exponential backoff with jitter.
+- name: Custom Limits
+  description: Enterprise customers can request raised limits via Stream support.
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

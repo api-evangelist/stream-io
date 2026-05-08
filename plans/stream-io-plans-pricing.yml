@@ -5,37 +5,238 @@ provider: Stream
 providerId: stream-io
 created: '2026-05-08'
 modified: '2026-05-08'
-reconciled: false
+reconciled: true
 tags:
 - Realtime
 - Chat
 - Video
 - Activity Feeds
+- Moderation
 - SDK
 - Plans
-description: Placeholder plans/pricing artifact for Stream. Replace with real published pricing once
-  the pipeline researches the provider's plans page.
-notes: Initial scaffold — plans/pricing have not yet been reconciled.
+- Pricing
+description: >-
+  Stream sells per-product plans (Chat, Video & Audio, Activity Feeds,
+  Moderation). The pricing page advertises a Build (free) tier, Start and
+  Elevate plans tiered by Monthly Active Users (MAU), and Enterprise. Pricing
+  below reflects the public Stream Chat plan card on getstream.io/pricing.
+notes: >-
+  Stream tiers each product separately; only the Chat tiers are published as
+  exact public prices and are captured here. Video, Feeds and Moderation pricing
+  is largely "Contact Sales" except for free trial tiers.
 sources:
-- https://getstream.io/
+- https://getstream.io/pricing/
+- https://getstream.io/chat/pricing/
+- https://getstream.io/video/pricing/
+- https://getstream.io/activity-feeds/pricing/
+- https://getstream.io/moderation/pricing/
 plans:
-- id: stream-io-default
-  name: To Be Reconciled
-  type: enterprise
-  description: Initial scaffold; replace with provider plan tiers once pricing is reconciled.
+- id: stream-chat-build
+  name: Chat — Build (Free)
+  type: free
+  description: Free tier for prototyping. 1,000 MAU and 100 concurrent connections; community support; no credit card required.
   entries:
-  - label: API Access
-    name: api_access
-    type: flat
-    metric: varies
-    limit: -1
-    timeFrame: usage
+  - label: MAU
+    name: mau
+    type: tier
+    metric: mau
+    limit: 1000
+    timeFrame: month
     geo: global
     unit: 1
-    price: see https://getstream.io/
+    price: 0
     userMultiplied: false
-  elements:
-  - name: Pending Reconciliation
+  - label: Concurrent connections
+    name: concurrent_connections
+    type: tier
+    metric: concurrent_connections
+    limit: 100
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: 0
+    userMultiplied: false
+- id: stream-chat-start
+  name: Chat — Start
+  type: subscription
+  description: >-
+    Production tier with global edge network, advanced moderation and offline
+    support. Tiered by MAU; example public list prices: 10K MAU $399/mo
+    (annual) / $499/mo, 25K MAU $1,049/mo (annual) / $1,299/mo, 50K MAU
+    $1,849/mo (annual) / $2,299/mo.
+  entries:
+  - label: 10K MAU
+    name: mau_10k_annual
+    type: flat
+    metric: mau
+    limit: 10000
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: 399
+    currency: USD
+    userMultiplied: false
+  - label: 25K MAU
+    name: mau_25k_annual
+    type: flat
+    metric: mau
+    limit: 25000
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: 1049
+    currency: USD
+    userMultiplied: false
+  - label: 50K MAU
+    name: mau_50k_annual
+    type: flat
+    metric: mau
+    limit: 50000
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: 1849
+    currency: USD
+    userMultiplied: false
+  - label: MAU overage
+    name: mau_overage
+    type: usage
+    metric: mau
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: 0.07-0.09
+    currency: USD
+    userMultiplied: false
+- id: stream-chat-elevate
+  name: Chat — Elevate
+  type: subscription
+  description: >-
+    Adds multi-tenancy, advanced search, HIPAA, message translations on top of
+    Start. Same MAU steps with a higher list price (e.g. 10K MAU
+    $599/mo annual / $675/mo).
+  entries:
+  - label: 10K MAU
+    name: mau_10k_annual
+    type: flat
+    metric: mau
+    limit: 10000
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: 599
+    currency: USD
+    userMultiplied: false
+- id: stream-chat-enterprise
+  name: Chat — Enterprise
+  type: enterprise
+  description: 1M+ MAU custom contracts, 99.999% SLA, dedicated servers, 24/7 support, SAML/SSO, Datadog integration, migration guarantees.
+  entries:
+  - label: Custom contract
+    name: enterprise_contract
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: annual
+    geo: global
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+- id: stream-chat-additional-usage
+  name: Chat — Additional Usage Costs
+  type: addOn
+  description: Per-unit usage costs that apply on top of MAU plans.
+  entries:
+  - label: Stored messages
+    name: stored_messages
+    type: usage
+    metric: messages
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1000000
+    price: 5.00
+    currency: USD
+    userMultiplied: false
+  - label: API calls (above included)
+    name: api_calls
+    type: usage
+    metric: requests
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1000000
+    price: 7.00
+    currency: USD
+    userMultiplied: false
+  - label: CDN bandwidth
+    name: cdn_bandwidth
+    type: usage
+    metric: GB
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: 0.17
+    currency: USD
+    userMultiplied: false
+  - label: CDN storage
+    name: cdn_storage
+    type: usage
+    metric: GB
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: 0.07
+    currency: USD
+    userMultiplied: false
+- id: stream-video-pricing
+  name: Video & Audio — Tiered
+  type: subscription
+  description: Per-MAU plans for Video & Audio (calls, rooms, livestream). Public list prices not all published; contact sales for exact tiers.
+  entries:
+  - label: Video MAU
+    name: video_mau
+    type: tier
+    metric: mau
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: see https://getstream.io/video/pricing/
+    userMultiplied: false
+- id: stream-feeds-pricing
+  name: Activity Feeds — Tiered
+  type: subscription
+  description: Per-MAU plans for Activity Feeds. Pricing not fully publicised; contact sales.
+  entries:
+  - label: Feeds MAU
+    name: feeds_mau
+    type: tier
+    metric: mau
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: see https://getstream.io/activity-feeds/pricing/
+    userMultiplied: false
+- id: stream-moderation-pricing
+  name: Moderation — Tiered
+  type: subscription
+  description: Per-MAU plans for AI Moderation. Tiers not fully publicised; contact sales.
+  entries:
+  - label: Moderation MAU
+    name: moderation_mau
+    type: tier
+    metric: mau
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: see https://getstream.io/moderation/pricing/
+    userMultiplied: false
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

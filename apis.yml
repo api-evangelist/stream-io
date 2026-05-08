@@ -3,21 +3,127 @@ url: https://raw.githubusercontent.com/api-evangelist/stream-io/refs/heads/main/
 name: Stream
 x-type: company
 description: >-
-  Stream provides realtime APIs for chat, video, audio rooms, and activity feeds. Hosted across global edges with native SDKs for web, mobile, and game engines.
+  Stream provides realtime APIs for chat messaging, video and audio (calls and rooms),
+  activity feeds and moderation. Hosted on a global edge network with native SDKs for web,
+  mobile (iOS, Android, Flutter, React Native) and game engines (Unity, Unreal). Stream
+  publishes full OpenAPI specifications for its Chat, Video and Moderation server-side APIs.
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
   - Realtime
   - Chat
+  - Messaging
   - Video
+  - Audio
   - Activity Feeds
+  - Moderation
   - SDK
 created: '2026-05-08'
 modified: '2026-05-08'
 specificationVersion: '0.19'
-apis: []
+apis:
+  - aid: stream-io:chat
+    name: Stream Chat API
+    description: >-
+      Server-side REST API for Stream Chat — channels, messages, users, threads,
+      reactions, attachments, push notifications, search and import/export. JWT-based
+      auth using a Stream API key/secret pair.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://getstream.io/chat/docs/
+    baseURL: https://chat.stream-io-api.com
+    tags:
+      - REST
+      - Chat
+      - Messaging
+      - WebSocket
+    properties:
+      - type: Documentation
+        url: https://getstream.io/chat/docs/
+      - type: APIReference
+        url: https://getstream.github.io/protocol/?urls.primaryName=Chat
+      - type: OpenAPI
+        url: openapi/stream-io-chat-openapi.yml
+      - type: OpenAPISource
+        url: https://raw.githubusercontent.com/GetStream/protocol/main/openapi/chat-openapi.yaml
+      - type: SDK
+        url: https://getstream.io/chat/sdk/
+  - aid: stream-io:video
+    name: Stream Video & Audio API
+    description: >-
+      Server-side REST API for Stream Video — calls, audio rooms, livestreams,
+      recordings, transcriptions, edge selection, push and SFU coordination. WebRTC
+      backed by Stream's global edge network.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://getstream.io/video/docs/
+    baseURL: https://video.stream-io-api.com
+    tags:
+      - REST
+      - Video
+      - Audio
+      - WebRTC
+      - Livestream
+    properties:
+      - type: Documentation
+        url: https://getstream.io/video/docs/
+      - type: APIReference
+        url: https://getstream.github.io/protocol/?urls.primaryName=Video
+      - type: OpenAPI
+        url: openapi/stream-io-video-openapi.yml
+      - type: OpenAPISource
+        url: https://raw.githubusercontent.com/GetStream/protocol/main/openapi/video-openapi.yaml
+      - type: SDK
+        url: https://getstream.io/video/sdk/
+  - aid: stream-io:moderation
+    name: Stream Moderation API
+    description: >-
+      Server-side REST API for AI-powered content moderation across text, images and
+      video — flagging, queues, automoderation policies, harms taxonomy and reviewer
+      decisions.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://getstream.io/moderation/
+    baseURL: https://chat.stream-io-api.com
+    tags:
+      - REST
+      - Moderation
+      - Trust & Safety
+      - AI
+    properties:
+      - type: Documentation
+        url: https://getstream.io/moderation/docs/
+      - type: OpenAPI
+        url: openapi/stream-io-moderation-openapi.yml
+      - type: OpenAPISource
+        url: https://raw.githubusercontent.com/GetStream/protocol/main/openapi/moderation-openapi.yaml
+  - aid: stream-io:feeds
+    name: Stream Activity Feeds API
+    description: >-
+      Server-side REST API for activity feeds — flat, aggregated, notification and
+      ranked feeds, follow graph, reactions and personalisation. Powered by Stream's
+      original feed engine.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://getstream.io/activity-feeds/docs/
+    baseURL: https://api.stream-io-api.com
+    tags:
+      - REST
+      - Activity Feeds
+      - Social
+    properties:
+      - type: Documentation
+        url: https://getstream.io/activity-feeds/docs/
+      - type: APIReference
+        url: https://getstream.io/activity-feeds/docs/rest/
 common:
   - type: Website
     url: https://getstream.io/
+  - type: Documentation
+    url: https://getstream.io/docs/
+  - type: Pricing
+    url: https://getstream.io/pricing/
+  - type: GitHub
+    url: https://github.com/GetStream
+  - type: ProtocolPortal
+    url: https://getstream.github.io/protocol/
+  - type: StatusPage
+    url: https://status.getstream.io/
   - type: Plans
     url: plans/stream-io-plans-pricing.yml
   - type: RateLimits
