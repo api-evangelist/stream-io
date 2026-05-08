@@ -1,0 +1,29 @@
+aid: stream-io
+url: https://raw.githubusercontent.com/api-evangelist/stream-io/refs/heads/main/apis.yml
+name: Stream
+x-type: company
+description: >-
+  Stream provides realtime APIs for chat, video, audio rooms, and activity feeds. Hosted across global edges with native SDKs for web, mobile, and game engines.
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - Realtime
+  - Chat
+  - Video
+  - Activity Feeds
+  - SDK
+created: '2026-05-08'
+modified: '2026-05-08'
+specificationVersion: '0.19'
+apis: []
+common:
+  - type: Website
+    url: https://getstream.io/
+  - type: Plans
+    url: plans/stream-io-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/stream-io-rate-limits.yml
+  - type: FinOps
+    url: finops/stream-io-finops.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
