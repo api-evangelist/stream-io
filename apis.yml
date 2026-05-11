@@ -130,6 +130,10 @@ common:
     url: rate-limits/stream-io-rate-limits.yml
   - type: FinOps
     url: finops/stream-io-finops.yml
+  - type: Integrations
+    url: https://getstream.io/partners/
+integrations:
+  - name: Stream
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
