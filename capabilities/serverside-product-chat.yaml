@@ -1,0 +1,4116 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Stream API — product:chat
+  description: 'Stream API — product:chat. 90 operations. Lead operation: Create campaign. Self-contained Naftiko capability
+    covering one Stream Io business surface.'
+  tags:
+  - Stream Io
+  - product:chat
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    STREAM_IO_API_KEY: STREAM_IO_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: serverside-product-chat
+    baseUri: https://chat.stream-io-api.com
+    description: Stream API — product:chat business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v2-chat-campaigns
+      path: /api/v2/chat/campaigns
+      operations:
+      - name: createcampaign
+        method: POST
+        description: Create campaign
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-chat-campaigns-query
+      path: /api/v2/chat/campaigns/query
+      operations:
+      - name: querycampaigns
+        method: POST
+        description: Query campaigns
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-chat-campaigns-id
+      path: /api/v2/chat/campaigns/{id}
+      operations:
+      - name: deletecampaign
+        method: DELETE
+        description: Delete campaign
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+      - name: getcampaign
+        method: GET
+        description: Get campaign
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: prev
+          in: query
+          type: string
+        - name: next
+          in: query
+          type: string
+        - name: limit
+          in: query
+          type: integer
+      - name: updatecampaign
+        method: PUT
+        description: Update campaign
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-chat-campaigns-id-start
+      path: /api/v2/chat/campaigns/{id}/start
+      operations:
+      - name: startcampaign
+        method: POST
+        description: Start/schedule campaign
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-chat-campaigns-id-stop
+      path: /api/v2/chat/campaigns/{id}/stop
+      operations:
+      - name: stopcampaign
+        method: POST
+        description: Stop campaign
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-chat-channels
+      path: /api/v2/chat/channels
+      operations:
+      - name: querychannels
+        method: POST
+        description: Query channels
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-chat-channels-batch
+      path: /api/v2/chat/channels/batch
+      operations:
+      - name: channelbatchupdate
+        method: PUT
+        description: Update channels in batch
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-chat-channels-delete
+      path: /api/v2/chat/channels/delete
+      operations:
+      - name: deletechannels
+        method: POST
+        description: Deletes channels asynchronously
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-chat-channels-delivered
+      path: /api/v2/chat/channels/delivered
+      operations:
+      - name: markdelivered
+        method: POST
+        description: Mark channel message delivery status
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: user_id
+          in: query
+          type: string
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-chat-channels-grouped
+      path: /api/v2/chat/channels/grouped
+      operations:
+      - name: groupedquerychannels
+        method: POST
+        description: Grouped query channels
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-chat-channels-read
+      path: /api/v2/chat/channels/read
+      operations:
+      - name: markchannelsread
+        method: POST
+        description: Mark channels as read
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-chat-channels-type-query
+      path: /api/v2/chat/channels/{type}/query
+      operations:
+      - name: getorcreatedistinctchannel
+        method: POST
+        description: Get or create channel
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: type
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-chat-channels-type-id
+      path: /api/v2/chat/channels/{type}/{id}
+      operations:
+      - name: deletechannel
+        method: DELETE
+        description: Delete channel
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: type
+          in: path
+          type: string
+          required: true
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: hard_delete
+          in: query
+          type: boolean
+      - name: updatechannelpartial
+        method: PATCH
+        description: Partially update channel
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: type
+          in: path
+          type: string
+          required: true
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: updatechannel
+        method: POST
+        description: Update channel
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: type
+          in: path
+          type: string
+          required: true
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-chat-channels-type-id-draft
+      path: /api/v2/chat/channels/{type}/{id}/draft
+      operations:
+      - name: deletedraft
+        method: DELETE
+        description: Delete draft
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: type
+          in: path
+          type: string
+          required: true
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: parent_id
+          in: query
+          type: string
+        - name: user_id
+          in: query
+          type: string
+      - name: getdraft
+        method: GET
+        description: Get draft
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: type
+          in: path
+          type: string
+          required: true
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: parent_id
+          in: query
+          type: string
+        - name: user_id
+          in: query
+          type: string
+    - name: api-v2-chat-channels-type-id-event
+      path: /api/v2/chat/channels/{type}/{id}/event
+      operations:
+      - name: sendevent
+        method: POST
+        description: Send event
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: type
+          in: path
+          type: string
+          required: true
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-chat-channels-type-id-file
+      path: /api/v2/chat/channels/{type}/{id}/file
+      operations:
+      - name: deletechannelfile
+        method: DELETE
+        description: Delete file
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: type
+          in: path
+          type: string
+          required: true
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: url
+          in: query
+          type: string
+      - name: uploadchannelfile
+        method: POST
+        description: Upload file
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: type
+          in: path
+          type: string
+          required: true
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-chat-channels-type-id-hide
+      path: /api/v2/chat/channels/{type}/{id}/hide
+      operations:
+      - name: hidechannel
+        method: POST
+        description: Hide channel
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: type
+          in: path
+          type: string
+          required: true
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-chat-channels-type-id-image
+      path: /api/v2/chat/channels/{type}/{id}/image
+      operations:
+      - name: deletechannelimage
+        method: DELETE
+        description: Delete image
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: type
+          in: path
+          type: string
+          required: true
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: url
+          in: query
+          type: string
+      - name: uploadchannelimage
+        method: POST
+        description: Upload image
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: type
+          in: path
+          type: string
+          required: true
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-chat-channels-type-id-member
+      path: /api/v2/chat/channels/{type}/{id}/member
+      operations:
+      - name: updatememberpartial
+        method: PATCH
+        description: Partially channel member update
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: type
+          in: path
+          type: string
+          required: true
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: user_id
+          in: query
+          type: string
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-chat-channels-type-id-message
+      path: /api/v2/chat/channels/{type}/{id}/message
+      operations:
+      - name: sendmessage
+        method: POST
+        description: Send new message
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: type
+          in: path
+          type: string
+          required: true
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-chat-channels-type-id-messages
+      path: /api/v2/chat/channels/{type}/{id}/messages
+      operations:
+      - name: getmanymessages
+        method: GET
+        description: Get many messages
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: type
+          in: path
+          type: string
+          required: true
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: ids
+          in: query
+          type: array
+          required: true
+    - name: api-v2-chat-channels-type-id-query
+      path: /api/v2/chat/channels/{type}/{id}/query
+      operations:
+      - name: getorcreatechannel
+        method: POST
+        description: Get or create channel
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: type
+          in: path
+          type: string
+          required: true
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-chat-channels-type-id-read
+      path: /api/v2/chat/channels/{type}/{id}/read
+      operations:
+      - name: markread
+        method: POST
+        description: Mark read
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: type
+          in: path
+          type: string
+          required: true
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-chat-channels-type-id-show
+      path: /api/v2/chat/channels/{type}/{id}/show
+      operations:
+      - name: showchannel
+        method: POST
+        description: Show channel
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: type
+          in: path
+          type: string
+          required: true
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-chat-channels-type-id-truncate
+      path: /api/v2/chat/channels/{type}/{id}/truncate
+      operations:
+      - name: truncatechannel
+        method: POST
+        description: Truncate channel
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: type
+          in: path
+          type: string
+          required: true
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-chat-channels-type-id-unread
+      path: /api/v2/chat/channels/{type}/{id}/unread
+      operations:
+      - name: markunread
+        method: POST
+        description: Mark unread
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: type
+          in: path
+          type: string
+          required: true
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-chat-channeltypes
+      path: /api/v2/chat/channeltypes
+      operations:
+      - name: listchanneltypes
+        method: GET
+        description: List channel types
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createchanneltype
+        method: POST
+        description: Create channel type
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-chat-channeltypes-name
+      path: /api/v2/chat/channeltypes/{name}
+      operations:
+      - name: deletechanneltype
+        method: DELETE
+        description: Delete channel type
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          required: true
+      - name: getchanneltype
+        method: GET
+        description: Get channel type
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          required: true
+      - name: updatechanneltype
+        method: PUT
+        description: Update channel type
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-chat-commands
+      path: /api/v2/chat/commands
+      operations:
+      - name: listcommands
+        method: GET
+        description: List commands
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createcommand
+        method: POST
+        description: Create command
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-chat-commands-name
+      path: /api/v2/chat/commands/{name}
+      operations:
+      - name: deletecommand
+        method: DELETE
+        description: Delete command
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          required: true
+      - name: getcommand
+        method: GET
+        description: Get command
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          required: true
+      - name: updatecommand
+        method: PUT
+        description: Update command
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-chat-drafts-query
+      path: /api/v2/chat/drafts/query
+      operations:
+      - name: querydrafts
+        method: POST
+        description: Query draft messages
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-chat-export_channels
+      path: /api/v2/chat/export_channels
+      operations:
+      - name: exportchannels
+        method: POST
+        description: Export channels
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-chat-members
+      path: /api/v2/chat/members
+      operations:
+      - name: querymembers
+        method: GET
+        description: Query members
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: payload
+          in: query
+          type: string
+    - name: api-v2-chat-messages-history
+      path: /api/v2/chat/messages/history
+      operations:
+      - name: querymessagehistory
+        method: POST
+        description: Query message history
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-chat-messages-id
+      path: /api/v2/chat/messages/{id}
+      operations:
+      - name: deletemessage
+        method: DELETE
+        description: Delete message
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: hard
+          in: query
+          type: boolean
+        - name: deleted_by
+          in: query
+          type: string
+        - name: delete_for_me
+          in: query
+          type: boolean
+      - name: getmessage
+        method: GET
+        description: Get message
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: show_deleted_message
+          in: query
+          type: boolean
+      - name: updatemessage
+        method: POST
+        description: Update message
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: updatemessagepartial
+        method: PUT
+        description: Partially message update
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-chat-messages-id-action
+      path: /api/v2/chat/messages/{id}/action
+      operations:
+      - name: runmessageaction
+        method: POST
+        description: Run message command action
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-chat-messages-id-commit
+      path: /api/v2/chat/messages/{id}/commit
+      operations:
+      - name: commitmessage
+        method: POST
+        description: Commit message
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-chat-messages-id-ephemeral
+      path: /api/v2/chat/messages/{id}/ephemeral
+      operations:
+      - name: ephemeralmessageupdate
+        method: PATCH
+        description: Ephemeral message update
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-chat-messages-id-reaction
+      path: /api/v2/chat/messages/{id}/reaction
+      operations:
+      - name: sendreaction
+        method: POST
+        description: Send reaction
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-chat-messages-id-reaction-type
+      path: /api/v2/chat/messages/{id}/reaction/{type}
+      operations:
+      - name: deletereaction
+        method: DELETE
+        description: Delete reaction
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: type
+          in: path
+          type: string
+          required: true
+        - name: user_id
+          in: query
+          type: string
+    - name: api-v2-chat-messages-id-reactions
+      path: /api/v2/chat/messages/{id}/reactions
+      operations:
+      - name: getreactions
+        method: GET
+        description: Get reactions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: limit
+          in: query
+          type: integer
+        - name: offset
+          in: query
+          type: integer
+      - name: queryreactions
+        method: POST
+        description: Get reactions on a message
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-chat-messages-id-translate
+      path: /api/v2/chat/messages/{id}/translate
+      operations:
+      - name: translatemessage
+        method: POST
+        description: Translate message
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-chat-messages-id-undelete
+      path: /api/v2/chat/messages/{id}/undelete
+      operations:
+      - name: undeletemessage
+        method: POST
+        description: Undelete message
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-chat-messages-message_id-polls-poll_id-vote
+      path: /api/v2/chat/messages/{message_id}/polls/{poll_id}/vote
+      operations:
+      - name: castpollvote
+        method: POST
+        description: Cast vote
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: message_id
+          in: path
+          type: string
+          required: true
+        - name: poll_id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-chat-messages-message_id-polls-poll_id-vote-vote_id
+      path: /api/v2/chat/messages/{message_id}/polls/{poll_id}/vote/{vote_id}
+      operations:
+      - name: deletepollvote
+        method: DELETE
+        description: Delete vote
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: message_id
+          in: path
+          type: string
+          required: true
+        - name: poll_id
+          in: path
+          type: string
+          required: true
+        - name: vote_id
+          in: path
+          type: string
+          required: true
+        - name: user_id
+          in: query
+          type: string
+    - name: api-v2-chat-messages-message_id-reminders
+      path: /api/v2/chat/messages/{message_id}/reminders
+      operations:
+      - name: deletereminder
+        method: DELETE
+        description: Delete reminder
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: message_id
+          in: path
+          type: string
+          required: true
+        - name: user_id
+          in: query
+          type: string
+      - name: updatereminder
+        method: PATCH
+        description: Updates Reminder
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: message_id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: createreminder
+        method: POST
+        description: Create reminder
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: message_id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-chat-messages-parent_id-replies
+      path: /api/v2/chat/messages/{parent_id}/replies
+      operations:
+      - name: getreplies
+        method: GET
+        description: Get replies
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: parent_id
+          in: path
+          type: string
+          required: true
+        - name: sort
+          in: query
+          type: array
+        - name: limit
+          in: query
+          type: integer
+        - name: id_gte
+          in: query
+          type: string
+        - name: id_gt
+          in: query
+          type: string
+        - name: id_lte
+          in: query
+          type: string
+        - name: id_lt
+          in: query
+          type: string
+        - name: id_around
+          in: query
+          type: string
+    - name: api-v2-chat-moderation-flags-message
+      path: /api/v2/chat/moderation/flags/message
+      operations:
+      - name: querymessageflags
+        method: GET
+        description: Query Message Flags
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: payload
+          in: query
+          type: string
+    - name: api-v2-chat-moderation-mute-channel
+      path: /api/v2/chat/moderation/mute/channel
+      operations:
+      - name: mutechannel
+        method: POST
+        description: Mute channel
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-chat-moderation-unmute-channel
+      path: /api/v2/chat/moderation/unmute/channel
+      operations:
+      - name: unmutechannel
+        method: POST
+        description: Unmute channel
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-chat-query_banned_users
+      path: /api/v2/chat/query_banned_users
+      operations:
+      - name: querybannedusers
+        method: GET
+        description: Query Banned Users
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: payload
+          in: query
+          type: string
+    - name: api-v2-chat-query_future_channel_bans
+      path: /api/v2/chat/query_future_channel_bans
+      operations:
+      - name: queryfuturechannelbans
+        method: GET
+        description: Query Future Channel Bans
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: payload
+          in: query
+          type: string
+    - name: api-v2-chat-reminders-query
+      path: /api/v2/chat/reminders/query
+      operations:
+      - name: queryreminders
+        method: POST
+        description: Query reminders
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-chat-retention_policy
+      path: /api/v2/chat/retention_policy
+      operations:
+      - name: getretentionpolicy
+        method: GET
+        description: Get retention policy
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: setretentionpolicy
+        method: POST
+        description: Set retention policy
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-chat-retention_policy-delete
+      path: /api/v2/chat/retention_policy/delete
+      operations:
+      - name: deleteretentionpolicy
+        method: POST
+        description: Delete retention policy
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-chat-retention_policy-runs
+      path: /api/v2/chat/retention_policy/runs
+      operations:
+      - name: getretentionpolicyruns
+        method: POST
+        description: Get retention policy runs
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-chat-search
+      path: /api/v2/chat/search
+      operations:
+      - name: search
+        method: GET
+        description: Search messages
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: payload
+          in: query
+          type: string
+    - name: api-v2-chat-segments-query
+      path: /api/v2/chat/segments/query
+      operations:
+      - name: querysegments
+        method: POST
+        description: Query segments
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-chat-segments-id
+      path: /api/v2/chat/segments/{id}
+      operations:
+      - name: deletesegment
+        method: DELETE
+        description: Delete segment
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+      - name: getsegment
+        method: GET
+        description: Get segment
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+    - name: api-v2-chat-segments-id-deletetargets
+      path: /api/v2/chat/segments/{id}/deletetargets
+      operations:
+      - name: deletesegmenttargets
+        method: POST
+        description: Delete targets from a segment
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-chat-segments-id-target-target_id
+      path: /api/v2/chat/segments/{id}/target/{target_id}
+      operations:
+      - name: segmenttargetexists
+        method: GET
+        description: Check whether a target exists in a segment
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: target_id
+          in: path
+          type: string
+          required: true
+    - name: api-v2-chat-segments-id-targets-query
+      path: /api/v2/chat/segments/{id}/targets/query
+      operations:
+      - name: querysegmenttargets
+        method: POST
+        description: Query segment targets
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-chat-stats-team_usage
+      path: /api/v2/chat/stats/team_usage
+      operations:
+      - name: queryteamusagestats
+        method: POST
+        description: Query Team Usage Statistics
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-chat-threads
+      path: /api/v2/chat/threads
+      operations:
+      - name: querythreads
+        method: POST
+        description: Query Threads
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-chat-threads-message_id
+      path: /api/v2/chat/threads/{message_id}
+      operations:
+      - name: getthread
+        method: GET
+        description: Get Thread
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: message_id
+          in: path
+          type: string
+          required: true
+        - name: reply_limit
+          in: query
+          type: integer
+        - name: participant_limit
+          in: query
+          type: integer
+        - name: member_limit
+          in: query
+          type: integer
+      - name: updatethreadpartial
+        method: PATCH
+        description: Partially update thread
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: message_id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-chat-unread
+      path: /api/v2/chat/unread
+      operations:
+      - name: unreadcounts
+        method: GET
+        description: Unread counts
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: user_id
+          in: query
+          type: string
+    - name: api-v2-chat-unread_batch
+      path: /api/v2/chat/unread_batch
+      operations:
+      - name: unreadcountsbatch
+        method: POST
+        description: Batch unread counts
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-chat-users-user_id-event
+      path: /api/v2/chat/users/{user_id}/event
+      operations:
+      - name: sendusercustomevent
+        method: POST
+        description: Send user event
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: user_id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.STREAM_IO_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: serverside-product-chat-rest
+    port: 8080
+    description: REST adapter for Stream API — product:chat. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/api/v2/chat/campaigns
+      name: api-v2-chat-campaigns
+      description: REST surface for api-v2-chat-campaigns.
+      operations:
+      - method: POST
+        name: createcampaign
+        description: Create campaign
+        call: serverside-product-chat.createcampaign
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/chat/campaigns/query
+      name: api-v2-chat-campaigns-query
+      description: REST surface for api-v2-chat-campaigns-query.
+      operations:
+      - method: POST
+        name: querycampaigns
+        description: Query campaigns
+        call: serverside-product-chat.querycampaigns
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/chat/campaigns/{id}
+      name: api-v2-chat-campaigns-id
+      description: REST surface for api-v2-chat-campaigns-id.
+      operations:
+      - method: DELETE
+        name: deletecampaign
+        description: Delete campaign
+        call: serverside-product-chat.deletecampaign
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: getcampaign
+        description: Get campaign
+        call: serverside-product-chat.getcampaign
+        with:
+          id: rest.id
+          prev: rest.prev
+          next: rest.next
+          limit: rest.limit
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatecampaign
+        description: Update campaign
+        call: serverside-product-chat.updatecampaign
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/chat/campaigns/{id}/start
+      name: api-v2-chat-campaigns-id-start
+      description: REST surface for api-v2-chat-campaigns-id-start.
+      operations:
+      - method: POST
+        name: startcampaign
+        description: Start/schedule campaign
+        call: serverside-product-chat.startcampaign
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/chat/campaigns/{id}/stop
+      name: api-v2-chat-campaigns-id-stop
+      description: REST surface for api-v2-chat-campaigns-id-stop.
+      operations:
+      - method: POST
+        name: stopcampaign
+        description: Stop campaign
+        call: serverside-product-chat.stopcampaign
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/chat/channels
+      name: api-v2-chat-channels
+      description: REST surface for api-v2-chat-channels.
+      operations:
+      - method: POST
+        name: querychannels
+        description: Query channels
+        call: serverside-product-chat.querychannels
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/chat/channels/batch
+      name: api-v2-chat-channels-batch
+      description: REST surface for api-v2-chat-channels-batch.
+      operations:
+      - method: PUT
+        name: channelbatchupdate
+        description: Update channels in batch
+        call: serverside-product-chat.channelbatchupdate
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/chat/channels/delete
+      name: api-v2-chat-channels-delete
+      description: REST surface for api-v2-chat-channels-delete.
+      operations:
+      - method: POST
+        name: deletechannels
+        description: Deletes channels asynchronously
+        call: serverside-product-chat.deletechannels
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/chat/channels/delivered
+      name: api-v2-chat-channels-delivered
+      description: REST surface for api-v2-chat-channels-delivered.
+      operations:
+      - method: POST
+        name: markdelivered
+        description: Mark channel message delivery status
+        call: serverside-product-chat.markdelivered
+        with:
+          user_id: rest.user_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/chat/channels/grouped
+      name: api-v2-chat-channels-grouped
+      description: REST surface for api-v2-chat-channels-grouped.
+      operations:
+      - method: POST
+        name: groupedquerychannels
+        description: Grouped query channels
+        call: serverside-product-chat.groupedquerychannels
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/chat/channels/read
+      name: api-v2-chat-channels-read
+      description: REST surface for api-v2-chat-channels-read.
+      operations:
+      - method: POST
+        name: markchannelsread
+        description: Mark channels as read
+        call: serverside-product-chat.markchannelsread
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/chat/channels/{type}/query
+      name: api-v2-chat-channels-type-query
+      description: REST surface for api-v2-chat-channels-type-query.
+      operations:
+      - method: POST
+        name: getorcreatedistinctchannel
+        description: Get or create channel
+        call: serverside-product-chat.getorcreatedistinctchannel
+        with:
+          type: rest.type
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/chat/channels/{type}/{id}
+      name: api-v2-chat-channels-type-id
+      description: REST surface for api-v2-chat-channels-type-id.
+      operations:
+      - method: DELETE
+        name: deletechannel
+        description: Delete channel
+        call: serverside-product-chat.deletechannel
+        with:
+          type: rest.type
+          id: rest.id
+          hard_delete: rest.hard_delete
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updatechannelpartial
+        description: Partially update channel
+        call: serverside-product-chat.updatechannelpartial
+        with:
+          type: rest.type
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: updatechannel
+        description: Update channel
+        call: serverside-product-chat.updatechannel
+        with:
+          type: rest.type
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/chat/channels/{type}/{id}/draft
+      name: api-v2-chat-channels-type-id-draft
+      description: REST surface for api-v2-chat-channels-type-id-draft.
+      operations:
+      - method: DELETE
+        name: deletedraft
+        description: Delete draft
+        call: serverside-product-chat.deletedraft
+        with:
+          type: rest.type
+          id: rest.id
+          parent_id: rest.parent_id
+          user_id: rest.user_id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: getdraft
+        description: Get draft
+        call: serverside-product-chat.getdraft
+        with:
+          type: rest.type
+          id: rest.id
+          parent_id: rest.parent_id
+          user_id: rest.user_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/chat/channels/{type}/{id}/event
+      name: api-v2-chat-channels-type-id-event
+      description: REST surface for api-v2-chat-channels-type-id-event.
+      operations:
+      - method: POST
+        name: sendevent
+        description: Send event
+        call: serverside-product-chat.sendevent
+        with:
+          type: rest.type
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/chat/channels/{type}/{id}/file
+      name: api-v2-chat-channels-type-id-file
+      description: REST surface for api-v2-chat-channels-type-id-file.
+      operations:
+      - method: DELETE
+        name: deletechannelfile
+        description: Delete file
+        call: serverside-product-chat.deletechannelfile
+        with:
+          type: rest.type
+          id: rest.id
+          url: rest.url
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: uploadchannelfile
+        description: Upload file
+        call: serverside-product-chat.uploadchannelfile
+        with:
+          type: rest.type
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/chat/channels/{type}/{id}/hide
+      name: api-v2-chat-channels-type-id-hide
+      description: REST surface for api-v2-chat-channels-type-id-hide.
+      operations:
+      - method: POST
+        name: hidechannel
+        description: Hide channel
+        call: serverside-product-chat.hidechannel
+        with:
+          type: rest.type
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/chat/channels/{type}/{id}/image
+      name: api-v2-chat-channels-type-id-image
+      description: REST surface for api-v2-chat-channels-type-id-image.
+      operations:
+      - method: DELETE
+        name: deletechannelimage
+        description: Delete image
+        call: serverside-product-chat.deletechannelimage
+        with:
+          type: rest.type
+          id: rest.id
+          url: rest.url
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: uploadchannelimage
+        description: Upload image
+        call: serverside-product-chat.uploadchannelimage
+        with:
+          type: rest.type
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/chat/channels/{type}/{id}/member
+      name: api-v2-chat-channels-type-id-member
+      description: REST surface for api-v2-chat-channels-type-id-member.
+      operations:
+      - method: PATCH
+        name: updatememberpartial
+        description: Partially channel member update
+        call: serverside-product-chat.updatememberpartial
+        with:
+          type: rest.type
+          id: rest.id
+          user_id: rest.user_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/chat/channels/{type}/{id}/message
+      name: api-v2-chat-channels-type-id-message
+      description: REST surface for api-v2-chat-channels-type-id-message.
+      operations:
+      - method: POST
+        name: sendmessage
+        description: Send new message
+        call: serverside-product-chat.sendmessage
+        with:
+          type: rest.type
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/chat/channels/{type}/{id}/messages
+      name: api-v2-chat-channels-type-id-messages
+      description: REST surface for api-v2-chat-channels-type-id-messages.
+      operations:
+      - method: GET
+        name: getmanymessages
+        description: Get many messages
+        call: serverside-product-chat.getmanymessages
+        with:
+          type: rest.type
+          id: rest.id
+          ids: rest.ids
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/chat/channels/{type}/{id}/query
+      name: api-v2-chat-channels-type-id-query
+      description: REST surface for api-v2-chat-channels-type-id-query.
+      operations:
+      - method: POST
+        name: getorcreatechannel
+        description: Get or create channel
+        call: serverside-product-chat.getorcreatechannel
+        with:
+          type: rest.type
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/chat/channels/{type}/{id}/read
+      name: api-v2-chat-channels-type-id-read
+      description: REST surface for api-v2-chat-channels-type-id-read.
+      operations:
+      - method: POST
+        name: markread
+        description: Mark read
+        call: serverside-product-chat.markread
+        with:
+          type: rest.type
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/chat/channels/{type}/{id}/show
+      name: api-v2-chat-channels-type-id-show
+      description: REST surface for api-v2-chat-channels-type-id-show.
+      operations:
+      - method: POST
+        name: showchannel
+        description: Show channel
+        call: serverside-product-chat.showchannel
+        with:
+          type: rest.type
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/chat/channels/{type}/{id}/truncate
+      name: api-v2-chat-channels-type-id-truncate
+      description: REST surface for api-v2-chat-channels-type-id-truncate.
+      operations:
+      - method: POST
+        name: truncatechannel
+        description: Truncate channel
+        call: serverside-product-chat.truncatechannel
+        with:
+          type: rest.type
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/chat/channels/{type}/{id}/unread
+      name: api-v2-chat-channels-type-id-unread
+      description: REST surface for api-v2-chat-channels-type-id-unread.
+      operations:
+      - method: POST
+        name: markunread
+        description: Mark unread
+        call: serverside-product-chat.markunread
+        with:
+          type: rest.type
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/chat/channeltypes
+      name: api-v2-chat-channeltypes
+      description: REST surface for api-v2-chat-channeltypes.
+      operations:
+      - method: GET
+        name: listchanneltypes
+        description: List channel types
+        call: serverside-product-chat.listchanneltypes
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createchanneltype
+        description: Create channel type
+        call: serverside-product-chat.createchanneltype
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/chat/channeltypes/{name}
+      name: api-v2-chat-channeltypes-name
+      description: REST surface for api-v2-chat-channeltypes-name.
+      operations:
+      - method: DELETE
+        name: deletechanneltype
+        description: Delete channel type
+        call: serverside-product-chat.deletechanneltype
+        with:
+          name: rest.name
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: getchanneltype
+        description: Get channel type
+        call: serverside-product-chat.getchanneltype
+        with:
+          name: rest.name
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatechanneltype
+        description: Update channel type
+        call: serverside-product-chat.updatechanneltype
+        with:
+          name: rest.name
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/chat/commands
+      name: api-v2-chat-commands
+      description: REST surface for api-v2-chat-commands.
+      operations:
+      - method: GET
+        name: listcommands
+        description: List commands
+        call: serverside-product-chat.listcommands
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createcommand
+        description: Create command
+        call: serverside-product-chat.createcommand
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/chat/commands/{name}
+      name: api-v2-chat-commands-name
+      description: REST surface for api-v2-chat-commands-name.
+      operations:
+      - method: DELETE
+        name: deletecommand
+        description: Delete command
+        call: serverside-product-chat.deletecommand
+        with:
+          name: rest.name
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: getcommand
+        description: Get command
+        call: serverside-product-chat.getcommand
+        with:
+          name: rest.name
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatecommand
+        description: Update command
+        call: serverside-product-chat.updatecommand
+        with:
+          name: rest.name
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/chat/drafts/query
+      name: api-v2-chat-drafts-query
+      description: REST surface for api-v2-chat-drafts-query.
+      operations:
+      - method: POST
+        name: querydrafts
+        description: Query draft messages
+        call: serverside-product-chat.querydrafts
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/chat/export-channels
+      name: api-v2-chat-export-channels
+      description: REST surface for api-v2-chat-export_channels.
+      operations:
+      - method: POST
+        name: exportchannels
+        description: Export channels
+        call: serverside-product-chat.exportchannels
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/chat/members
+      name: api-v2-chat-members
+      description: REST surface for api-v2-chat-members.
+      operations:
+      - method: GET
+        name: querymembers
+        description: Query members
+        call: serverside-product-chat.querymembers
+        with:
+          payload: rest.payload
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/chat/messages/history
+      name: api-v2-chat-messages-history
+      description: REST surface for api-v2-chat-messages-history.
+      operations:
+      - method: POST
+        name: querymessagehistory
+        description: Query message history
+        call: serverside-product-chat.querymessagehistory
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/chat/messages/{id}
+      name: api-v2-chat-messages-id
+      description: REST surface for api-v2-chat-messages-id.
+      operations:
+      - method: DELETE
+        name: deletemessage
+        description: Delete message
+        call: serverside-product-chat.deletemessage
+        with:
+          id: rest.id
+          hard: rest.hard
+          deleted_by: rest.deleted_by
+          delete_for_me: rest.delete_for_me
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: getmessage
+        description: Get message
+        call: serverside-product-chat.getmessage
+        with:
+          id: rest.id
+          show_deleted_message: rest.show_deleted_message
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: updatemessage
+        description: Update message
+        call: serverside-product-chat.updatemessage
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatemessagepartial
+        description: Partially message update
+        call: serverside-product-chat.updatemessagepartial
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/chat/messages/{id}/action
+      name: api-v2-chat-messages-id-action
+      description: REST surface for api-v2-chat-messages-id-action.
+      operations:
+      - method: POST
+        name: runmessageaction
+        description: Run message command action
+        call: serverside-product-chat.runmessageaction
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/chat/messages/{id}/commit
+      name: api-v2-chat-messages-id-commit
+      description: REST surface for api-v2-chat-messages-id-commit.
+      operations:
+      - method: POST
+        name: commitmessage
+        description: Commit message
+        call: serverside-product-chat.commitmessage
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/chat/messages/{id}/ephemeral
+      name: api-v2-chat-messages-id-ephemeral
+      description: REST surface for api-v2-chat-messages-id-ephemeral.
+      operations:
+      - method: PATCH
+        name: ephemeralmessageupdate
+        description: Ephemeral message update
+        call: serverside-product-chat.ephemeralmessageupdate
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/chat/messages/{id}/reaction
+      name: api-v2-chat-messages-id-reaction
+      description: REST surface for api-v2-chat-messages-id-reaction.
+      operations:
+      - method: POST
+        name: sendreaction
+        description: Send reaction
+        call: serverside-product-chat.sendreaction
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/chat/messages/{id}/reaction/{type}
+      name: api-v2-chat-messages-id-reaction-type
+      description: REST surface for api-v2-chat-messages-id-reaction-type.
+      operations:
+      - method: DELETE
+        name: deletereaction
+        description: Delete reaction
+        call: serverside-product-chat.deletereaction
+        with:
+          id: rest.id
+          type: rest.type
+          user_id: rest.user_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/chat/messages/{id}/reactions
+      name: api-v2-chat-messages-id-reactions
+      description: REST surface for api-v2-chat-messages-id-reactions.
+      operations:
+      - method: GET
+        name: getreactions
+        description: Get reactions
+        call: serverside-product-chat.getreactions
+        with:
+          id: rest.id
+          limit: rest.limit
+          offset: rest.offset
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: queryreactions
+        description: Get reactions on a message
+        call: serverside-product-chat.queryreactions
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/chat/messages/{id}/translate
+      name: api-v2-chat-messages-id-translate
+      description: REST surface for api-v2-chat-messages-id-translate.
+      operations:
+      - method: POST
+        name: translatemessage
+        description: Translate message
+        call: serverside-product-chat.translatemessage
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/chat/messages/{id}/undelete
+      name: api-v2-chat-messages-id-undelete
+      description: REST surface for api-v2-chat-messages-id-undelete.
+      operations:
+      - method: POST
+        name: undeletemessage
+        description: Undelete message
+        call: serverside-product-chat.undeletemessage
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/chat/messages/{message-id}/polls/{poll-id}/vote
+      name: api-v2-chat-messages-message-id-polls-poll-id-vote
+      description: REST surface for api-v2-chat-messages-message_id-polls-poll_id-vote.
+      operations:
+      - method: POST
+        name: castpollvote
+        description: Cast vote
+        call: serverside-product-chat.castpollvote
+        with:
+          message_id: rest.message_id
+          poll_id: rest.poll_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/chat/messages/{message-id}/polls/{poll-id}/vote/{vote-id}
+      name: api-v2-chat-messages-message-id-polls-poll-id-vote-vote-id
+      description: REST surface for api-v2-chat-messages-message_id-polls-poll_id-vote-vote_id.
+      operations:
+      - method: DELETE
+        name: deletepollvote
+        description: Delete vote
+        call: serverside-product-chat.deletepollvote
+        with:
+          message_id: rest.message_id
+          poll_id: rest.poll_id
+          vote_id: rest.vote_id
+          user_id: rest.user_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/chat/messages/{message-id}/reminders
+      name: api-v2-chat-messages-message-id-reminders
+      description: REST surface for api-v2-chat-messages-message_id-reminders.
+      operations:
+      - method: DELETE
+        name: deletereminder
+        description: Delete reminder
+        call: serverside-product-chat.deletereminder
+        with:
+          message_id: rest.message_id
+          user_id: rest.user_id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updatereminder
+        description: Updates Reminder
+        call: serverside-product-chat.updatereminder
+        with:
+          message_id: rest.message_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createreminder
+        description: Create reminder
+        call: serverside-product-chat.createreminder
+        with:
+          message_id: rest.message_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/chat/messages/{parent-id}/replies
+      name: api-v2-chat-messages-parent-id-replies
+      description: REST surface for api-v2-chat-messages-parent_id-replies.
+      operations:
+      - method: GET
+        name: getreplies
+        description: Get replies
+        call: serverside-product-chat.getreplies
+        with:
+          parent_id: rest.parent_id
+          sort: rest.sort
+          limit: rest.limit
+          id_gte: rest.id_gte
+          id_gt: rest.id_gt
+          id_lte: rest.id_lte
+          id_lt: rest.id_lt
+          id_around: rest.id_around
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/chat/moderation/flags/message
+      name: api-v2-chat-moderation-flags-message
+      description: REST surface for api-v2-chat-moderation-flags-message.
+      operations:
+      - method: GET
+        name: querymessageflags
+        description: Query Message Flags
+        call: serverside-product-chat.querymessageflags
+        with:
+          payload: rest.payload
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/chat/moderation/mute/channel
+      name: api-v2-chat-moderation-mute-channel
+      description: REST surface for api-v2-chat-moderation-mute-channel.
+      operations:
+      - method: POST
+        name: mutechannel
+        description: Mute channel
+        call: serverside-product-chat.mutechannel
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/chat/moderation/unmute/channel
+      name: api-v2-chat-moderation-unmute-channel
+      description: REST surface for api-v2-chat-moderation-unmute-channel.
+      operations:
+      - method: POST
+        name: unmutechannel
+        description: Unmute channel
+        call: serverside-product-chat.unmutechannel
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/chat/query-banned-users
+      name: api-v2-chat-query-banned-users
+      description: REST surface for api-v2-chat-query_banned_users.
+      operations:
+      - method: GET
+        name: querybannedusers
+        description: Query Banned Users
+        call: serverside-product-chat.querybannedusers
+        with:
+          payload: rest.payload
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/chat/query-future-channel-bans
+      name: api-v2-chat-query-future-channel-bans
+      description: REST surface for api-v2-chat-query_future_channel_bans.
+      operations:
+      - method: GET
+        name: queryfuturechannelbans
+        description: Query Future Channel Bans
+        call: serverside-product-chat.queryfuturechannelbans
+        with:
+          payload: rest.payload
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/chat/reminders/query
+      name: api-v2-chat-reminders-query
+      description: REST surface for api-v2-chat-reminders-query.
+      operations:
+      - method: POST
+        name: queryreminders
+        description: Query reminders
+        call: serverside-product-chat.queryreminders
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/chat/retention-policy
+      name: api-v2-chat-retention-policy
+      description: REST surface for api-v2-chat-retention_policy.
+      operations:
+      - method: GET
+        name: getretentionpolicy
+        description: Get retention policy
+        call: serverside-product-chat.getretentionpolicy
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: setretentionpolicy
+        description: Set retention policy
+        call: serverside-product-chat.setretentionpolicy
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/chat/retention-policy/delete
+      name: api-v2-chat-retention-policy-delete
+      description: REST surface for api-v2-chat-retention_policy-delete.
+      operations:
+      - method: POST
+        name: deleteretentionpolicy
+        description: Delete retention policy
+        call: serverside-product-chat.deleteretentionpolicy
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/chat/retention-policy/runs
+      name: api-v2-chat-retention-policy-runs
+      description: REST surface for api-v2-chat-retention_policy-runs.
+      operations:
+      - method: POST
+        name: getretentionpolicyruns
+        description: Get retention policy runs
+        call: serverside-product-chat.getretentionpolicyruns
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/chat/search
+      name: api-v2-chat-search
+      description: REST surface for api-v2-chat-search.
+      operations:
+      - method: GET
+        name: search
+        description: Search messages
+        call: serverside-product-chat.search
+        with:
+          payload: rest.payload
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/chat/segments/query
+      name: api-v2-chat-segments-query
+      description: REST surface for api-v2-chat-segments-query.
+      operations:
+      - method: POST
+        name: querysegments
+        description: Query segments
+        call: serverside-product-chat.querysegments
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/chat/segments/{id}
+      name: api-v2-chat-segments-id
+      description: REST surface for api-v2-chat-segments-id.
+      operations:
+      - method: DELETE
+        name: deletesegment
+        description: Delete segment
+        call: serverside-product-chat.deletesegment
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: getsegment
+        description: Get segment
+        call: serverside-product-chat.getsegment
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/chat/segments/{id}/deletetargets
+      name: api-v2-chat-segments-id-deletetargets
+      description: REST surface for api-v2-chat-segments-id-deletetargets.
+      operations:
+      - method: POST
+        name: deletesegmenttargets
+        description: Delete targets from a segment
+        call: serverside-product-chat.deletesegmenttargets
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/chat/segments/{id}/target/{target-id}
+      name: api-v2-chat-segments-id-target-target-id
+      description: REST surface for api-v2-chat-segments-id-target-target_id.
+      operations:
+      - method: GET
+        name: segmenttargetexists
+        description: Check whether a target exists in a segment
+        call: serverside-product-chat.segmenttargetexists
+        with:
+          id: rest.id
+          target_id: rest.target_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/chat/segments/{id}/targets/query
+      name: api-v2-chat-segments-id-targets-query
+      description: REST surface for api-v2-chat-segments-id-targets-query.
+      operations:
+      - method: POST
+        name: querysegmenttargets
+        description: Query segment targets
+        call: serverside-product-chat.querysegmenttargets
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/chat/stats/team-usage
+      name: api-v2-chat-stats-team-usage
+      description: REST surface for api-v2-chat-stats-team_usage.
+      operations:
+      - method: POST
+        name: queryteamusagestats
+        description: Query Team Usage Statistics
+        call: serverside-product-chat.queryteamusagestats
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/chat/threads
+      name: api-v2-chat-threads
+      description: REST surface for api-v2-chat-threads.
+      operations:
+      - method: POST
+        name: querythreads
+        description: Query Threads
+        call: serverside-product-chat.querythreads
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/chat/threads/{message-id}
+      name: api-v2-chat-threads-message-id
+      description: REST surface for api-v2-chat-threads-message_id.
+      operations:
+      - method: GET
+        name: getthread
+        description: Get Thread
+        call: serverside-product-chat.getthread
+        with:
+          message_id: rest.message_id
+          reply_limit: rest.reply_limit
+          participant_limit: rest.participant_limit
+          member_limit: rest.member_limit
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updatethreadpartial
+        description: Partially update thread
+        call: serverside-product-chat.updatethreadpartial
+        with:
+          message_id: rest.message_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/chat/unread
+      name: api-v2-chat-unread
+      description: REST surface for api-v2-chat-unread.
+      operations:
+      - method: GET
+        name: unreadcounts
+        description: Unread counts
+        call: serverside-product-chat.unreadcounts
+        with:
+          user_id: rest.user_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/chat/unread-batch
+      name: api-v2-chat-unread-batch
+      description: REST surface for api-v2-chat-unread_batch.
+      operations:
+      - method: POST
+        name: unreadcountsbatch
+        description: Batch unread counts
+        call: serverside-product-chat.unreadcountsbatch
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/chat/users/{user-id}/event
+      name: api-v2-chat-users-user-id-event
+      description: REST surface for api-v2-chat-users-user_id-event.
+      operations:
+      - method: POST
+        name: sendusercustomevent
+        description: Send user event
+        call: serverside-product-chat.sendusercustomevent
+        with:
+          user_id: rest.user_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: serverside-product-chat-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Stream API — product:chat. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: create-campaign
+      description: Create campaign
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-chat.createcampaign
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: query-campaigns
+      description: Query campaigns
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: serverside-product-chat.querycampaigns
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-campaign
+      description: Delete campaign
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: serverside-product-chat.deletecampaign
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-campaign
+      description: Get campaign
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: serverside-product-chat.getcampaign
+      with:
+        id: tools.id
+        prev: tools.prev
+        next: tools.next
+        limit: tools.limit
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-campaign
+      description: Update campaign
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: serverside-product-chat.updatecampaign
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: start-schedule-campaign
+      description: Start/schedule campaign
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-chat.startcampaign
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: stop-campaign
+      description: Stop campaign
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-chat.stopcampaign
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: query-channels
+      description: Query channels
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: serverside-product-chat.querychannels
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-channels-batch
+      description: Update channels in batch
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: serverside-product-chat.channelbatchupdate
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deletes-channels-asynchronously
+      description: Deletes channels asynchronously
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-chat.deletechannels
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: mark-channel-message-delivery-status
+      description: Mark channel message delivery status
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-chat.markdelivered
+      with:
+        user_id: tools.user_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: grouped-query-channels
+      description: Grouped query channels
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: serverside-product-chat.groupedquerychannels
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: mark-channels-read
+      description: Mark channels as read
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-chat.markchannelsread
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-create-channel
+      description: Get or create channel
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: serverside-product-chat.getorcreatedistinctchannel
+      with:
+        type: tools.type
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-channel
+      description: Delete channel
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: serverside-product-chat.deletechannel
+      with:
+        type: tools.type
+        id: tools.id
+        hard_delete: tools.hard_delete
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: partially-update-channel
+      description: Partially update channel
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: serverside-product-chat.updatechannelpartial
+      with:
+        type: tools.type
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-channel
+      description: Update channel
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-chat.updatechannel
+      with:
+        type: tools.type
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-draft
+      description: Delete draft
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: serverside-product-chat.deletedraft
+      with:
+        type: tools.type
+        id: tools.id
+        parent_id: tools.parent_id
+        user_id: tools.user_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-draft
+      description: Get draft
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: serverside-product-chat.getdraft
+      with:
+        type: tools.type
+        id: tools.id
+        parent_id: tools.parent_id
+        user_id: tools.user_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: send-event
+      description: Send event
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-chat.sendevent
+      with:
+        type: tools.type
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-file
+      description: Delete file
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: serverside-product-chat.deletechannelfile
+      with:
+        type: tools.type
+        id: tools.id
+        url: tools.url
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: upload-file
+      description: Upload file
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-chat.uploadchannelfile
+      with:
+        type: tools.type
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: hide-channel
+      description: Hide channel
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-chat.hidechannel
+      with:
+        type: tools.type
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-image
+      description: Delete image
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: serverside-product-chat.deletechannelimage
+      with:
+        type: tools.type
+        id: tools.id
+        url: tools.url
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: upload-image
+      description: Upload image
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-chat.uploadchannelimage
+      with:
+        type: tools.type
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: partially-channel-member-update
+      description: Partially channel member update
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: serverside-product-chat.updatememberpartial
+      with:
+        type: tools.type
+        id: tools.id
+        user_id: tools.user_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: send-new-message
+      description: Send new message
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-chat.sendmessage
+      with:
+        type: tools.type
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-many-messages
+      description: Get many messages
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: serverside-product-chat.getmanymessages
+      with:
+        type: tools.type
+        id: tools.id
+        ids: tools.ids
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-create-channel-2
+      description: Get or create channel
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: serverside-product-chat.getorcreatechannel
+      with:
+        type: tools.type
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: mark-read
+      description: Mark read
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-chat.markread
+      with:
+        type: tools.type
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: show-channel
+      description: Show channel
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-chat.showchannel
+      with:
+        type: tools.type
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: truncate-channel
+      description: Truncate channel
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-chat.truncatechannel
+      with:
+        type: tools.type
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: mark-unread
+      description: Mark unread
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-chat.markunread
+      with:
+        type: tools.type
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-channel-types
+      description: List channel types
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: serverside-product-chat.listchanneltypes
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-channel-type
+      description: Create channel type
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-chat.createchanneltype
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-channel-type
+      description: Delete channel type
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: serverside-product-chat.deletechanneltype
+      with:
+        name: tools.name
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-channel-type
+      description: Get channel type
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: serverside-product-chat.getchanneltype
+      with:
+        name: tools.name
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-channel-type
+      description: Update channel type
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: serverside-product-chat.updatechanneltype
+      with:
+        name: tools.name
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-commands
+      description: List commands
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: serverside-product-chat.listcommands
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-command
+      description: Create command
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-chat.createcommand
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-command
+      description: Delete command
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: serverside-product-chat.deletecommand
+      with:
+        name: tools.name
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-command
+      description: Get command
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: serverside-product-chat.getcommand
+      with:
+        name: tools.name
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-command
+      description: Update command
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: serverside-product-chat.updatecommand
+      with:
+        name: tools.name
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: query-draft-messages
+      description: Query draft messages
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: serverside-product-chat.querydrafts
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: export-channels
+      description: Export channels
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-chat.exportchannels
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: query-members
+      description: Query members
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: serverside-product-chat.querymembers
+      with:
+        payload: tools.payload
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: query-message-history
+      description: Query message history
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: serverside-product-chat.querymessagehistory
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-message
+      description: Delete message
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: serverside-product-chat.deletemessage
+      with:
+        id: tools.id
+        hard: tools.hard
+        deleted_by: tools.deleted_by
+        delete_for_me: tools.delete_for_me
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-message
+      description: Get message
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: serverside-product-chat.getmessage
+      with:
+        id: tools.id
+        show_deleted_message: tools.show_deleted_message
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-message
+      description: Update message
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-chat.updatemessage
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: partially-message-update
+      description: Partially message update
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: serverside-product-chat.updatemessagepartial
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: run-message-command-action
+      description: Run message command action
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-chat.runmessageaction
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: commit-message
+      description: Commit message
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-chat.commitmessage
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ephemeral-message-update
+      description: Ephemeral message update
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: serverside-product-chat.ephemeralmessageupdate
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: send-reaction
+      description: Send reaction
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-chat.sendreaction
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-reaction
+      description: Delete reaction
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: serverside-product-chat.deletereaction
+      with:
+        id: tools.id
+        type: tools.type
+        user_id: tools.user_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-reactions
+      description: Get reactions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: serverside-product-chat.getreactions
+      with:
+        id: tools.id
+        limit: tools.limit
+        offset: tools.offset
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-reactions-message
+      description: Get reactions on a message
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: serverside-product-chat.queryreactions
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: translate-message
+      description: Translate message
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-chat.translatemessage
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: undelete-message
+      description: Undelete message
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-chat.undeletemessage
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: cast-vote
+      description: Cast vote
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-chat.castpollvote
+      with:
+        message_id: tools.message_id
+        poll_id: tools.poll_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-vote
+      description: Delete vote
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: serverside-product-chat.deletepollvote
+      with:
+        message_id: tools.message_id
+        poll_id: tools.poll_id
+        vote_id: tools.vote_id
+        user_id: tools.user_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-reminder
+      description: Delete reminder
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: serverside-product-chat.deletereminder
+      with:
+        message_id: tools.message_id
+        user_id: tools.user_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updates-reminder
+      description: Updates Reminder
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: serverside-product-chat.updatereminder
+      with:
+        message_id: tools.message_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-reminder
+      description: Create reminder
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-chat.createreminder
+      with:
+        message_id: tools.message_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-replies
+      description: Get replies
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: serverside-product-chat.getreplies
+      with:
+        parent_id: tools.parent_id
+        sort: tools.sort
+        limit: tools.limit
+        id_gte: tools.id_gte
+        id_gt: tools.id_gt
+        id_lte: tools.id_lte
+        id_lt: tools.id_lt
+        id_around: tools.id_around
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: query-message-flags
+      description: Query Message Flags
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: serverside-product-chat.querymessageflags
+      with:
+        payload: tools.payload
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: mute-channel
+      description: Mute channel
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-chat.mutechannel
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: unmute-channel
+      description: Unmute channel
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-chat.unmutechannel
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: query-banned-users
+      description: Query Banned Users
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: serverside-product-chat.querybannedusers
+      with:
+        payload: tools.payload
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: query-future-channel-bans
+      description: Query Future Channel Bans
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: serverside-product-chat.queryfuturechannelbans
+      with:
+        payload: tools.payload
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: query-reminders
+      description: Query reminders
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: serverside-product-chat.queryreminders
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-retention-policy
+      description: Get retention policy
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: serverside-product-chat.getretentionpolicy
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: set-retention-policy
+      description: Set retention policy
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-chat.setretentionpolicy
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-retention-policy
+      description: Delete retention policy
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-chat.deleteretentionpolicy
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-retention-policy-runs
+      description: Get retention policy runs
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: serverside-product-chat.getretentionpolicyruns
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: search-messages
+      description: Search messages
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: serverside-product-chat.search
+      with:
+        payload: tools.payload
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: query-segments
+      description: Query segments
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: serverside-product-chat.querysegments
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-segment
+      description: Delete segment
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: serverside-product-chat.deletesegment
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-segment
+      description: Get segment
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: serverside-product-chat.getsegment
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-targets-segment
+      description: Delete targets from a segment
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-chat.deletesegmenttargets
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: check-whether-target-exists-segment
+      description: Check whether a target exists in a segment
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: serverside-product-chat.segmenttargetexists
+      with:
+        id: tools.id
+        target_id: tools.target_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: query-segment-targets
+      description: Query segment targets
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: serverside-product-chat.querysegmenttargets
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: query-team-usage-statistics
+      description: Query Team Usage Statistics
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: serverside-product-chat.queryteamusagestats
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: query-threads
+      description: Query Threads
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: serverside-product-chat.querythreads
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-thread
+      description: Get Thread
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: serverside-product-chat.getthread
+      with:
+        message_id: tools.message_id
+        reply_limit: tools.reply_limit
+        participant_limit: tools.participant_limit
+        member_limit: tools.member_limit
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: partially-update-thread
+      description: Partially update thread
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: serverside-product-chat.updatethreadpartial
+      with:
+        message_id: tools.message_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: unread-counts
+      description: Unread counts
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: serverside-product-chat.unreadcounts
+      with:
+        user_id: tools.user_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: batch-unread-counts
+      description: Batch unread counts
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-chat.unreadcountsbatch
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: send-user-event
+      description: Send user event
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-chat.sendusercustomevent
+      with:
+        user_id: tools.user_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

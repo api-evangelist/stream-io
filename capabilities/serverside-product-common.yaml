@@ -1,0 +1,3430 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Stream API — product:common
+  description: 'Stream API — product:common. 84 operations. Lead operation: Get App Settings. Self-contained Naftiko capability
+    covering one Stream Io business surface.'
+  tags:
+  - Stream Io
+  - product:common
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    STREAM_IO_API_KEY: STREAM_IO_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: serverside-product-common
+    baseUri: https://chat.stream-io-api.com
+    description: Stream API — product:common business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v2-app
+      path: /api/v2/app
+      operations:
+      - name: getapp
+        method: GET
+        description: Get App Settings
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateapp
+        method: PATCH
+        description: Update App Settings
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-blocklists
+      path: /api/v2/blocklists
+      operations:
+      - name: listblocklists
+        method: GET
+        description: List block lists
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: team
+          in: query
+          type: string
+      - name: createblocklist
+        method: POST
+        description: Create block list
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-blocklists-name
+      path: /api/v2/blocklists/{name}
+      operations:
+      - name: deleteblocklist
+        method: DELETE
+        description: Delete block list
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          required: true
+        - name: team
+          in: query
+          type: string
+      - name: getblocklist
+        method: GET
+        description: Get block list
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          required: true
+        - name: team
+          in: query
+          type: string
+      - name: updateblocklist
+        method: PUT
+        description: Update block list
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-check_push
+      path: /api/v2/check_push
+      operations:
+      - name: checkpush
+        method: POST
+        description: Check push
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-check_sns
+      path: /api/v2/check_sns
+      operations:
+      - name: checksns
+        method: POST
+        description: Check SNS
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-check_sqs
+      path: /api/v2/check_sqs
+      operations:
+      - name: checksqs
+        method: POST
+        description: Check SQS
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-devices
+      path: /api/v2/devices
+      operations:
+      - name: deletedevice
+        method: DELETE
+        description: Delete device
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: query
+          type: string
+          required: true
+        - name: user_id
+          in: query
+          type: string
+      - name: listdevices
+        method: GET
+        description: List devices
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: user_id
+          in: query
+          type: string
+      - name: createdevice
+        method: POST
+        description: Create device
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-export-users
+      path: /api/v2/export/users
+      operations:
+      - name: exportusers
+        method: POST
+        description: Export users
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-external_storage
+      path: /api/v2/external_storage
+      operations:
+      - name: listexternalstorage
+        method: GET
+        description: List external storage
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createexternalstorage
+        method: POST
+        description: Create external storage
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-external_storage-name
+      path: /api/v2/external_storage/{name}
+      operations:
+      - name: deleteexternalstorage
+        method: DELETE
+        description: Delete external storage
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          required: true
+      - name: updateexternalstorage
+        method: PUT
+        description: Update External Storage
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-external_storage-name-check
+      path: /api/v2/external_storage/{name}/check
+      operations:
+      - name: checkexternalstorage
+        method: GET
+        description: Check External Storage
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          required: true
+    - name: api-v2-guest
+      path: /api/v2/guest
+      operations:
+      - name: createguest
+        method: POST
+        description: Create Guest
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-import_urls
+      path: /api/v2/import_urls
+      operations:
+      - name: createimporturl
+        method: POST
+        description: Create import URL
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-imports
+      path: /api/v2/imports
+      operations:
+      - name: listimports
+        method: GET
+        description: Get import
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createimport
+        method: POST
+        description: Create import
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-imports-v2
+      path: /api/v2/imports/v2
+      operations:
+      - name: listimportv2tasks
+        method: GET
+        description: List import v2 tasks
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: state
+          in: query
+          type: integer
+      - name: createimportv2task
+        method: POST
+        description: Create import v2 task
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-imports-v2-external-storage
+      path: /api/v2/imports/v2/external-storage
+      operations:
+      - name: deleteimporterexternalstorage
+        method: DELETE
+        description: Delete external storage
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: getimporterexternalstorage
+        method: GET
+        description: Get external storage
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: upsertimporterexternalstorage
+        method: PUT
+        description: Upsert external storage
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-imports-v2-external-storage-validate
+      path: /api/v2/imports/v2/external-storage/validate
+      operations:
+      - name: validateimporterexternalstorage
+        method: POST
+        description: Validate external storage
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v2-imports-v2-id
+      path: /api/v2/imports/v2/{id}
+      operations:
+      - name: deleteimportv2task
+        method: DELETE
+        description: Delete import v2 task
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+      - name: getimportv2task
+        method: GET
+        description: Get import v2 task
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+    - name: api-v2-imports-id
+      path: /api/v2/imports/{id}
+      operations:
+      - name: getimport
+        method: GET
+        description: Get import
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+    - name: api-v2-og
+      path: /api/v2/og
+      operations:
+      - name: getog
+        method: GET
+        description: Get OG
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: url
+          in: query
+          type: string
+          required: true
+    - name: api-v2-permissions
+      path: /api/v2/permissions
+      operations:
+      - name: listpermissions
+        method: GET
+        description: List permissions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v2-permissions-id
+      path: /api/v2/permissions/{id}
+      operations:
+      - name: getpermission
+        method: GET
+        description: Get permission
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+    - name: api-v2-polls
+      path: /api/v2/polls
+      operations:
+      - name: createpoll
+        method: POST
+        description: Create poll
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: updatepoll
+        method: PUT
+        description: Update poll
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-polls-query
+      path: /api/v2/polls/query
+      operations:
+      - name: querypolls
+        method: POST
+        description: Query polls
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: user_id
+          in: query
+          type: string
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-polls-poll_id
+      path: /api/v2/polls/{poll_id}
+      operations:
+      - name: deletepoll
+        method: DELETE
+        description: Delete poll
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: poll_id
+          in: path
+          type: string
+          required: true
+        - name: user_id
+          in: query
+          type: string
+      - name: getpoll
+        method: GET
+        description: Get poll
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: poll_id
+          in: path
+          type: string
+          required: true
+        - name: user_id
+          in: query
+          type: string
+      - name: updatepollpartial
+        method: PATCH
+        description: Partial update poll
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: poll_id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-polls-poll_id-options
+      path: /api/v2/polls/{poll_id}/options
+      operations:
+      - name: createpolloption
+        method: POST
+        description: Create poll option
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: poll_id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: updatepolloption
+        method: PUT
+        description: Update poll option
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: poll_id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-polls-poll_id-options-option_id
+      path: /api/v2/polls/{poll_id}/options/{option_id}
+      operations:
+      - name: deletepolloption
+        method: DELETE
+        description: Delete poll option
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: poll_id
+          in: path
+          type: string
+          required: true
+        - name: option_id
+          in: path
+          type: string
+          required: true
+        - name: user_id
+          in: query
+          type: string
+      - name: getpolloption
+        method: GET
+        description: Get poll option
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: poll_id
+          in: path
+          type: string
+          required: true
+        - name: option_id
+          in: path
+          type: string
+          required: true
+        - name: user_id
+          in: query
+          type: string
+    - name: api-v2-polls-poll_id-votes
+      path: /api/v2/polls/{poll_id}/votes
+      operations:
+      - name: querypollvotes
+        method: POST
+        description: Query votes
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: poll_id
+          in: path
+          type: string
+          required: true
+        - name: user_id
+          in: query
+          type: string
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-push_preferences
+      path: /api/v2/push_preferences
+      operations:
+      - name: updatepushnotificationpreferences
+        method: POST
+        description: Push notification preferences
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-push_providers
+      path: /api/v2/push_providers
+      operations:
+      - name: listpushproviders
+        method: GET
+        description: List push providers
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: upsertpushprovider
+        method: POST
+        description: Upsert a push provider
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-push_providers-type-name
+      path: /api/v2/push_providers/{type}/{name}
+      operations:
+      - name: deletepushprovider
+        method: DELETE
+        description: Delete a push provider
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: type
+          in: path
+          type: string
+          required: true
+        - name: name
+          in: path
+          type: string
+          required: true
+    - name: api-v2-push_templates
+      path: /api/v2/push_templates
+      operations:
+      - name: getpushtemplates
+        method: GET
+        description: Get push notification templates
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: push_provider_name
+          in: query
+          type: string
+        - name: push_provider_type
+          in: query
+          type: string
+          required: true
+      - name: upsertpushtemplate
+        method: POST
+        description: Upsert a push notification template
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-rate_limits
+      path: /api/v2/rate_limits
+      operations:
+      - name: getratelimits
+        method: GET
+        description: Get rate limits
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: server_side
+          in: query
+          type: boolean
+        - name: android
+          in: query
+          type: boolean
+        - name: ios
+          in: query
+          type: boolean
+        - name: web
+          in: query
+          type: boolean
+        - name: endpoints
+          in: query
+          type: string
+    - name: api-v2-roles
+      path: /api/v2/roles
+      operations:
+      - name: listroles
+        method: GET
+        description: List roles
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createrole
+        method: POST
+        description: Create role
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-roles-name
+      path: /api/v2/roles/{name}
+      operations:
+      - name: deleterole
+        method: DELETE
+        description: Delete role
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          required: true
+    - name: api-v2-tasks-id
+      path: /api/v2/tasks/{id}
+      operations:
+      - name: gettask
+        method: GET
+        description: Get status of a task
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+    - name: api-v2-uploads-file
+      path: /api/v2/uploads/file
+      operations:
+      - name: deletefile
+        method: DELETE
+        description: Delete file
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: url
+          in: query
+          type: string
+      - name: uploadfile
+        method: POST
+        description: Upload file
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-uploads-image
+      path: /api/v2/uploads/image
+      operations:
+      - name: deleteimage
+        method: DELETE
+        description: Delete image
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: url
+          in: query
+          type: string
+      - name: uploadimage
+        method: POST
+        description: Upload image
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-usergroups
+      path: /api/v2/usergroups
+      operations:
+      - name: listusergroups
+        method: GET
+        description: List user groups
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: limit
+          in: query
+          type: integer
+        - name: id_gt
+          in: query
+          type: string
+        - name: created_at_gt
+          in: query
+          type: string
+        - name: team_id
+          in: query
+          type: string
+      - name: createusergroup
+        method: POST
+        description: Create user group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-usergroups-search
+      path: /api/v2/usergroups/search
+      operations:
+      - name: searchusergroups
+        method: GET
+        description: Search user groups
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: query
+          in: query
+          type: string
+          required: true
+        - name: limit
+          in: query
+          type: integer
+        - name: name_gt
+          in: query
+          type: string
+        - name: id_gt
+          in: query
+          type: string
+        - name: team_id
+          in: query
+          type: string
+    - name: api-v2-usergroups-id
+      path: /api/v2/usergroups/{id}
+      operations:
+      - name: deleteusergroup
+        method: DELETE
+        description: Delete user group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: team_id
+          in: query
+          type: string
+      - name: getusergroup
+        method: GET
+        description: Get user group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: team_id
+          in: query
+          type: string
+      - name: updateusergroup
+        method: PUT
+        description: Update user group
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-usergroups-id-members
+      path: /api/v2/usergroups/{id}/members
+      operations:
+      - name: addusergroupmembers
+        method: POST
+        description: Add user group members
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-usergroups-id-members-delete
+      path: /api/v2/usergroups/{id}/members/delete
+      operations:
+      - name: removeusergroupmembers
+        method: POST
+        description: Remove user group members
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-users
+      path: /api/v2/users
+      operations:
+      - name: queryusers
+        method: GET
+        description: Query users
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: payload
+          in: query
+          type: string
+      - name: updateuserspartial
+        method: PATCH
+        description: Partially update user
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: updateusers
+        method: POST
+        description: Upsert users
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-users-block
+      path: /api/v2/users/block
+      operations:
+      - name: getblockedusers
+        method: GET
+        description: Get list of blocked Users
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: user_id
+          in: query
+          type: string
+      - name: blockusers
+        method: POST
+        description: Block user
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-users-deactivate
+      path: /api/v2/users/deactivate
+      operations:
+      - name: deactivateusers
+        method: POST
+        description: Deactivate users
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-users-delete
+      path: /api/v2/users/delete
+      operations:
+      - name: deleteusers
+        method: POST
+        description: Delete Users
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-users-live_locations
+      path: /api/v2/users/live_locations
+      operations:
+      - name: getuserlivelocations
+        method: GET
+        description: Get user live locations
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: user_id
+          in: query
+          type: string
+      - name: updatelivelocation
+        method: PUT
+        description: Update live location
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: user_id
+          in: query
+          type: string
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-users-reactivate
+      path: /api/v2/users/reactivate
+      operations:
+      - name: reactivateusers
+        method: POST
+        description: Reactivate users
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-users-restore
+      path: /api/v2/users/restore
+      operations:
+      - name: restoreusers
+        method: POST
+        description: Restore users
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-users-unblock
+      path: /api/v2/users/unblock
+      operations:
+      - name: unblockusers
+        method: POST
+        description: Unblock user
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-users-user_id-deactivate
+      path: /api/v2/users/{user_id}/deactivate
+      operations:
+      - name: deactivateuser
+        method: POST
+        description: Deactivate user
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: user_id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-users-user_id-export
+      path: /api/v2/users/{user_id}/export
+      operations:
+      - name: exportuser
+        method: GET
+        description: Export user
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: user_id
+          in: path
+          type: string
+          required: true
+    - name: api-v2-users-user_id-reactivate
+      path: /api/v2/users/{user_id}/reactivate
+      operations:
+      - name: reactivateuser
+        method: POST
+        description: Reactivate user
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: user_id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.STREAM_IO_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: serverside-product-common-rest
+    port: 8080
+    description: REST adapter for Stream API — product:common. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/api/v2/app
+      name: api-v2-app
+      description: REST surface for api-v2-app.
+      operations:
+      - method: GET
+        name: getapp
+        description: Get App Settings
+        call: serverside-product-common.getapp
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updateapp
+        description: Update App Settings
+        call: serverside-product-common.updateapp
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/blocklists
+      name: api-v2-blocklists
+      description: REST surface for api-v2-blocklists.
+      operations:
+      - method: GET
+        name: listblocklists
+        description: List block lists
+        call: serverside-product-common.listblocklists
+        with:
+          team: rest.team
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createblocklist
+        description: Create block list
+        call: serverside-product-common.createblocklist
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/blocklists/{name}
+      name: api-v2-blocklists-name
+      description: REST surface for api-v2-blocklists-name.
+      operations:
+      - method: DELETE
+        name: deleteblocklist
+        description: Delete block list
+        call: serverside-product-common.deleteblocklist
+        with:
+          name: rest.name
+          team: rest.team
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: getblocklist
+        description: Get block list
+        call: serverside-product-common.getblocklist
+        with:
+          name: rest.name
+          team: rest.team
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updateblocklist
+        description: Update block list
+        call: serverside-product-common.updateblocklist
+        with:
+          name: rest.name
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/check-push
+      name: api-v2-check-push
+      description: REST surface for api-v2-check_push.
+      operations:
+      - method: POST
+        name: checkpush
+        description: Check push
+        call: serverside-product-common.checkpush
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/check-sns
+      name: api-v2-check-sns
+      description: REST surface for api-v2-check_sns.
+      operations:
+      - method: POST
+        name: checksns
+        description: Check SNS
+        call: serverside-product-common.checksns
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/check-sqs
+      name: api-v2-check-sqs
+      description: REST surface for api-v2-check_sqs.
+      operations:
+      - method: POST
+        name: checksqs
+        description: Check SQS
+        call: serverside-product-common.checksqs
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/devices
+      name: api-v2-devices
+      description: REST surface for api-v2-devices.
+      operations:
+      - method: DELETE
+        name: deletedevice
+        description: Delete device
+        call: serverside-product-common.deletedevice
+        with:
+          id: rest.id
+          user_id: rest.user_id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: listdevices
+        description: List devices
+        call: serverside-product-common.listdevices
+        with:
+          user_id: rest.user_id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createdevice
+        description: Create device
+        call: serverside-product-common.createdevice
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/export/users
+      name: api-v2-export-users
+      description: REST surface for api-v2-export-users.
+      operations:
+      - method: POST
+        name: exportusers
+        description: Export users
+        call: serverside-product-common.exportusers
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/external-storage
+      name: api-v2-external-storage
+      description: REST surface for api-v2-external_storage.
+      operations:
+      - method: GET
+        name: listexternalstorage
+        description: List external storage
+        call: serverside-product-common.listexternalstorage
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createexternalstorage
+        description: Create external storage
+        call: serverside-product-common.createexternalstorage
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/external-storage/{name}
+      name: api-v2-external-storage-name
+      description: REST surface for api-v2-external_storage-name.
+      operations:
+      - method: DELETE
+        name: deleteexternalstorage
+        description: Delete external storage
+        call: serverside-product-common.deleteexternalstorage
+        with:
+          name: rest.name
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updateexternalstorage
+        description: Update External Storage
+        call: serverside-product-common.updateexternalstorage
+        with:
+          name: rest.name
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/external-storage/{name}/check
+      name: api-v2-external-storage-name-check
+      description: REST surface for api-v2-external_storage-name-check.
+      operations:
+      - method: GET
+        name: checkexternalstorage
+        description: Check External Storage
+        call: serverside-product-common.checkexternalstorage
+        with:
+          name: rest.name
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/guest
+      name: api-v2-guest
+      description: REST surface for api-v2-guest.
+      operations:
+      - method: POST
+        name: createguest
+        description: Create Guest
+        call: serverside-product-common.createguest
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/import-urls
+      name: api-v2-import-urls
+      description: REST surface for api-v2-import_urls.
+      operations:
+      - method: POST
+        name: createimporturl
+        description: Create import URL
+        call: serverside-product-common.createimporturl
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/imports
+      name: api-v2-imports
+      description: REST surface for api-v2-imports.
+      operations:
+      - method: GET
+        name: listimports
+        description: Get import
+        call: serverside-product-common.listimports
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createimport
+        description: Create import
+        call: serverside-product-common.createimport
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/imports/v2
+      name: api-v2-imports-v2
+      description: REST surface for api-v2-imports-v2.
+      operations:
+      - method: GET
+        name: listimportv2tasks
+        description: List import v2 tasks
+        call: serverside-product-common.listimportv2tasks
+        with:
+          state: rest.state
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createimportv2task
+        description: Create import v2 task
+        call: serverside-product-common.createimportv2task
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/imports/v2/external-storage
+      name: api-v2-imports-v2-external-storage
+      description: REST surface for api-v2-imports-v2-external-storage.
+      operations:
+      - method: DELETE
+        name: deleteimporterexternalstorage
+        description: Delete external storage
+        call: serverside-product-common.deleteimporterexternalstorage
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: getimporterexternalstorage
+        description: Get external storage
+        call: serverside-product-common.getimporterexternalstorage
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: upsertimporterexternalstorage
+        description: Upsert external storage
+        call: serverside-product-common.upsertimporterexternalstorage
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/imports/v2/external-storage/validate
+      name: api-v2-imports-v2-external-storage-validate
+      description: REST surface for api-v2-imports-v2-external-storage-validate.
+      operations:
+      - method: POST
+        name: validateimporterexternalstorage
+        description: Validate external storage
+        call: serverside-product-common.validateimporterexternalstorage
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/imports/v2/{id}
+      name: api-v2-imports-v2-id
+      description: REST surface for api-v2-imports-v2-id.
+      operations:
+      - method: DELETE
+        name: deleteimportv2task
+        description: Delete import v2 task
+        call: serverside-product-common.deleteimportv2task
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: getimportv2task
+        description: Get import v2 task
+        call: serverside-product-common.getimportv2task
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/imports/{id}
+      name: api-v2-imports-id
+      description: REST surface for api-v2-imports-id.
+      operations:
+      - method: GET
+        name: getimport
+        description: Get import
+        call: serverside-product-common.getimport
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/og
+      name: api-v2-og
+      description: REST surface for api-v2-og.
+      operations:
+      - method: GET
+        name: getog
+        description: Get OG
+        call: serverside-product-common.getog
+        with:
+          url: rest.url
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/permissions
+      name: api-v2-permissions
+      description: REST surface for api-v2-permissions.
+      operations:
+      - method: GET
+        name: listpermissions
+        description: List permissions
+        call: serverside-product-common.listpermissions
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/permissions/{id}
+      name: api-v2-permissions-id
+      description: REST surface for api-v2-permissions-id.
+      operations:
+      - method: GET
+        name: getpermission
+        description: Get permission
+        call: serverside-product-common.getpermission
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/polls
+      name: api-v2-polls
+      description: REST surface for api-v2-polls.
+      operations:
+      - method: POST
+        name: createpoll
+        description: Create poll
+        call: serverside-product-common.createpoll
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatepoll
+        description: Update poll
+        call: serverside-product-common.updatepoll
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/polls/query
+      name: api-v2-polls-query
+      description: REST surface for api-v2-polls-query.
+      operations:
+      - method: POST
+        name: querypolls
+        description: Query polls
+        call: serverside-product-common.querypolls
+        with:
+          user_id: rest.user_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/polls/{poll-id}
+      name: api-v2-polls-poll-id
+      description: REST surface for api-v2-polls-poll_id.
+      operations:
+      - method: DELETE
+        name: deletepoll
+        description: Delete poll
+        call: serverside-product-common.deletepoll
+        with:
+          poll_id: rest.poll_id
+          user_id: rest.user_id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: getpoll
+        description: Get poll
+        call: serverside-product-common.getpoll
+        with:
+          poll_id: rest.poll_id
+          user_id: rest.user_id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updatepollpartial
+        description: Partial update poll
+        call: serverside-product-common.updatepollpartial
+        with:
+          poll_id: rest.poll_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/polls/{poll-id}/options
+      name: api-v2-polls-poll-id-options
+      description: REST surface for api-v2-polls-poll_id-options.
+      operations:
+      - method: POST
+        name: createpolloption
+        description: Create poll option
+        call: serverside-product-common.createpolloption
+        with:
+          poll_id: rest.poll_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatepolloption
+        description: Update poll option
+        call: serverside-product-common.updatepolloption
+        with:
+          poll_id: rest.poll_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/polls/{poll-id}/options/{option-id}
+      name: api-v2-polls-poll-id-options-option-id
+      description: REST surface for api-v2-polls-poll_id-options-option_id.
+      operations:
+      - method: DELETE
+        name: deletepolloption
+        description: Delete poll option
+        call: serverside-product-common.deletepolloption
+        with:
+          poll_id: rest.poll_id
+          option_id: rest.option_id
+          user_id: rest.user_id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: getpolloption
+        description: Get poll option
+        call: serverside-product-common.getpolloption
+        with:
+          poll_id: rest.poll_id
+          option_id: rest.option_id
+          user_id: rest.user_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/polls/{poll-id}/votes
+      name: api-v2-polls-poll-id-votes
+      description: REST surface for api-v2-polls-poll_id-votes.
+      operations:
+      - method: POST
+        name: querypollvotes
+        description: Query votes
+        call: serverside-product-common.querypollvotes
+        with:
+          poll_id: rest.poll_id
+          user_id: rest.user_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/push-preferences
+      name: api-v2-push-preferences
+      description: REST surface for api-v2-push_preferences.
+      operations:
+      - method: POST
+        name: updatepushnotificationpreferences
+        description: Push notification preferences
+        call: serverside-product-common.updatepushnotificationpreferences
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/push-providers
+      name: api-v2-push-providers
+      description: REST surface for api-v2-push_providers.
+      operations:
+      - method: GET
+        name: listpushproviders
+        description: List push providers
+        call: serverside-product-common.listpushproviders
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: upsertpushprovider
+        description: Upsert a push provider
+        call: serverside-product-common.upsertpushprovider
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/push-providers/{type}/{name}
+      name: api-v2-push-providers-type-name
+      description: REST surface for api-v2-push_providers-type-name.
+      operations:
+      - method: DELETE
+        name: deletepushprovider
+        description: Delete a push provider
+        call: serverside-product-common.deletepushprovider
+        with:
+          type: rest.type
+          name: rest.name
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/push-templates
+      name: api-v2-push-templates
+      description: REST surface for api-v2-push_templates.
+      operations:
+      - method: GET
+        name: getpushtemplates
+        description: Get push notification templates
+        call: serverside-product-common.getpushtemplates
+        with:
+          push_provider_name: rest.push_provider_name
+          push_provider_type: rest.push_provider_type
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: upsertpushtemplate
+        description: Upsert a push notification template
+        call: serverside-product-common.upsertpushtemplate
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/rate-limits
+      name: api-v2-rate-limits
+      description: REST surface for api-v2-rate_limits.
+      operations:
+      - method: GET
+        name: getratelimits
+        description: Get rate limits
+        call: serverside-product-common.getratelimits
+        with:
+          server_side: rest.server_side
+          android: rest.android
+          ios: rest.ios
+          web: rest.web
+          endpoints: rest.endpoints
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/roles
+      name: api-v2-roles
+      description: REST surface for api-v2-roles.
+      operations:
+      - method: GET
+        name: listroles
+        description: List roles
+        call: serverside-product-common.listroles
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createrole
+        description: Create role
+        call: serverside-product-common.createrole
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/roles/{name}
+      name: api-v2-roles-name
+      description: REST surface for api-v2-roles-name.
+      operations:
+      - method: DELETE
+        name: deleterole
+        description: Delete role
+        call: serverside-product-common.deleterole
+        with:
+          name: rest.name
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/tasks/{id}
+      name: api-v2-tasks-id
+      description: REST surface for api-v2-tasks-id.
+      operations:
+      - method: GET
+        name: gettask
+        description: Get status of a task
+        call: serverside-product-common.gettask
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/uploads/file
+      name: api-v2-uploads-file
+      description: REST surface for api-v2-uploads-file.
+      operations:
+      - method: DELETE
+        name: deletefile
+        description: Delete file
+        call: serverside-product-common.deletefile
+        with:
+          url: rest.url
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: uploadfile
+        description: Upload file
+        call: serverside-product-common.uploadfile
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/uploads/image
+      name: api-v2-uploads-image
+      description: REST surface for api-v2-uploads-image.
+      operations:
+      - method: DELETE
+        name: deleteimage
+        description: Delete image
+        call: serverside-product-common.deleteimage
+        with:
+          url: rest.url
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: uploadimage
+        description: Upload image
+        call: serverside-product-common.uploadimage
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/usergroups
+      name: api-v2-usergroups
+      description: REST surface for api-v2-usergroups.
+      operations:
+      - method: GET
+        name: listusergroups
+        description: List user groups
+        call: serverside-product-common.listusergroups
+        with:
+          limit: rest.limit
+          id_gt: rest.id_gt
+          created_at_gt: rest.created_at_gt
+          team_id: rest.team_id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createusergroup
+        description: Create user group
+        call: serverside-product-common.createusergroup
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/usergroups/search
+      name: api-v2-usergroups-search
+      description: REST surface for api-v2-usergroups-search.
+      operations:
+      - method: GET
+        name: searchusergroups
+        description: Search user groups
+        call: serverside-product-common.searchusergroups
+        with:
+          query: rest.query
+          limit: rest.limit
+          name_gt: rest.name_gt
+          id_gt: rest.id_gt
+          team_id: rest.team_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/usergroups/{id}
+      name: api-v2-usergroups-id
+      description: REST surface for api-v2-usergroups-id.
+      operations:
+      - method: DELETE
+        name: deleteusergroup
+        description: Delete user group
+        call: serverside-product-common.deleteusergroup
+        with:
+          id: rest.id
+          team_id: rest.team_id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: getusergroup
+        description: Get user group
+        call: serverside-product-common.getusergroup
+        with:
+          id: rest.id
+          team_id: rest.team_id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updateusergroup
+        description: Update user group
+        call: serverside-product-common.updateusergroup
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/usergroups/{id}/members
+      name: api-v2-usergroups-id-members
+      description: REST surface for api-v2-usergroups-id-members.
+      operations:
+      - method: POST
+        name: addusergroupmembers
+        description: Add user group members
+        call: serverside-product-common.addusergroupmembers
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/usergroups/{id}/members/delete
+      name: api-v2-usergroups-id-members-delete
+      description: REST surface for api-v2-usergroups-id-members-delete.
+      operations:
+      - method: POST
+        name: removeusergroupmembers
+        description: Remove user group members
+        call: serverside-product-common.removeusergroupmembers
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/users
+      name: api-v2-users
+      description: REST surface for api-v2-users.
+      operations:
+      - method: GET
+        name: queryusers
+        description: Query users
+        call: serverside-product-common.queryusers
+        with:
+          payload: rest.payload
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updateuserspartial
+        description: Partially update user
+        call: serverside-product-common.updateuserspartial
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: updateusers
+        description: Upsert users
+        call: serverside-product-common.updateusers
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/users/block
+      name: api-v2-users-block
+      description: REST surface for api-v2-users-block.
+      operations:
+      - method: GET
+        name: getblockedusers
+        description: Get list of blocked Users
+        call: serverside-product-common.getblockedusers
+        with:
+          user_id: rest.user_id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: blockusers
+        description: Block user
+        call: serverside-product-common.blockusers
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/users/deactivate
+      name: api-v2-users-deactivate
+      description: REST surface for api-v2-users-deactivate.
+      operations:
+      - method: POST
+        name: deactivateusers
+        description: Deactivate users
+        call: serverside-product-common.deactivateusers
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/users/delete
+      name: api-v2-users-delete
+      description: REST surface for api-v2-users-delete.
+      operations:
+      - method: POST
+        name: deleteusers
+        description: Delete Users
+        call: serverside-product-common.deleteusers
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/users/live-locations
+      name: api-v2-users-live-locations
+      description: REST surface for api-v2-users-live_locations.
+      operations:
+      - method: GET
+        name: getuserlivelocations
+        description: Get user live locations
+        call: serverside-product-common.getuserlivelocations
+        with:
+          user_id: rest.user_id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatelivelocation
+        description: Update live location
+        call: serverside-product-common.updatelivelocation
+        with:
+          user_id: rest.user_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/users/reactivate
+      name: api-v2-users-reactivate
+      description: REST surface for api-v2-users-reactivate.
+      operations:
+      - method: POST
+        name: reactivateusers
+        description: Reactivate users
+        call: serverside-product-common.reactivateusers
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/users/restore
+      name: api-v2-users-restore
+      description: REST surface for api-v2-users-restore.
+      operations:
+      - method: POST
+        name: restoreusers
+        description: Restore users
+        call: serverside-product-common.restoreusers
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/users/unblock
+      name: api-v2-users-unblock
+      description: REST surface for api-v2-users-unblock.
+      operations:
+      - method: POST
+        name: unblockusers
+        description: Unblock user
+        call: serverside-product-common.unblockusers
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/users/{user-id}/deactivate
+      name: api-v2-users-user-id-deactivate
+      description: REST surface for api-v2-users-user_id-deactivate.
+      operations:
+      - method: POST
+        name: deactivateuser
+        description: Deactivate user
+        call: serverside-product-common.deactivateuser
+        with:
+          user_id: rest.user_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/users/{user-id}/export
+      name: api-v2-users-user-id-export
+      description: REST surface for api-v2-users-user_id-export.
+      operations:
+      - method: GET
+        name: exportuser
+        description: Export user
+        call: serverside-product-common.exportuser
+        with:
+          user_id: rest.user_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/users/{user-id}/reactivate
+      name: api-v2-users-user-id-reactivate
+      description: REST surface for api-v2-users-user_id-reactivate.
+      operations:
+      - method: POST
+        name: reactivateuser
+        description: Reactivate user
+        call: serverside-product-common.reactivateuser
+        with:
+          user_id: rest.user_id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: serverside-product-common-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Stream API — product:common. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: get-app-settings
+      description: Get App Settings
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: serverside-product-common.getapp
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-app-settings
+      description: Update App Settings
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: serverside-product-common.updateapp
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-block-lists
+      description: List block lists
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: serverside-product-common.listblocklists
+      with:
+        team: tools.team
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-block-list
+      description: Create block list
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-common.createblocklist
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-block-list
+      description: Delete block list
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: serverside-product-common.deleteblocklist
+      with:
+        name: tools.name
+        team: tools.team
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-block-list
+      description: Get block list
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: serverside-product-common.getblocklist
+      with:
+        name: tools.name
+        team: tools.team
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-block-list
+      description: Update block list
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: serverside-product-common.updateblocklist
+      with:
+        name: tools.name
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: check-push
+      description: Check push
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: serverside-product-common.checkpush
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: check-sns
+      description: Check SNS
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: serverside-product-common.checksns
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: check-sqs
+      description: Check SQS
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: serverside-product-common.checksqs
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-device
+      description: Delete device
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: serverside-product-common.deletedevice
+      with:
+        id: tools.id
+        user_id: tools.user_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-devices
+      description: List devices
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: serverside-product-common.listdevices
+      with:
+        user_id: tools.user_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-device
+      description: Create device
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-common.createdevice
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: export-users
+      description: Export users
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-common.exportusers
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-external-storage
+      description: List external storage
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: serverside-product-common.listexternalstorage
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-external-storage
+      description: Create external storage
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-common.createexternalstorage
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-external-storage
+      description: Delete external storage
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: serverside-product-common.deleteexternalstorage
+      with:
+        name: tools.name
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-external-storage
+      description: Update External Storage
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: serverside-product-common.updateexternalstorage
+      with:
+        name: tools.name
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: check-external-storage
+      description: Check External Storage
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: serverside-product-common.checkexternalstorage
+      with:
+        name: tools.name
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-guest
+      description: Create Guest
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-common.createguest
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-import-url
+      description: Create import URL
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-common.createimporturl
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-import
+      description: Get import
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: serverside-product-common.listimports
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-import
+      description: Create import
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-common.createimport
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-import-v2-tasks
+      description: List import v2 tasks
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: serverside-product-common.listimportv2tasks
+      with:
+        state: tools.state
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-import-v2-task
+      description: Create import v2 task
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-common.createimportv2task
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-external-storage-2
+      description: Delete external storage
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: serverside-product-common.deleteimporterexternalstorage
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-external-storage
+      description: Get external storage
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: serverside-product-common.getimporterexternalstorage
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: upsert-external-storage
+      description: Upsert external storage
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: serverside-product-common.upsertimporterexternalstorage
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: validate-external-storage
+      description: Validate external storage
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: serverside-product-common.validateimporterexternalstorage
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-import-v2-task
+      description: Delete import v2 task
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: serverside-product-common.deleteimportv2task
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-import-v2-task
+      description: Get import v2 task
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: serverside-product-common.getimportv2task
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-import-2
+      description: Get import
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: serverside-product-common.getimport
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-og
+      description: Get OG
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: serverside-product-common.getog
+      with:
+        url: tools.url
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-permissions
+      description: List permissions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: serverside-product-common.listpermissions
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-permission
+      description: Get permission
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: serverside-product-common.getpermission
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-poll
+      description: Create poll
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-common.createpoll
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-poll
+      description: Update poll
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: serverside-product-common.updatepoll
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: query-polls
+      description: Query polls
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: serverside-product-common.querypolls
+      with:
+        user_id: tools.user_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-poll
+      description: Delete poll
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: serverside-product-common.deletepoll
+      with:
+        poll_id: tools.poll_id
+        user_id: tools.user_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-poll
+      description: Get poll
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: serverside-product-common.getpoll
+      with:
+        poll_id: tools.poll_id
+        user_id: tools.user_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: partial-update-poll
+      description: Partial update poll
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: serverside-product-common.updatepollpartial
+      with:
+        poll_id: tools.poll_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-poll-option
+      description: Create poll option
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-common.createpolloption
+      with:
+        poll_id: tools.poll_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-poll-option
+      description: Update poll option
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: serverside-product-common.updatepolloption
+      with:
+        poll_id: tools.poll_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-poll-option
+      description: Delete poll option
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: serverside-product-common.deletepolloption
+      with:
+        poll_id: tools.poll_id
+        option_id: tools.option_id
+        user_id: tools.user_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-poll-option
+      description: Get poll option
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: serverside-product-common.getpolloption
+      with:
+        poll_id: tools.poll_id
+        option_id: tools.option_id
+        user_id: tools.user_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: query-votes
+      description: Query votes
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: serverside-product-common.querypollvotes
+      with:
+        poll_id: tools.poll_id
+        user_id: tools.user_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: push-notification-preferences
+      description: Push notification preferences
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-common.updatepushnotificationpreferences
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-push-providers
+      description: List push providers
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: serverside-product-common.listpushproviders
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: upsert-push-provider
+      description: Upsert a push provider
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-common.upsertpushprovider
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-push-provider
+      description: Delete a push provider
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: serverside-product-common.deletepushprovider
+      with:
+        type: tools.type
+        name: tools.name
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-push-notification-templates
+      description: Get push notification templates
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: serverside-product-common.getpushtemplates
+      with:
+        push_provider_name: tools.push_provider_name
+        push_provider_type: tools.push_provider_type
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: upsert-push-notification-template
+      description: Upsert a push notification template
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-common.upsertpushtemplate
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-rate-limits
+      description: Get rate limits
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: serverside-product-common.getratelimits
+      with:
+        server_side: tools.server_side
+        android: tools.android
+        ios: tools.ios
+        web: tools.web
+        endpoints: tools.endpoints
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-roles
+      description: List roles
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: serverside-product-common.listroles
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-role
+      description: Create role
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-common.createrole
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-role
+      description: Delete role
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: serverside-product-common.deleterole
+      with:
+        name: tools.name
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-status-task
+      description: Get status of a task
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: serverside-product-common.gettask
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-file
+      description: Delete file
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: serverside-product-common.deletefile
+      with:
+        url: tools.url
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: upload-file
+      description: Upload file
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-common.uploadfile
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-image
+      description: Delete image
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: serverside-product-common.deleteimage
+      with:
+        url: tools.url
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: upload-image
+      description: Upload image
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-common.uploadimage
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-user-groups
+      description: List user groups
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: serverside-product-common.listusergroups
+      with:
+        limit: tools.limit
+        id_gt: tools.id_gt
+        created_at_gt: tools.created_at_gt
+        team_id: tools.team_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-user-group
+      description: Create user group
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-common.createusergroup
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: search-user-groups
+      description: Search user groups
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: serverside-product-common.searchusergroups
+      with:
+        query: tools.query
+        limit: tools.limit
+        name_gt: tools.name_gt
+        id_gt: tools.id_gt
+        team_id: tools.team_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-user-group
+      description: Delete user group
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: serverside-product-common.deleteusergroup
+      with:
+        id: tools.id
+        team_id: tools.team_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-user-group
+      description: Get user group
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: serverside-product-common.getusergroup
+      with:
+        id: tools.id
+        team_id: tools.team_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-user-group
+      description: Update user group
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: serverside-product-common.updateusergroup
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: add-user-group-members
+      description: Add user group members
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-common.addusergroupmembers
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: remove-user-group-members
+      description: Remove user group members
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-common.removeusergroupmembers
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: query-users
+      description: Query users
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: serverside-product-common.queryusers
+      with:
+        payload: tools.payload
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: partially-update-user
+      description: Partially update user
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: serverside-product-common.updateuserspartial
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: upsert-users
+      description: Upsert users
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-common.updateusers
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-list-blocked-users
+      description: Get list of blocked Users
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: serverside-product-common.getblockedusers
+      with:
+        user_id: tools.user_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: block-user
+      description: Block user
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-common.blockusers
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deactivate-users
+      description: Deactivate users
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-common.deactivateusers
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-users
+      description: Delete Users
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-common.deleteusers
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-user-live-locations
+      description: Get user live locations
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: serverside-product-common.getuserlivelocations
+      with:
+        user_id: tools.user_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-live-location
+      description: Update live location
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: serverside-product-common.updatelivelocation
+      with:
+        user_id: tools.user_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: reactivate-users
+      description: Reactivate users
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-common.reactivateusers
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: restore-users
+      description: Restore users
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-common.restoreusers
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: unblock-user
+      description: Unblock user
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-common.unblockusers
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deactivate-user
+      description: Deactivate user
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-common.deactivateuser
+      with:
+        user_id: tools.user_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: export-user
+      description: Export user
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: serverside-product-common.exportuser
+      with:
+        user_id: tools.user_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: reactivate-user
+      description: Reactivate user
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-common.reactivateuser
+      with:
+        user_id: tools.user_id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

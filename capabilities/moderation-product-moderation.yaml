@@ -1,0 +1,934 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Stream API — product:moderation
+  description: 'Stream API — product:moderation. 26 operations. Lead operation: Submit Chat Message Task. Self-contained Naftiko
+    capability covering one Stream Io business surface.'
+  tags:
+  - Stream Io
+  - product:moderation
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    STREAM_IO_API_KEY: STREAM_IO_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: moderation-product-moderation
+    baseUri: https://chat.stream-io-api.com
+    description: Stream API — product:moderation business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v1-moderation-chat_message_tasks
+      path: /api/v1/moderation/chat_message_tasks
+      operations:
+      - name: submitchatmessagetask
+        method: POST
+        description: Submit Chat Message Task
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v1-moderation-dashboard-blocked_messages
+      path: /api/v1/moderation/dashboard/blocked_messages
+      operations:
+      - name: listblockedmessages
+        method: GET
+        description: TODO
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v1-moderation-dashboard-flag_feedback
+      path: /api/v1/moderation/dashboard/flag_feedback
+      operations:
+      - name: flagfeedback
+        method: POST
+        description: TODO
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v1-moderation-dashboard-moderation_log
+      path: /api/v1/moderation/dashboard/moderation_log
+      operations:
+      - name: listmoderationlogs
+        method: GET
+        description: TODO
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v1-moderation-dashboard-update_flags
+      path: /api/v1/moderation/dashboard/update_flags
+      operations:
+      - name: updateflags
+        method: POST
+        description: TODO
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v1-moderation-moderation-blocked_messages
+      path: /api/v1/moderation/moderation/blocked_messages
+      operations:
+      - name: listblockedmessages
+        method: GET
+        description: TODO
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v1-moderation-moderation-flag_feedback
+      path: /api/v1/moderation/moderation/flag_feedback
+      operations:
+      - name: flagfeedback
+        method: POST
+        description: TODO
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v1-moderation-moderation-moderation_log
+      path: /api/v1/moderation/moderation/moderation_log
+      operations:
+      - name: listmoderationlogs
+        method: GET
+        description: TODO
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v1-moderation-moderation-update_flags
+      path: /api/v1/moderation/moderation/update_flags
+      operations:
+      - name: updateflags
+        method: POST
+        description: TODO
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v1-moderation-tasks
+      path: /api/v1/moderation/tasks
+      operations:
+      - name: listtasks
+        method: GET
+        description: List Tasks
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: submittask
+        method: POST
+        description: Submit Task
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v1-moderation-tasks-id
+      path: /api/v1/moderation/tasks/{id}
+      operations:
+      - name: gettask
+        method: GET
+        description: Get Task
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+      - name: updatetask
+        method: POST
+        description: Update Task
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: automod-v1-chat_message_tasks
+      path: /automod/v1/chat_message_tasks
+      operations:
+      - name: submitchatmessagetask
+        method: POST
+        description: Submit Chat Message Task
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: automod-v1-dashboard-blocked_messages
+      path: /automod/v1/dashboard/blocked_messages
+      operations:
+      - name: listblockedmessages
+        method: GET
+        description: TODO
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: automod-v1-dashboard-flag_feedback
+      path: /automod/v1/dashboard/flag_feedback
+      operations:
+      - name: flagfeedback
+        method: POST
+        description: TODO
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: automod-v1-dashboard-moderation_log
+      path: /automod/v1/dashboard/moderation_log
+      operations:
+      - name: listmoderationlogs
+        method: GET
+        description: TODO
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: automod-v1-dashboard-update_flags
+      path: /automod/v1/dashboard/update_flags
+      operations:
+      - name: updateflags
+        method: POST
+        description: TODO
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: automod-v1-moderation-blocked_messages
+      path: /automod/v1/moderation/blocked_messages
+      operations:
+      - name: listblockedmessages
+        method: GET
+        description: TODO
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: automod-v1-moderation-flag_feedback
+      path: /automod/v1/moderation/flag_feedback
+      operations:
+      - name: flagfeedback
+        method: POST
+        description: TODO
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: automod-v1-moderation-moderation_log
+      path: /automod/v1/moderation/moderation_log
+      operations:
+      - name: listmoderationlogs
+        method: GET
+        description: TODO
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: automod-v1-moderation-update_flags
+      path: /automod/v1/moderation/update_flags
+      operations:
+      - name: updateflags
+        method: POST
+        description: TODO
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: automod-v1-tasks
+      path: /automod/v1/tasks
+      operations:
+      - name: listtasks
+        method: GET
+        description: List Tasks
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: submittask
+        method: POST
+        description: Submit Task
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: automod-v1-tasks-id
+      path: /automod/v1/tasks/{id}
+      operations:
+      - name: gettask
+        method: GET
+        description: Get Task
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+      - name: updatetask
+        method: POST
+        description: Update Task
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.STREAM_IO_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: moderation-product-moderation-rest
+    port: 8080
+    description: REST adapter for Stream API — product:moderation. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/api/v1/moderation/chat-message-tasks
+      name: api-v1-moderation-chat-message-tasks
+      description: REST surface for api-v1-moderation-chat_message_tasks.
+      operations:
+      - method: POST
+        name: submitchatmessagetask
+        description: Submit Chat Message Task
+        call: moderation-product-moderation.submitchatmessagetask
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/moderation/dashboard/blocked-messages
+      name: api-v1-moderation-dashboard-blocked-messages
+      description: REST surface for api-v1-moderation-dashboard-blocked_messages.
+      operations:
+      - method: GET
+        name: listblockedmessages
+        description: TODO
+        call: moderation-product-moderation.listblockedmessages
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/moderation/dashboard/flag-feedback
+      name: api-v1-moderation-dashboard-flag-feedback
+      description: REST surface for api-v1-moderation-dashboard-flag_feedback.
+      operations:
+      - method: POST
+        name: flagfeedback
+        description: TODO
+        call: moderation-product-moderation.flagfeedback
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/moderation/dashboard/moderation-log
+      name: api-v1-moderation-dashboard-moderation-log
+      description: REST surface for api-v1-moderation-dashboard-moderation_log.
+      operations:
+      - method: GET
+        name: listmoderationlogs
+        description: TODO
+        call: moderation-product-moderation.listmoderationlogs
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/moderation/dashboard/update-flags
+      name: api-v1-moderation-dashboard-update-flags
+      description: REST surface for api-v1-moderation-dashboard-update_flags.
+      operations:
+      - method: POST
+        name: updateflags
+        description: TODO
+        call: moderation-product-moderation.updateflags
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/moderation/moderation/blocked-messages
+      name: api-v1-moderation-moderation-blocked-messages
+      description: REST surface for api-v1-moderation-moderation-blocked_messages.
+      operations:
+      - method: GET
+        name: listblockedmessages
+        description: TODO
+        call: moderation-product-moderation.listblockedmessages
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/moderation/moderation/flag-feedback
+      name: api-v1-moderation-moderation-flag-feedback
+      description: REST surface for api-v1-moderation-moderation-flag_feedback.
+      operations:
+      - method: POST
+        name: flagfeedback
+        description: TODO
+        call: moderation-product-moderation.flagfeedback
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/moderation/moderation/moderation-log
+      name: api-v1-moderation-moderation-moderation-log
+      description: REST surface for api-v1-moderation-moderation-moderation_log.
+      operations:
+      - method: GET
+        name: listmoderationlogs
+        description: TODO
+        call: moderation-product-moderation.listmoderationlogs
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/moderation/moderation/update-flags
+      name: api-v1-moderation-moderation-update-flags
+      description: REST surface for api-v1-moderation-moderation-update_flags.
+      operations:
+      - method: POST
+        name: updateflags
+        description: TODO
+        call: moderation-product-moderation.updateflags
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/moderation/tasks
+      name: api-v1-moderation-tasks
+      description: REST surface for api-v1-moderation-tasks.
+      operations:
+      - method: GET
+        name: listtasks
+        description: List Tasks
+        call: moderation-product-moderation.listtasks
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: submittask
+        description: Submit Task
+        call: moderation-product-moderation.submittask
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v1/moderation/tasks/{id}
+      name: api-v1-moderation-tasks-id
+      description: REST surface for api-v1-moderation-tasks-id.
+      operations:
+      - method: GET
+        name: gettask
+        description: Get Task
+        call: moderation-product-moderation.gettask
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: updatetask
+        description: Update Task
+        call: moderation-product-moderation.updatetask
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/automod/v1/chat-message-tasks
+      name: automod-v1-chat-message-tasks
+      description: REST surface for automod-v1-chat_message_tasks.
+      operations:
+      - method: POST
+        name: submitchatmessagetask
+        description: Submit Chat Message Task
+        call: moderation-product-moderation.submitchatmessagetask
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/automod/v1/dashboard/blocked-messages
+      name: automod-v1-dashboard-blocked-messages
+      description: REST surface for automod-v1-dashboard-blocked_messages.
+      operations:
+      - method: GET
+        name: listblockedmessages
+        description: TODO
+        call: moderation-product-moderation.listblockedmessages
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/automod/v1/dashboard/flag-feedback
+      name: automod-v1-dashboard-flag-feedback
+      description: REST surface for automod-v1-dashboard-flag_feedback.
+      operations:
+      - method: POST
+        name: flagfeedback
+        description: TODO
+        call: moderation-product-moderation.flagfeedback
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/automod/v1/dashboard/moderation-log
+      name: automod-v1-dashboard-moderation-log
+      description: REST surface for automod-v1-dashboard-moderation_log.
+      operations:
+      - method: GET
+        name: listmoderationlogs
+        description: TODO
+        call: moderation-product-moderation.listmoderationlogs
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/automod/v1/dashboard/update-flags
+      name: automod-v1-dashboard-update-flags
+      description: REST surface for automod-v1-dashboard-update_flags.
+      operations:
+      - method: POST
+        name: updateflags
+        description: TODO
+        call: moderation-product-moderation.updateflags
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/automod/v1/moderation/blocked-messages
+      name: automod-v1-moderation-blocked-messages
+      description: REST surface for automod-v1-moderation-blocked_messages.
+      operations:
+      - method: GET
+        name: listblockedmessages
+        description: TODO
+        call: moderation-product-moderation.listblockedmessages
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/automod/v1/moderation/flag-feedback
+      name: automod-v1-moderation-flag-feedback
+      description: REST surface for automod-v1-moderation-flag_feedback.
+      operations:
+      - method: POST
+        name: flagfeedback
+        description: TODO
+        call: moderation-product-moderation.flagfeedback
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/automod/v1/moderation/moderation-log
+      name: automod-v1-moderation-moderation-log
+      description: REST surface for automod-v1-moderation-moderation_log.
+      operations:
+      - method: GET
+        name: listmoderationlogs
+        description: TODO
+        call: moderation-product-moderation.listmoderationlogs
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/automod/v1/moderation/update-flags
+      name: automod-v1-moderation-update-flags
+      description: REST surface for automod-v1-moderation-update_flags.
+      operations:
+      - method: POST
+        name: updateflags
+        description: TODO
+        call: moderation-product-moderation.updateflags
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/automod/v1/tasks
+      name: automod-v1-tasks
+      description: REST surface for automod-v1-tasks.
+      operations:
+      - method: GET
+        name: listtasks
+        description: List Tasks
+        call: moderation-product-moderation.listtasks
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: submittask
+        description: Submit Task
+        call: moderation-product-moderation.submittask
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/automod/v1/tasks/{id}
+      name: automod-v1-tasks-id
+      description: REST surface for automod-v1-tasks-id.
+      operations:
+      - method: GET
+        name: gettask
+        description: Get Task
+        call: moderation-product-moderation.gettask
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: updatetask
+        description: Update Task
+        call: moderation-product-moderation.updatetask
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: moderation-product-moderation-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Stream API — product:moderation. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: submit-chat-message-task
+      description: Submit Chat Message Task
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: moderation-product-moderation.submitchatmessagetask
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: todo
+      description: TODO
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: moderation-product-moderation.listblockedmessages
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: todo-2
+      description: TODO
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: moderation-product-moderation.flagfeedback
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: todo-3
+      description: TODO
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: moderation-product-moderation.listmoderationlogs
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: todo-4
+      description: TODO
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: moderation-product-moderation.updateflags
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: todo-5
+      description: TODO
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: moderation-product-moderation.listblockedmessages
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: todo-6
+      description: TODO
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: moderation-product-moderation.flagfeedback
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: todo-7
+      description: TODO
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: moderation-product-moderation.listmoderationlogs
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: todo-8
+      description: TODO
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: moderation-product-moderation.updateflags
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-tasks
+      description: List Tasks
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: moderation-product-moderation.listtasks
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: submit-task
+      description: Submit Task
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: moderation-product-moderation.submittask
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-task
+      description: Get Task
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: moderation-product-moderation.gettask
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-task
+      description: Update Task
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: moderation-product-moderation.updatetask
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: submit-chat-message-task-2
+      description: Submit Chat Message Task
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: moderation-product-moderation.submitchatmessagetask
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: todo-9
+      description: TODO
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: moderation-product-moderation.listblockedmessages
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: todo-10
+      description: TODO
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: moderation-product-moderation.flagfeedback
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: todo-11
+      description: TODO
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: moderation-product-moderation.listmoderationlogs
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: todo-12
+      description: TODO
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: moderation-product-moderation.updateflags
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: todo-13
+      description: TODO
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: moderation-product-moderation.listblockedmessages
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: todo-14
+      description: TODO
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: moderation-product-moderation.flagfeedback
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: todo-15
+      description: TODO
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: moderation-product-moderation.listmoderationlogs
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: todo-16
+      description: TODO
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: moderation-product-moderation.updateflags
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-tasks-2
+      description: List Tasks
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: moderation-product-moderation.listtasks
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: submit-task-2
+      description: Submit Task
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: moderation-product-moderation.submittask
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-task-2
+      description: Get Task
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: moderation-product-moderation.gettask
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-task-2
+      description: Update Task
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: moderation-product-moderation.updatetask
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,3423 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Stream API — product:video
+  description: 'Stream API — product:video. 67 operations. Lead operation: Get active calls status. Self-contained Naftiko
+    capability covering one Stream Io business surface.'
+  tags:
+  - Stream Io
+  - product:video
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    STREAM_IO_API_KEY: STREAM_IO_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: serverside-product-video
+    baseUri: https://chat.stream-io-api.com
+    description: Stream API — product:video business capability. Self-contained, no shared references.
+    resources:
+    - name: api-v2-video-active_calls_status
+      path: /api/v2/video/active_calls_status
+      operations:
+      - name: getactivecallsstatus
+        method: GET
+        description: Get active calls status
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v2-video-call-feedback
+      path: /api/v2/video/call/feedback
+      operations:
+      - name: queryuserfeedback
+        method: POST
+        description: Query user reported feedback for the calls
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: full
+          in: query
+          type: boolean
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-video-call-members
+      path: /api/v2/video/call/members
+      operations:
+      - name: querycallmembers
+        method: POST
+        description: Query call members
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-video-call-stats
+      path: /api/v2/video/call/stats
+      operations:
+      - name: querycallstats
+        method: POST
+        description: Query Call Stats
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-video-call-type-id
+      path: /api/v2/video/call/{type}/{id}
+      operations:
+      - name: getcall
+        method: GET
+        description: Get Call
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: type
+          in: path
+          type: string
+          required: true
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: members_limit
+          in: query
+          type: integer
+        - name: ring
+          in: query
+          type: boolean
+        - name: notify
+          in: query
+          type: boolean
+        - name: video
+          in: query
+          type: boolean
+      - name: updatecall
+        method: PATCH
+        description: Update Call
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: type
+          in: path
+          type: string
+          required: true
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: getorcreatecall
+        method: POST
+        description: Get or create a call
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: type
+          in: path
+          type: string
+          required: true
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-video-call-type-id-block
+      path: /api/v2/video/call/{type}/{id}/block
+      operations:
+      - name: blockuser
+        method: POST
+        description: Block user on a call
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: type
+          in: path
+          type: string
+          required: true
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-video-call-type-id-closed_captions
+      path: /api/v2/video/call/{type}/{id}/closed_captions
+      operations:
+      - name: sendclosedcaption
+        method: POST
+        description: Send closed caption
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: type
+          in: path
+          type: string
+          required: true
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-video-call-type-id-delete
+      path: /api/v2/video/call/{type}/{id}/delete
+      operations:
+      - name: deletecall
+        method: POST
+        description: Delete Call
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: type
+          in: path
+          type: string
+          required: true
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-video-call-type-id-event
+      path: /api/v2/video/call/{type}/{id}/event
+      operations:
+      - name: sendcallevent
+        method: POST
+        description: Send custom event
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: type
+          in: path
+          type: string
+          required: true
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-video-call-type-id-feedback
+      path: /api/v2/video/call/{type}/{id}/feedback
+      operations:
+      - name: collectuserfeedback
+        method: POST
+        description: Collect user feedback
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: type
+          in: path
+          type: string
+          required: true
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-video-call-type-id-go_live
+      path: /api/v2/video/call/{type}/{id}/go_live
+      operations:
+      - name: golive
+        method: POST
+        description: Set call as live
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: type
+          in: path
+          type: string
+          required: true
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-video-call-type-id-kick
+      path: /api/v2/video/call/{type}/{id}/kick
+      operations:
+      - name: kickuser
+        method: POST
+        description: Kick user from a call
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: type
+          in: path
+          type: string
+          required: true
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-video-call-type-id-mark_ended
+      path: /api/v2/video/call/{type}/{id}/mark_ended
+      operations:
+      - name: endcall
+        method: POST
+        description: End call
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: type
+          in: path
+          type: string
+          required: true
+        - name: id
+          in: path
+          type: string
+          required: true
+    - name: api-v2-video-call-type-id-members
+      path: /api/v2/video/call/{type}/{id}/members
+      operations:
+      - name: updatecallmembers
+        method: POST
+        description: Update Call Member
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: type
+          in: path
+          type: string
+          required: true
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-video-call-type-id-mute_users
+      path: /api/v2/video/call/{type}/{id}/mute_users
+      operations:
+      - name: muteusers
+        method: POST
+        description: Mute users
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: type
+          in: path
+          type: string
+          required: true
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-video-call-type-id-participants
+      path: /api/v2/video/call/{type}/{id}/participants
+      operations:
+      - name: querycallparticipants
+        method: POST
+        description: Query call participants
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: type
+          in: path
+          type: string
+          required: true
+        - name: limit
+          in: query
+          type: integer
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-video-call-type-id-pin
+      path: /api/v2/video/call/{type}/{id}/pin
+      operations:
+      - name: videopin
+        method: POST
+        description: Pin
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: type
+          in: path
+          type: string
+          required: true
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-video-call-type-id-recordings
+      path: /api/v2/video/call/{type}/{id}/recordings
+      operations:
+      - name: listrecordings
+        method: GET
+        description: List recordings
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: type
+          in: path
+          type: string
+          required: true
+        - name: id
+          in: path
+          type: string
+          required: true
+    - name: api-v2-video-call-type-id-recordings-recording_type-start
+      path: /api/v2/video/call/{type}/{id}/recordings/{recording_type}/start
+      operations:
+      - name: startrecording
+        method: POST
+        description: Start recording
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: type
+          in: path
+          type: string
+          required: true
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: recording_type
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-video-call-type-id-recordings-recording_type-stop
+      path: /api/v2/video/call/{type}/{id}/recordings/{recording_type}/stop
+      operations:
+      - name: stoprecording
+        method: POST
+        description: Stop recording
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: type
+          in: path
+          type: string
+          required: true
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: recording_type
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-video-call-type-id-report
+      path: /api/v2/video/call/{type}/{id}/report
+      operations:
+      - name: getcallreport
+        method: GET
+        description: Get call report
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: type
+          in: path
+          type: string
+          required: true
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: session_id
+          in: query
+          type: string
+    - name: api-v2-video-call-type-id-ring
+      path: /api/v2/video/call/{type}/{id}/ring
+      operations:
+      - name: ringcall
+        method: POST
+        description: Ring Call Users
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: type
+          in: path
+          type: string
+          required: true
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-video-call-type-id-rtmp_broadcasts
+      path: /api/v2/video/call/{type}/{id}/rtmp_broadcasts
+      operations:
+      - name: startrtmpbroadcasts
+        method: POST
+        description: Start RTMP broadcasts
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: type
+          in: path
+          type: string
+          required: true
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-video-call-type-id-rtmp_broadcasts-stop
+      path: /api/v2/video/call/{type}/{id}/rtmp_broadcasts/stop
+      operations:
+      - name: stopallrtmpbroadcasts
+        method: POST
+        description: Stop all RTMP broadcasts for a call
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: type
+          in: path
+          type: string
+          required: true
+        - name: id
+          in: path
+          type: string
+          required: true
+    - name: api-v2-video-call-type-id-rtmp_broadcasts-name-stop
+      path: /api/v2/video/call/{type}/{id}/rtmp_broadcasts/{name}/stop
+      operations:
+      - name: stoprtmpbroadcast
+        method: POST
+        description: Stop RTMP broadcasts
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: type
+          in: path
+          type: string
+          required: true
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: name
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-video-call-type-id-session-session-participant-user-user_session-details-
+      path: /api/v2/video/call/{type}/{id}/session/{session}/participant/{user}/{user_session}/details/track
+      operations:
+      - name: getcallparticipantsessionmetrics
+        method: GET
+        description: Get call participant session metrics
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: type
+          in: path
+          type: string
+          required: true
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: session
+          in: path
+          type: string
+          required: true
+        - name: user
+          in: path
+          type: string
+          required: true
+        - name: user_session
+          in: path
+          type: string
+          required: true
+        - name: since
+          in: query
+          type: number
+        - name: until
+          in: query
+          type: number
+    - name: api-v2-video-call-type-id-session-session-participant_sessions
+      path: /api/v2/video/call/{type}/{id}/session/{session}/participant_sessions
+      operations:
+      - name: querycallparticipantsessions
+        method: GET
+        description: Query call participant sessions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: type
+          in: path
+          type: string
+          required: true
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: session
+          in: path
+          type: string
+          required: true
+        - name: limit
+          in: query
+          type: integer
+        - name: prev
+          in: query
+          type: string
+        - name: next
+          in: query
+          type: string
+        - name: filter_conditions
+          in: query
+          type: object
+    - name: api-v2-video-call-type-id-start_broadcasting
+      path: /api/v2/video/call/{type}/{id}/start_broadcasting
+      operations:
+      - name: starthlsbroadcasting
+        method: POST
+        description: Start HLS broadcasting
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: type
+          in: path
+          type: string
+          required: true
+        - name: id
+          in: path
+          type: string
+          required: true
+    - name: api-v2-video-call-type-id-start_closed_captions
+      path: /api/v2/video/call/{type}/{id}/start_closed_captions
+      operations:
+      - name: startclosedcaptions
+        method: POST
+        description: Start closed captions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: type
+          in: path
+          type: string
+          required: true
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-video-call-type-id-start_frame_recording
+      path: /api/v2/video/call/{type}/{id}/start_frame_recording
+      operations:
+      - name: startframerecording
+        method: POST
+        description: Start frame recording
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: type
+          in: path
+          type: string
+          required: true
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-video-call-type-id-start_transcription
+      path: /api/v2/video/call/{type}/{id}/start_transcription
+      operations:
+      - name: starttranscription
+        method: POST
+        description: Start transcription
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: type
+          in: path
+          type: string
+          required: true
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-video-call-type-id-stop_broadcasting
+      path: /api/v2/video/call/{type}/{id}/stop_broadcasting
+      operations:
+      - name: stophlsbroadcasting
+        method: POST
+        description: Stop HLS broadcasting
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: type
+          in: path
+          type: string
+          required: true
+        - name: id
+          in: path
+          type: string
+          required: true
+    - name: api-v2-video-call-type-id-stop_closed_captions
+      path: /api/v2/video/call/{type}/{id}/stop_closed_captions
+      operations:
+      - name: stopclosedcaptions
+        method: POST
+        description: Stop closed captions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: type
+          in: path
+          type: string
+          required: true
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-video-call-type-id-stop_frame_recording
+      path: /api/v2/video/call/{type}/{id}/stop_frame_recording
+      operations:
+      - name: stopframerecording
+        method: POST
+        description: Stop frame recording
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: type
+          in: path
+          type: string
+          required: true
+        - name: id
+          in: path
+          type: string
+          required: true
+    - name: api-v2-video-call-type-id-stop_live
+      path: /api/v2/video/call/{type}/{id}/stop_live
+      operations:
+      - name: stoplive
+        method: POST
+        description: Set call as not live
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: type
+          in: path
+          type: string
+          required: true
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-video-call-type-id-stop_transcription
+      path: /api/v2/video/call/{type}/{id}/stop_transcription
+      operations:
+      - name: stoptranscription
+        method: POST
+        description: Stop transcription
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: type
+          in: path
+          type: string
+          required: true
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-video-call-type-id-transcriptions
+      path: /api/v2/video/call/{type}/{id}/transcriptions
+      operations:
+      - name: listtranscriptions
+        method: GET
+        description: List transcriptions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: type
+          in: path
+          type: string
+          required: true
+        - name: id
+          in: path
+          type: string
+          required: true
+    - name: api-v2-video-call-type-id-unblock
+      path: /api/v2/video/call/{type}/{id}/unblock
+      operations:
+      - name: unblockuser
+        method: POST
+        description: Unblocks user on a call
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: type
+          in: path
+          type: string
+          required: true
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-video-call-type-id-unpin
+      path: /api/v2/video/call/{type}/{id}/unpin
+      operations:
+      - name: videounpin
+        method: POST
+        description: Unpin
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: type
+          in: path
+          type: string
+          required: true
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-video-call-type-id-user_permissions
+      path: /api/v2/video/call/{type}/{id}/user_permissions
+      operations:
+      - name: updateuserpermissions
+        method: POST
+        description: Update user permissions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: type
+          in: path
+          type: string
+          required: true
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-video-call-type-id-session-recordings-filename
+      path: /api/v2/video/call/{type}/{id}/{session}/recordings/{filename}
+      operations:
+      - name: deleterecording
+        method: DELETE
+        description: Delete recording
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: type
+          in: path
+          type: string
+          required: true
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: session
+          in: path
+          type: string
+          required: true
+        - name: filename
+          in: path
+          type: string
+          required: true
+    - name: api-v2-video-call-type-id-session-transcriptions-filename
+      path: /api/v2/video/call/{type}/{id}/{session}/transcriptions/{filename}
+      operations:
+      - name: deletetranscription
+        method: DELETE
+        description: Delete transcription
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: type
+          in: path
+          type: string
+          required: true
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: session
+          in: path
+          type: string
+          required: true
+        - name: filename
+          in: path
+          type: string
+          required: true
+    - name: api-v2-video-call_stats
+      path: /api/v2/video/call_stats
+      operations:
+      - name: querycallsessionstats
+        method: POST
+        description: Query call session stats
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-video-call_stats-call_type-call_id-session-map
+      path: /api/v2/video/call_stats/{call_type}/{call_id}/{session}/map
+      operations:
+      - name: getcallstatsmap
+        method: GET
+        description: Map call participants by location
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: call_type
+          in: path
+          type: string
+          required: true
+        - name: call_id
+          in: path
+          type: string
+          required: true
+        - name: session
+          in: path
+          type: string
+          required: true
+        - name: start_time
+          in: query
+          type: number
+        - name: end_time
+          in: query
+          type: number
+        - name: exclude_publishers
+          in: query
+          type: boolean
+        - name: exclude_subscribers
+          in: query
+          type: boolean
+        - name: exclude_sfus
+          in: query
+          type: boolean
+    - name: api-v2-video-call_stats-call_type-call_id-session-participant-user-user_session-
+      path: /api/v2/video/call_stats/{call_type}/{call_id}/{session}/participant/{user}/{user_session}/details
+      operations:
+      - name: getcallsessionparticipantstatsdetails
+        method: GET
+        description: Get call session participant stats details
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: call_type
+          in: path
+          type: string
+          required: true
+        - name: call_id
+          in: path
+          type: string
+          required: true
+        - name: session
+          in: path
+          type: string
+          required: true
+        - name: user
+          in: path
+          type: string
+          required: true
+        - name: user_session
+          in: path
+          type: string
+          required: true
+        - name: since
+          in: query
+          type: string
+        - name: until
+          in: query
+          type: string
+        - name: max_points
+          in: query
+          type: integer
+    - name: api-v2-video-call_stats-call_type-call_id-session-participants
+      path: /api/v2/video/call_stats/{call_type}/{call_id}/{session}/participants
+      operations:
+      - name: querycallsessionparticipantstats
+        method: GET
+        description: Query call participant statistics
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: call_type
+          in: path
+          type: string
+          required: true
+        - name: call_id
+          in: path
+          type: string
+          required: true
+        - name: session
+          in: path
+          type: string
+          required: true
+        - name: sort
+          in: query
+          type: array
+        - name: filter_conditions
+          in: query
+          type: object
+        - name: limit
+          in: query
+          type: integer
+        - name: prev
+          in: query
+          type: string
+        - name: next
+          in: query
+          type: string
+    - name: api-v2-video-call_stats-call_type-call_id-session-participants-user-user_session
+      path: /api/v2/video/call_stats/{call_type}/{call_id}/{session}/participants/{user}/{user_session}/timeline
+      operations:
+      - name: getcallsessionparticipantstatstimeline
+        method: GET
+        description: Get participant timeline events
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: call_type
+          in: path
+          type: string
+          required: true
+        - name: call_id
+          in: path
+          type: string
+          required: true
+        - name: session
+          in: path
+          type: string
+          required: true
+        - name: user
+          in: path
+          type: string
+          required: true
+        - name: user_session
+          in: path
+          type: string
+          required: true
+        - name: start_time
+          in: query
+          type: string
+        - name: end_time
+          in: query
+          type: string
+        - name: severity
+          in: query
+          type: array
+    - name: api-v2-video-calls
+      path: /api/v2/video/calls
+      operations:
+      - name: querycalls
+        method: POST
+        description: Query call
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-video-calltypes
+      path: /api/v2/video/calltypes
+      operations:
+      - name: listcalltypes
+        method: GET
+        description: List Call Type
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createcalltype
+        method: POST
+        description: Create Call Type
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-video-calltypes-name
+      path: /api/v2/video/calltypes/{name}
+      operations:
+      - name: deletecalltype
+        method: DELETE
+        description: Delete Call Type
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          required: true
+      - name: getcalltype
+        method: GET
+        description: Get Call Type
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          required: true
+      - name: updatecalltype
+        method: PUT
+        description: Update Call Type
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: name
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-video-edges
+      path: /api/v2/video/edges
+      operations:
+      - name: getedges
+        method: GET
+        description: Get Edges
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: api-v2-video-sip-auth
+      path: /api/v2/video/sip/auth
+      operations:
+      - name: resolvesipauth
+        method: POST
+        description: Resolve SIP Auth
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-video-sip-inbound_routing_rules
+      path: /api/v2/video/sip/inbound_routing_rules
+      operations:
+      - name: listsipinboundroutingrule
+        method: GET
+        description: List SIP Inbound Routing Rules
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createsipinboundroutingrule
+        method: POST
+        description: Create SIP Inbound Routing Rule
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-video-sip-inbound_routing_rules-id
+      path: /api/v2/video/sip/inbound_routing_rules/{id}
+      operations:
+      - name: deletesipinboundroutingrule
+        method: DELETE
+        description: Delete SIP Inbound Routing Rule
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+      - name: updatesipinboundroutingrule
+        method: PUT
+        description: Update SIP Inbound Routing Rule
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-video-sip-inbound_trunks
+      path: /api/v2/video/sip/inbound_trunks
+      operations:
+      - name: listsiptrunks
+        method: GET
+        description: List SIP Trunks
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createsiptrunk
+        method: POST
+        description: Create SIP Trunk
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-video-sip-inbound_trunks-id
+      path: /api/v2/video/sip/inbound_trunks/{id}
+      operations:
+      - name: deletesiptrunk
+        method: DELETE
+        description: Delete SIP Trunk
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+      - name: updatesiptrunk
+        method: PUT
+        description: Update SIP Trunk
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-video-sip-resolve
+      path: /api/v2/video/sip/resolve
+      operations:
+      - name: resolvesipinbound
+        method: POST
+        description: Resolve SIP Inbound Routing
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: api-v2-video-stats
+      path: /api/v2/video/stats
+      operations:
+      - name: queryaggregatecallstats
+        method: POST
+        description: Query Aggregate call Stats
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.STREAM_IO_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: serverside-product-video-rest
+    port: 8080
+    description: REST adapter for Stream API — product:video. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/api/v2/video/active-calls-status
+      name: api-v2-video-active-calls-status
+      description: REST surface for api-v2-video-active_calls_status.
+      operations:
+      - method: GET
+        name: getactivecallsstatus
+        description: Get active calls status
+        call: serverside-product-video.getactivecallsstatus
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/video/call/feedback
+      name: api-v2-video-call-feedback
+      description: REST surface for api-v2-video-call-feedback.
+      operations:
+      - method: POST
+        name: queryuserfeedback
+        description: Query user reported feedback for the calls
+        call: serverside-product-video.queryuserfeedback
+        with:
+          full: rest.full
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/video/call/members
+      name: api-v2-video-call-members
+      description: REST surface for api-v2-video-call-members.
+      operations:
+      - method: POST
+        name: querycallmembers
+        description: Query call members
+        call: serverside-product-video.querycallmembers
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/video/call/stats
+      name: api-v2-video-call-stats
+      description: REST surface for api-v2-video-call-stats.
+      operations:
+      - method: POST
+        name: querycallstats
+        description: Query Call Stats
+        call: serverside-product-video.querycallstats
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/video/call/{type}/{id}
+      name: api-v2-video-call-type-id
+      description: REST surface for api-v2-video-call-type-id.
+      operations:
+      - method: GET
+        name: getcall
+        description: Get Call
+        call: serverside-product-video.getcall
+        with:
+          type: rest.type
+          id: rest.id
+          members_limit: rest.members_limit
+          ring: rest.ring
+          notify: rest.notify
+          video: rest.video
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updatecall
+        description: Update Call
+        call: serverside-product-video.updatecall
+        with:
+          type: rest.type
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: getorcreatecall
+        description: Get or create a call
+        call: serverside-product-video.getorcreatecall
+        with:
+          type: rest.type
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/video/call/{type}/{id}/block
+      name: api-v2-video-call-type-id-block
+      description: REST surface for api-v2-video-call-type-id-block.
+      operations:
+      - method: POST
+        name: blockuser
+        description: Block user on a call
+        call: serverside-product-video.blockuser
+        with:
+          type: rest.type
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/video/call/{type}/{id}/closed-captions
+      name: api-v2-video-call-type-id-closed-captions
+      description: REST surface for api-v2-video-call-type-id-closed_captions.
+      operations:
+      - method: POST
+        name: sendclosedcaption
+        description: Send closed caption
+        call: serverside-product-video.sendclosedcaption
+        with:
+          type: rest.type
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/video/call/{type}/{id}/delete
+      name: api-v2-video-call-type-id-delete
+      description: REST surface for api-v2-video-call-type-id-delete.
+      operations:
+      - method: POST
+        name: deletecall
+        description: Delete Call
+        call: serverside-product-video.deletecall
+        with:
+          type: rest.type
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/video/call/{type}/{id}/event
+      name: api-v2-video-call-type-id-event
+      description: REST surface for api-v2-video-call-type-id-event.
+      operations:
+      - method: POST
+        name: sendcallevent
+        description: Send custom event
+        call: serverside-product-video.sendcallevent
+        with:
+          type: rest.type
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/video/call/{type}/{id}/feedback
+      name: api-v2-video-call-type-id-feedback
+      description: REST surface for api-v2-video-call-type-id-feedback.
+      operations:
+      - method: POST
+        name: collectuserfeedback
+        description: Collect user feedback
+        call: serverside-product-video.collectuserfeedback
+        with:
+          type: rest.type
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/video/call/{type}/{id}/go-live
+      name: api-v2-video-call-type-id-go-live
+      description: REST surface for api-v2-video-call-type-id-go_live.
+      operations:
+      - method: POST
+        name: golive
+        description: Set call as live
+        call: serverside-product-video.golive
+        with:
+          type: rest.type
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/video/call/{type}/{id}/kick
+      name: api-v2-video-call-type-id-kick
+      description: REST surface for api-v2-video-call-type-id-kick.
+      operations:
+      - method: POST
+        name: kickuser
+        description: Kick user from a call
+        call: serverside-product-video.kickuser
+        with:
+          type: rest.type
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/video/call/{type}/{id}/mark-ended
+      name: api-v2-video-call-type-id-mark-ended
+      description: REST surface for api-v2-video-call-type-id-mark_ended.
+      operations:
+      - method: POST
+        name: endcall
+        description: End call
+        call: serverside-product-video.endcall
+        with:
+          type: rest.type
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/video/call/{type}/{id}/members
+      name: api-v2-video-call-type-id-members
+      description: REST surface for api-v2-video-call-type-id-members.
+      operations:
+      - method: POST
+        name: updatecallmembers
+        description: Update Call Member
+        call: serverside-product-video.updatecallmembers
+        with:
+          type: rest.type
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/video/call/{type}/{id}/mute-users
+      name: api-v2-video-call-type-id-mute-users
+      description: REST surface for api-v2-video-call-type-id-mute_users.
+      operations:
+      - method: POST
+        name: muteusers
+        description: Mute users
+        call: serverside-product-video.muteusers
+        with:
+          type: rest.type
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/video/call/{type}/{id}/participants
+      name: api-v2-video-call-type-id-participants
+      description: REST surface for api-v2-video-call-type-id-participants.
+      operations:
+      - method: POST
+        name: querycallparticipants
+        description: Query call participants
+        call: serverside-product-video.querycallparticipants
+        with:
+          id: rest.id
+          type: rest.type
+          limit: rest.limit
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/video/call/{type}/{id}/pin
+      name: api-v2-video-call-type-id-pin
+      description: REST surface for api-v2-video-call-type-id-pin.
+      operations:
+      - method: POST
+        name: videopin
+        description: Pin
+        call: serverside-product-video.videopin
+        with:
+          type: rest.type
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/video/call/{type}/{id}/recordings
+      name: api-v2-video-call-type-id-recordings
+      description: REST surface for api-v2-video-call-type-id-recordings.
+      operations:
+      - method: GET
+        name: listrecordings
+        description: List recordings
+        call: serverside-product-video.listrecordings
+        with:
+          type: rest.type
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/video/call/{type}/{id}/recordings/{recording-type}/start
+      name: api-v2-video-call-type-id-recordings-recording-type-start
+      description: REST surface for api-v2-video-call-type-id-recordings-recording_type-start.
+      operations:
+      - method: POST
+        name: startrecording
+        description: Start recording
+        call: serverside-product-video.startrecording
+        with:
+          type: rest.type
+          id: rest.id
+          recording_type: rest.recording_type
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/video/call/{type}/{id}/recordings/{recording-type}/stop
+      name: api-v2-video-call-type-id-recordings-recording-type-stop
+      description: REST surface for api-v2-video-call-type-id-recordings-recording_type-stop.
+      operations:
+      - method: POST
+        name: stoprecording
+        description: Stop recording
+        call: serverside-product-video.stoprecording
+        with:
+          type: rest.type
+          id: rest.id
+          recording_type: rest.recording_type
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/video/call/{type}/{id}/report
+      name: api-v2-video-call-type-id-report
+      description: REST surface for api-v2-video-call-type-id-report.
+      operations:
+      - method: GET
+        name: getcallreport
+        description: Get call report
+        call: serverside-product-video.getcallreport
+        with:
+          type: rest.type
+          id: rest.id
+          session_id: rest.session_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/video/call/{type}/{id}/ring
+      name: api-v2-video-call-type-id-ring
+      description: REST surface for api-v2-video-call-type-id-ring.
+      operations:
+      - method: POST
+        name: ringcall
+        description: Ring Call Users
+        call: serverside-product-video.ringcall
+        with:
+          type: rest.type
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/video/call/{type}/{id}/rtmp-broadcasts
+      name: api-v2-video-call-type-id-rtmp-broadcasts
+      description: REST surface for api-v2-video-call-type-id-rtmp_broadcasts.
+      operations:
+      - method: POST
+        name: startrtmpbroadcasts
+        description: Start RTMP broadcasts
+        call: serverside-product-video.startrtmpbroadcasts
+        with:
+          type: rest.type
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/video/call/{type}/{id}/rtmp-broadcasts/stop
+      name: api-v2-video-call-type-id-rtmp-broadcasts-stop
+      description: REST surface for api-v2-video-call-type-id-rtmp_broadcasts-stop.
+      operations:
+      - method: POST
+        name: stopallrtmpbroadcasts
+        description: Stop all RTMP broadcasts for a call
+        call: serverside-product-video.stopallrtmpbroadcasts
+        with:
+          type: rest.type
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/video/call/{type}/{id}/rtmp-broadcasts/{name}/stop
+      name: api-v2-video-call-type-id-rtmp-broadcasts-name-stop
+      description: REST surface for api-v2-video-call-type-id-rtmp_broadcasts-name-stop.
+      operations:
+      - method: POST
+        name: stoprtmpbroadcast
+        description: Stop RTMP broadcasts
+        call: serverside-product-video.stoprtmpbroadcast
+        with:
+          type: rest.type
+          id: rest.id
+          name: rest.name
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/video/call/{type}/{id}/session/{session}/participant/{user}/{user-session}/details/track
+      name: api-v2-video-call-type-id-session-session-participant-user-user-session-details
+      description: REST surface for api-v2-video-call-type-id-session-session-participant-user-user_session-details-.
+      operations:
+      - method: GET
+        name: getcallparticipantsessionmetrics
+        description: Get call participant session metrics
+        call: serverside-product-video.getcallparticipantsessionmetrics
+        with:
+          type: rest.type
+          id: rest.id
+          session: rest.session
+          user: rest.user
+          user_session: rest.user_session
+          since: rest.since
+          until: rest.until
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/video/call/{type}/{id}/session/{session}/participant-sessions
+      name: api-v2-video-call-type-id-session-session-participant-sessions
+      description: REST surface for api-v2-video-call-type-id-session-session-participant_sessions.
+      operations:
+      - method: GET
+        name: querycallparticipantsessions
+        description: Query call participant sessions
+        call: serverside-product-video.querycallparticipantsessions
+        with:
+          type: rest.type
+          id: rest.id
+          session: rest.session
+          limit: rest.limit
+          prev: rest.prev
+          next: rest.next
+          filter_conditions: rest.filter_conditions
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/video/call/{type}/{id}/start-broadcasting
+      name: api-v2-video-call-type-id-start-broadcasting
+      description: REST surface for api-v2-video-call-type-id-start_broadcasting.
+      operations:
+      - method: POST
+        name: starthlsbroadcasting
+        description: Start HLS broadcasting
+        call: serverside-product-video.starthlsbroadcasting
+        with:
+          type: rest.type
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/video/call/{type}/{id}/start-closed-captions
+      name: api-v2-video-call-type-id-start-closed-captions
+      description: REST surface for api-v2-video-call-type-id-start_closed_captions.
+      operations:
+      - method: POST
+        name: startclosedcaptions
+        description: Start closed captions
+        call: serverside-product-video.startclosedcaptions
+        with:
+          type: rest.type
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/video/call/{type}/{id}/start-frame-recording
+      name: api-v2-video-call-type-id-start-frame-recording
+      description: REST surface for api-v2-video-call-type-id-start_frame_recording.
+      operations:
+      - method: POST
+        name: startframerecording
+        description: Start frame recording
+        call: serverside-product-video.startframerecording
+        with:
+          type: rest.type
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/video/call/{type}/{id}/start-transcription
+      name: api-v2-video-call-type-id-start-transcription
+      description: REST surface for api-v2-video-call-type-id-start_transcription.
+      operations:
+      - method: POST
+        name: starttranscription
+        description: Start transcription
+        call: serverside-product-video.starttranscription
+        with:
+          type: rest.type
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/video/call/{type}/{id}/stop-broadcasting
+      name: api-v2-video-call-type-id-stop-broadcasting
+      description: REST surface for api-v2-video-call-type-id-stop_broadcasting.
+      operations:
+      - method: POST
+        name: stophlsbroadcasting
+        description: Stop HLS broadcasting
+        call: serverside-product-video.stophlsbroadcasting
+        with:
+          type: rest.type
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/video/call/{type}/{id}/stop-closed-captions
+      name: api-v2-video-call-type-id-stop-closed-captions
+      description: REST surface for api-v2-video-call-type-id-stop_closed_captions.
+      operations:
+      - method: POST
+        name: stopclosedcaptions
+        description: Stop closed captions
+        call: serverside-product-video.stopclosedcaptions
+        with:
+          type: rest.type
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/video/call/{type}/{id}/stop-frame-recording
+      name: api-v2-video-call-type-id-stop-frame-recording
+      description: REST surface for api-v2-video-call-type-id-stop_frame_recording.
+      operations:
+      - method: POST
+        name: stopframerecording
+        description: Stop frame recording
+        call: serverside-product-video.stopframerecording
+        with:
+          type: rest.type
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/video/call/{type}/{id}/stop-live
+      name: api-v2-video-call-type-id-stop-live
+      description: REST surface for api-v2-video-call-type-id-stop_live.
+      operations:
+      - method: POST
+        name: stoplive
+        description: Set call as not live
+        call: serverside-product-video.stoplive
+        with:
+          type: rest.type
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/video/call/{type}/{id}/stop-transcription
+      name: api-v2-video-call-type-id-stop-transcription
+      description: REST surface for api-v2-video-call-type-id-stop_transcription.
+      operations:
+      - method: POST
+        name: stoptranscription
+        description: Stop transcription
+        call: serverside-product-video.stoptranscription
+        with:
+          type: rest.type
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/video/call/{type}/{id}/transcriptions
+      name: api-v2-video-call-type-id-transcriptions
+      description: REST surface for api-v2-video-call-type-id-transcriptions.
+      operations:
+      - method: GET
+        name: listtranscriptions
+        description: List transcriptions
+        call: serverside-product-video.listtranscriptions
+        with:
+          type: rest.type
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/video/call/{type}/{id}/unblock
+      name: api-v2-video-call-type-id-unblock
+      description: REST surface for api-v2-video-call-type-id-unblock.
+      operations:
+      - method: POST
+        name: unblockuser
+        description: Unblocks user on a call
+        call: serverside-product-video.unblockuser
+        with:
+          type: rest.type
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/video/call/{type}/{id}/unpin
+      name: api-v2-video-call-type-id-unpin
+      description: REST surface for api-v2-video-call-type-id-unpin.
+      operations:
+      - method: POST
+        name: videounpin
+        description: Unpin
+        call: serverside-product-video.videounpin
+        with:
+          type: rest.type
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/video/call/{type}/{id}/user-permissions
+      name: api-v2-video-call-type-id-user-permissions
+      description: REST surface for api-v2-video-call-type-id-user_permissions.
+      operations:
+      - method: POST
+        name: updateuserpermissions
+        description: Update user permissions
+        call: serverside-product-video.updateuserpermissions
+        with:
+          type: rest.type
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/video/call/{type}/{id}/{session}/recordings/{filename}
+      name: api-v2-video-call-type-id-session-recordings-filename
+      description: REST surface for api-v2-video-call-type-id-session-recordings-filename.
+      operations:
+      - method: DELETE
+        name: deleterecording
+        description: Delete recording
+        call: serverside-product-video.deleterecording
+        with:
+          type: rest.type
+          id: rest.id
+          session: rest.session
+          filename: rest.filename
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/video/call/{type}/{id}/{session}/transcriptions/{filename}
+      name: api-v2-video-call-type-id-session-transcriptions-filename
+      description: REST surface for api-v2-video-call-type-id-session-transcriptions-filename.
+      operations:
+      - method: DELETE
+        name: deletetranscription
+        description: Delete transcription
+        call: serverside-product-video.deletetranscription
+        with:
+          type: rest.type
+          id: rest.id
+          session: rest.session
+          filename: rest.filename
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/video/call-stats
+      name: api-v2-video-call-stats
+      description: REST surface for api-v2-video-call_stats.
+      operations:
+      - method: POST
+        name: querycallsessionstats
+        description: Query call session stats
+        call: serverside-product-video.querycallsessionstats
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/video/call-stats/{call-type}/{call-id}/{session}/map
+      name: api-v2-video-call-stats-call-type-call-id-session-map
+      description: REST surface for api-v2-video-call_stats-call_type-call_id-session-map.
+      operations:
+      - method: GET
+        name: getcallstatsmap
+        description: Map call participants by location
+        call: serverside-product-video.getcallstatsmap
+        with:
+          call_type: rest.call_type
+          call_id: rest.call_id
+          session: rest.session
+          start_time: rest.start_time
+          end_time: rest.end_time
+          exclude_publishers: rest.exclude_publishers
+          exclude_subscribers: rest.exclude_subscribers
+          exclude_sfus: rest.exclude_sfus
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/video/call-stats/{call-type}/{call-id}/{session}/participant/{user}/{user-session}/details
+      name: api-v2-video-call-stats-call-type-call-id-session-participant-user-user-session
+      description: REST surface for api-v2-video-call_stats-call_type-call_id-session-participant-user-user_session-.
+      operations:
+      - method: GET
+        name: getcallsessionparticipantstatsdetails
+        description: Get call session participant stats details
+        call: serverside-product-video.getcallsessionparticipantstatsdetails
+        with:
+          call_type: rest.call_type
+          call_id: rest.call_id
+          session: rest.session
+          user: rest.user
+          user_session: rest.user_session
+          since: rest.since
+          until: rest.until
+          max_points: rest.max_points
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/video/call-stats/{call-type}/{call-id}/{session}/participants
+      name: api-v2-video-call-stats-call-type-call-id-session-participants
+      description: REST surface for api-v2-video-call_stats-call_type-call_id-session-participants.
+      operations:
+      - method: GET
+        name: querycallsessionparticipantstats
+        description: Query call participant statistics
+        call: serverside-product-video.querycallsessionparticipantstats
+        with:
+          call_type: rest.call_type
+          call_id: rest.call_id
+          session: rest.session
+          sort: rest.sort
+          filter_conditions: rest.filter_conditions
+          limit: rest.limit
+          prev: rest.prev
+          next: rest.next
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/video/call-stats/{call-type}/{call-id}/{session}/participants/{user}/{user-session}/timeline
+      name: api-v2-video-call-stats-call-type-call-id-session-participants-user-user-session
+      description: REST surface for api-v2-video-call_stats-call_type-call_id-session-participants-user-user_session.
+      operations:
+      - method: GET
+        name: getcallsessionparticipantstatstimeline
+        description: Get participant timeline events
+        call: serverside-product-video.getcallsessionparticipantstatstimeline
+        with:
+          call_type: rest.call_type
+          call_id: rest.call_id
+          session: rest.session
+          user: rest.user
+          user_session: rest.user_session
+          start_time: rest.start_time
+          end_time: rest.end_time
+          severity: rest.severity
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/video/calls
+      name: api-v2-video-calls
+      description: REST surface for api-v2-video-calls.
+      operations:
+      - method: POST
+        name: querycalls
+        description: Query call
+        call: serverside-product-video.querycalls
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/video/calltypes
+      name: api-v2-video-calltypes
+      description: REST surface for api-v2-video-calltypes.
+      operations:
+      - method: GET
+        name: listcalltypes
+        description: List Call Type
+        call: serverside-product-video.listcalltypes
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createcalltype
+        description: Create Call Type
+        call: serverside-product-video.createcalltype
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/video/calltypes/{name}
+      name: api-v2-video-calltypes-name
+      description: REST surface for api-v2-video-calltypes-name.
+      operations:
+      - method: DELETE
+        name: deletecalltype
+        description: Delete Call Type
+        call: serverside-product-video.deletecalltype
+        with:
+          name: rest.name
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: getcalltype
+        description: Get Call Type
+        call: serverside-product-video.getcalltype
+        with:
+          name: rest.name
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatecalltype
+        description: Update Call Type
+        call: serverside-product-video.updatecalltype
+        with:
+          name: rest.name
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/video/edges
+      name: api-v2-video-edges
+      description: REST surface for api-v2-video-edges.
+      operations:
+      - method: GET
+        name: getedges
+        description: Get Edges
+        call: serverside-product-video.getedges
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/video/sip/auth
+      name: api-v2-video-sip-auth
+      description: REST surface for api-v2-video-sip-auth.
+      operations:
+      - method: POST
+        name: resolvesipauth
+        description: Resolve SIP Auth
+        call: serverside-product-video.resolvesipauth
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/video/sip/inbound-routing-rules
+      name: api-v2-video-sip-inbound-routing-rules
+      description: REST surface for api-v2-video-sip-inbound_routing_rules.
+      operations:
+      - method: GET
+        name: listsipinboundroutingrule
+        description: List SIP Inbound Routing Rules
+        call: serverside-product-video.listsipinboundroutingrule
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createsipinboundroutingrule
+        description: Create SIP Inbound Routing Rule
+        call: serverside-product-video.createsipinboundroutingrule
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/video/sip/inbound-routing-rules/{id}
+      name: api-v2-video-sip-inbound-routing-rules-id
+      description: REST surface for api-v2-video-sip-inbound_routing_rules-id.
+      operations:
+      - method: DELETE
+        name: deletesipinboundroutingrule
+        description: Delete SIP Inbound Routing Rule
+        call: serverside-product-video.deletesipinboundroutingrule
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatesipinboundroutingrule
+        description: Update SIP Inbound Routing Rule
+        call: serverside-product-video.updatesipinboundroutingrule
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/video/sip/inbound-trunks
+      name: api-v2-video-sip-inbound-trunks
+      description: REST surface for api-v2-video-sip-inbound_trunks.
+      operations:
+      - method: GET
+        name: listsiptrunks
+        description: List SIP Trunks
+        call: serverside-product-video.listsiptrunks
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createsiptrunk
+        description: Create SIP Trunk
+        call: serverside-product-video.createsiptrunk
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/video/sip/inbound-trunks/{id}
+      name: api-v2-video-sip-inbound-trunks-id
+      description: REST surface for api-v2-video-sip-inbound_trunks-id.
+      operations:
+      - method: DELETE
+        name: deletesiptrunk
+        description: Delete SIP Trunk
+        call: serverside-product-video.deletesiptrunk
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatesiptrunk
+        description: Update SIP Trunk
+        call: serverside-product-video.updatesiptrunk
+        with:
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/video/sip/resolve
+      name: api-v2-video-sip-resolve
+      description: REST surface for api-v2-video-sip-resolve.
+      operations:
+      - method: POST
+        name: resolvesipinbound
+        description: Resolve SIP Inbound Routing
+        call: serverside-product-video.resolvesipinbound
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/api/v2/video/stats
+      name: api-v2-video-stats
+      description: REST surface for api-v2-video-stats.
+      operations:
+      - method: POST
+        name: queryaggregatecallstats
+        description: Query Aggregate call Stats
+        call: serverside-product-video.queryaggregatecallstats
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: serverside-product-video-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Stream API — product:video. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: get-active-calls-status
+      description: Get active calls status
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: serverside-product-video.getactivecallsstatus
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: query-user-reported-feedback-calls
+      description: Query user reported feedback for the calls
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: serverside-product-video.queryuserfeedback
+      with:
+        full: tools.full
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: query-call-members
+      description: Query call members
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: serverside-product-video.querycallmembers
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: query-call-stats
+      description: Query Call Stats
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: serverside-product-video.querycallstats
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-call
+      description: Get Call
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: serverside-product-video.getcall
+      with:
+        type: tools.type
+        id: tools.id
+        members_limit: tools.members_limit
+        ring: tools.ring
+        notify: tools.notify
+        video: tools.video
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-call
+      description: Update Call
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: serverside-product-video.updatecall
+      with:
+        type: tools.type
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-create-call
+      description: Get or create a call
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: serverside-product-video.getorcreatecall
+      with:
+        type: tools.type
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: block-user-call
+      description: Block user on a call
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-video.blockuser
+      with:
+        type: tools.type
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: send-closed-caption
+      description: Send closed caption
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-video.sendclosedcaption
+      with:
+        type: tools.type
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-call
+      description: Delete Call
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-video.deletecall
+      with:
+        type: tools.type
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: send-custom-event
+      description: Send custom event
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-video.sendcallevent
+      with:
+        type: tools.type
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: collect-user-feedback
+      description: Collect user feedback
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-video.collectuserfeedback
+      with:
+        type: tools.type
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: set-call-live
+      description: Set call as live
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-video.golive
+      with:
+        type: tools.type
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: kick-user-call
+      description: Kick user from a call
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-video.kickuser
+      with:
+        type: tools.type
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: end-call
+      description: End call
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-video.endcall
+      with:
+        type: tools.type
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-call-member
+      description: Update Call Member
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-video.updatecallmembers
+      with:
+        type: tools.type
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: mute-users
+      description: Mute users
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-video.muteusers
+      with:
+        type: tools.type
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: query-call-participants
+      description: Query call participants
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: serverside-product-video.querycallparticipants
+      with:
+        id: tools.id
+        type: tools.type
+        limit: tools.limit
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: pin
+      description: Pin
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-video.videopin
+      with:
+        type: tools.type
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-recordings
+      description: List recordings
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: serverside-product-video.listrecordings
+      with:
+        type: tools.type
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: start-recording
+      description: Start recording
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-video.startrecording
+      with:
+        type: tools.type
+        id: tools.id
+        recording_type: tools.recording_type
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: stop-recording
+      description: Stop recording
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-video.stoprecording
+      with:
+        type: tools.type
+        id: tools.id
+        recording_type: tools.recording_type
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-call-report
+      description: Get call report
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: serverside-product-video.getcallreport
+      with:
+        type: tools.type
+        id: tools.id
+        session_id: tools.session_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: ring-call-users
+      description: Ring Call Users
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-video.ringcall
+      with:
+        type: tools.type
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: start-rtmp-broadcasts
+      description: Start RTMP broadcasts
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-video.startrtmpbroadcasts
+      with:
+        type: tools.type
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: stop-all-rtmp-broadcasts-call
+      description: Stop all RTMP broadcasts for a call
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-video.stopallrtmpbroadcasts
+      with:
+        type: tools.type
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: stop-rtmp-broadcasts
+      description: Stop RTMP broadcasts
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-video.stoprtmpbroadcast
+      with:
+        type: tools.type
+        id: tools.id
+        name: tools.name
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-call-participant-session-metrics
+      description: Get call participant session metrics
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: serverside-product-video.getcallparticipantsessionmetrics
+      with:
+        type: tools.type
+        id: tools.id
+        session: tools.session
+        user: tools.user
+        user_session: tools.user_session
+        since: tools.since
+        until: tools.until
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: query-call-participant-sessions
+      description: Query call participant sessions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: serverside-product-video.querycallparticipantsessions
+      with:
+        type: tools.type
+        id: tools.id
+        session: tools.session
+        limit: tools.limit
+        prev: tools.prev
+        next: tools.next
+        filter_conditions: tools.filter_conditions
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: start-hls-broadcasting
+      description: Start HLS broadcasting
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-video.starthlsbroadcasting
+      with:
+        type: tools.type
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: start-closed-captions
+      description: Start closed captions
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-video.startclosedcaptions
+      with:
+        type: tools.type
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: start-frame-recording
+      description: Start frame recording
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-video.startframerecording
+      with:
+        type: tools.type
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: start-transcription
+      description: Start transcription
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-video.starttranscription
+      with:
+        type: tools.type
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: stop-hls-broadcasting
+      description: Stop HLS broadcasting
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-video.stophlsbroadcasting
+      with:
+        type: tools.type
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: stop-closed-captions
+      description: Stop closed captions
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-video.stopclosedcaptions
+      with:
+        type: tools.type
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: stop-frame-recording
+      description: Stop frame recording
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-video.stopframerecording
+      with:
+        type: tools.type
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: set-call-not-live
+      description: Set call as not live
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-video.stoplive
+      with:
+        type: tools.type
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: stop-transcription
+      description: Stop transcription
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-video.stoptranscription
+      with:
+        type: tools.type
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-transcriptions
+      description: List transcriptions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: serverside-product-video.listtranscriptions
+      with:
+        type: tools.type
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: unblocks-user-call
+      description: Unblocks user on a call
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-video.unblockuser
+      with:
+        type: tools.type
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: unpin
+      description: Unpin
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-video.videounpin
+      with:
+        type: tools.type
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-user-permissions
+      description: Update user permissions
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-video.updateuserpermissions
+      with:
+        type: tools.type
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-recording
+      description: Delete recording
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: serverside-product-video.deleterecording
+      with:
+        type: tools.type
+        id: tools.id
+        session: tools.session
+        filename: tools.filename
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-transcription
+      description: Delete transcription
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: serverside-product-video.deletetranscription
+      with:
+        type: tools.type
+        id: tools.id
+        session: tools.session
+        filename: tools.filename
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: query-call-session-stats
+      description: Query call session stats
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: serverside-product-video.querycallsessionstats
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: map-call-participants-location
+      description: Map call participants by location
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: serverside-product-video.getcallstatsmap
+      with:
+        call_type: tools.call_type
+        call_id: tools.call_id
+        session: tools.session
+        start_time: tools.start_time
+        end_time: tools.end_time
+        exclude_publishers: tools.exclude_publishers
+        exclude_subscribers: tools.exclude_subscribers
+        exclude_sfus: tools.exclude_sfus
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-call-session-participant-stats
+      description: Get call session participant stats details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: serverside-product-video.getcallsessionparticipantstatsdetails
+      with:
+        call_type: tools.call_type
+        call_id: tools.call_id
+        session: tools.session
+        user: tools.user
+        user_session: tools.user_session
+        since: tools.since
+        until: tools.until
+        max_points: tools.max_points
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: query-call-participant-statistics
+      description: Query call participant statistics
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: serverside-product-video.querycallsessionparticipantstats
+      with:
+        call_type: tools.call_type
+        call_id: tools.call_id
+        session: tools.session
+        sort: tools.sort
+        filter_conditions: tools.filter_conditions
+        limit: tools.limit
+        prev: tools.prev
+        next: tools.next
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-participant-timeline-events
+      description: Get participant timeline events
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: serverside-product-video.getcallsessionparticipantstatstimeline
+      with:
+        call_type: tools.call_type
+        call_id: tools.call_id
+        session: tools.session
+        user: tools.user
+        user_session: tools.user_session
+        start_time: tools.start_time
+        end_time: tools.end_time
+        severity: tools.severity
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: query-call
+      description: Query call
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: serverside-product-video.querycalls
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-call-type
+      description: List Call Type
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: serverside-product-video.listcalltypes
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-call-type
+      description: Create Call Type
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-video.createcalltype
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-call-type
+      description: Delete Call Type
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: serverside-product-video.deletecalltype
+      with:
+        name: tools.name
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-call-type
+      description: Get Call Type
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: serverside-product-video.getcalltype
+      with:
+        name: tools.name
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-call-type
+      description: Update Call Type
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: serverside-product-video.updatecalltype
+      with:
+        name: tools.name
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-edges
+      description: Get Edges
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: serverside-product-video.getedges
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: resolve-sip-auth
+      description: Resolve SIP Auth
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-video.resolvesipauth
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-sip-inbound-routing-rules
+      description: List SIP Inbound Routing Rules
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: serverside-product-video.listsipinboundroutingrule
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-sip-inbound-routing-rule
+      description: Create SIP Inbound Routing Rule
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-video.createsipinboundroutingrule
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-sip-inbound-routing-rule
+      description: Delete SIP Inbound Routing Rule
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: serverside-product-video.deletesipinboundroutingrule
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-sip-inbound-routing-rule
+      description: Update SIP Inbound Routing Rule
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: serverside-product-video.updatesipinboundroutingrule
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-sip-trunks
+      description: List SIP Trunks
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: serverside-product-video.listsiptrunks
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-sip-trunk
+      description: Create SIP Trunk
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-video.createsiptrunk
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-sip-trunk
+      description: Delete SIP Trunk
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: serverside-product-video.deletesiptrunk
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-sip-trunk
+      description: Update SIP Trunk
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: serverside-product-video.updatesiptrunk
+      with:
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: resolve-sip-inbound-routing
+      description: Resolve SIP Inbound Routing
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: serverside-product-video.resolvesipinbound
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: query-aggregate-call-stats
+      description: Query Aggregate call Stats
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: serverside-product-video.queryaggregatecallstats
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
