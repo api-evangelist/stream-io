@@ -16,7 +16,7 @@ tags:
 - Moderation
 - SDK
 created: '2026-05-08'
-modified: '2026-05-19'
+modified: '2026-05-29'
 specificationVersion: '0.19'
 apis:
 - aid: stream-io:chat
@@ -40,6 +40,8 @@ apis:
     url: openapi/stream-io-chat-openapi.yml
   - type: OpenAPISource
     url: https://raw.githubusercontent.com/GetStream/protocol/main/openapi/chat-openapi.yaml
+  - type: AsyncAPI
+    url: asyncapi/stream-io-asyncapi.yml
   - type: SDK
     url: https://getstream.io/chat/sdk/
   - type: NaftikoCapability
