@@ -1,0 +1,364 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Stream API",
+    "version": "v228.3.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "product:moderation",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Submit Chat Message Task",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v1/moderation/chat_message_tasks",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Submits a chat message task\n"
+        },
+        {
+          "info": {
+            "name": "ListBlockedMessages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/api/v1/moderation/dashboard/blocked_messages"
+          },
+          "docs": "TODO\n"
+        },
+        {
+          "info": {
+            "name": "FlagFeedback",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v1/moderation/dashboard/flag_feedback"
+          },
+          "docs": "TODO\n"
+        },
+        {
+          "info": {
+            "name": "ListModerationLogs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/api/v1/moderation/dashboard/moderation_log"
+          },
+          "docs": "TODO\n"
+        },
+        {
+          "info": {
+            "name": "UpdateFlags",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v1/moderation/dashboard/update_flags"
+          },
+          "docs": "TODO\n"
+        },
+        {
+          "info": {
+            "name": "ListBlockedMessages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/api/v1/moderation/moderation/blocked_messages"
+          },
+          "docs": "TODO\n"
+        },
+        {
+          "info": {
+            "name": "FlagFeedback",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v1/moderation/moderation/flag_feedback"
+          },
+          "docs": "TODO\n"
+        },
+        {
+          "info": {
+            "name": "ListModerationLogs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/api/v1/moderation/moderation/moderation_log"
+          },
+          "docs": "TODO\n"
+        },
+        {
+          "info": {
+            "name": "UpdateFlags",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v1/moderation/moderation/update_flags"
+          },
+          "docs": "TODO\n"
+        },
+        {
+          "info": {
+            "name": "List Tasks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/api/v1/moderation/tasks"
+          },
+          "docs": "Lists all tasks\n"
+        },
+        {
+          "info": {
+            "name": "Submit Task",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v1/moderation/tasks",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Submits a task\n"
+        },
+        {
+          "info": {
+            "name": "Get Task",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/api/v1/moderation/tasks/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Fetches moderation task\n"
+        },
+        {
+          "info": {
+            "name": "Update Task",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v1/moderation/tasks/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates a task\n"
+        },
+        {
+          "info": {
+            "name": "Submit Chat Message Task",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/automod/v1/chat_message_tasks",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Submits a chat message task\n"
+        },
+        {
+          "info": {
+            "name": "ListBlockedMessages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/automod/v1/dashboard/blocked_messages"
+          },
+          "docs": "TODO\n"
+        },
+        {
+          "info": {
+            "name": "FlagFeedback",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/automod/v1/dashboard/flag_feedback"
+          },
+          "docs": "TODO\n"
+        },
+        {
+          "info": {
+            "name": "ListModerationLogs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/automod/v1/dashboard/moderation_log"
+          },
+          "docs": "TODO\n"
+        },
+        {
+          "info": {
+            "name": "UpdateFlags",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/automod/v1/dashboard/update_flags"
+          },
+          "docs": "TODO\n"
+        },
+        {
+          "info": {
+            "name": "ListBlockedMessages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/automod/v1/moderation/blocked_messages"
+          },
+          "docs": "TODO\n"
+        },
+        {
+          "info": {
+            "name": "FlagFeedback",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/automod/v1/moderation/flag_feedback"
+          },
+          "docs": "TODO\n"
+        },
+        {
+          "info": {
+            "name": "ListModerationLogs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/automod/v1/moderation/moderation_log"
+          },
+          "docs": "TODO\n"
+        },
+        {
+          "info": {
+            "name": "UpdateFlags",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/automod/v1/moderation/update_flags"
+          },
+          "docs": "TODO\n"
+        },
+        {
+          "info": {
+            "name": "List Tasks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/automod/v1/tasks"
+          },
+          "docs": "Lists all tasks\n"
+        },
+        {
+          "info": {
+            "name": "Submit Task",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/automod/v1/tasks",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Submits a task\n"
+        },
+        {
+          "info": {
+            "name": "Get Task",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/automod/v1/tasks/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Fetches moderation task\n"
+        },
+        {
+          "info": {
+            "name": "Update Task",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/automod/v1/tasks/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates a task\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

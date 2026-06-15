@@ -1,0 +1,1901 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Stream API",
+    "version": "v228.3.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "product:video",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get active calls status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/video/active_calls_status"
+          },
+          "docs": "Get the current status of all active calls including metrics and summary information\n"
+        },
+        {
+          "info": {
+            "name": "Get Call",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/video/call/:type/:id",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "members_limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "ring",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "notify",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "video",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "\n"
+        },
+        {
+          "info": {
+            "name": "Get or create a call",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/video/call/:type/:id",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Gets or creates a new call\n\nSends events:\n- call.created\n- call.notification\n- call.ring\n"
+        },
+        {
+          "info": {
+            "name": "Update Call",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://chat.stream-io-api.com/video/call/:type/:id",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "\n\nSends events:\n- call.updated\n"
+        },
+        {
+          "info": {
+            "name": "Delete recording",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://chat.stream-io-api.com/video/call/:type/:id/:session/recordings/:filename",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "session",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "filename",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deletes recording\n"
+        },
+        {
+          "info": {
+            "name": "Delete transcription",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://chat.stream-io-api.com/video/call/:type/:id/:session/transcriptions/:filename",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "session",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "filename",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deletes transcription\n"
+        },
+        {
+          "info": {
+            "name": "Block user on a call",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/video/call/:type/:id/block",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Block a user, preventing them from joining the call until they are unblocked.\n\nSends events:\n- call.blocked_user\n"
+        },
+        {
+          "info": {
+            "name": "Send closed caption",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/video/call/:type/:id/closed_captions",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sends a closed caption event to the call\n\nSends events:\n- call.closed_caption\n"
+        },
+        {
+          "info": {
+            "name": "Delete Call",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/video/call/:type/:id/delete",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "\n\nSends events:\n- call.deleted\n"
+        },
+        {
+          "info": {
+            "name": "Send custom event",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/video/call/:type/:id/event",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sends custom event to the call\n\nSends events:\n- custom\n"
+        },
+        {
+          "info": {
+            "name": "Collect user feedback",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/video/call/:type/:id/feedback",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "\n\nSends events:\n- call.user_feedback_submitted\n"
+        },
+        {
+          "info": {
+            "name": "Set call as live",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/video/call/:type/:id/go_live",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "\n\nSends events:\n- call.live_started\n"
+        },
+        {
+          "info": {
+            "name": "Kick user from a call",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/video/call/:type/:id/kick",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Kicks a user from the call. Optionally block the user from rejoining by setting block=true.\n\nSends events:\n- call.blocked_user\n- call.kicked_user\n"
+        },
+        {
+          "info": {
+            "name": "End call",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/video/call/:type/:id/mark_ended",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "\n\nSends events:\n- call.ended\n"
+        },
+        {
+          "info": {
+            "name": "Update Call Member",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/video/call/:type/:id/members",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "\n\nSends events:\n- call.member_added\n- call.member_removed\n- call.member_updated\n"
+        },
+        {
+          "info": {
+            "name": "Mute users",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/video/call/:type/:id/mute_users",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Mutes users in a call\n"
+        },
+        {
+          "info": {
+            "name": "Query call participants",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/video/call/:type/:id/participants",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns a list of participants connected to the call\n"
+        },
+        {
+          "info": {
+            "name": "Pin",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/video/call/:type/:id/pin",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Pins a track for all users in the call.\n"
+        },
+        {
+          "info": {
+            "name": "List recordings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/video/call/:type/:id/recordings",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Lists recordings\n"
+        },
+        {
+          "info": {
+            "name": "Start recording",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/video/call/:type/:id/recordings/:recording_type/start",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "recording_type",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Starts recording\n\nSends events:\n- call.recording_started\n"
+        },
+        {
+          "info": {
+            "name": "Stop recording",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/video/call/:type/:id/recordings/:recording_type/stop",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "recording_type",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Stops recording\n\nSends events:\n- call.recording_stopped\n"
+        },
+        {
+          "info": {
+            "name": "Get call report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/video/call/:type/:id/report",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "session_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "\n"
+        },
+        {
+          "info": {
+            "name": "Ring Call Users",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/video/call/:type/:id/ring",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sends a ring notification to the provided users who are not already in the call. All users should be members of the call\n\nSends events:\n- call.ring\n"
+        },
+        {
+          "info": {
+            "name": "Start RTMP broadcasts",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/video/call/:type/:id/rtmp_broadcasts",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Starts RTMP broadcasts for the provided RTMP destinations\n"
+        },
+        {
+          "info": {
+            "name": "Stop RTMP broadcasts",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/video/call/:type/:id/rtmp_broadcasts/:name/stop",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Stop RTMP broadcasts for the provided RTMP destinations\n"
+        },
+        {
+          "info": {
+            "name": "Stop all RTMP broadcasts for a call",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/video/call/:type/:id/rtmp_broadcasts/stop",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Stop all RTMP broadcasts for the provided call\n"
+        },
+        {
+          "info": {
+            "name": "Get call participant session metrics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/video/call/:type/:id/session/:session/participant/:user/:user_session/details/track",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "session",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "user",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "user_session",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "since",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "until",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "\n"
+        },
+        {
+          "info": {
+            "name": "Query call participant sessions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/video/call/:type/:id/session/:session/participant_sessions",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "session",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "prev",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "next",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter_conditions",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "\n"
+        },
+        {
+          "info": {
+            "name": "Start HLS broadcasting",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/video/call/:type/:id/start_broadcasting",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Starts HLS broadcasting\n"
+        },
+        {
+          "info": {
+            "name": "Start closed captions",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/video/call/:type/:id/start_closed_captions",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Starts closed captions\n"
+        },
+        {
+          "info": {
+            "name": "Start frame recording",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/video/call/:type/:id/start_frame_recording",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Starts frame by frame recording\n\nSends events:\n- call.frame_recording_started\n"
+        },
+        {
+          "info": {
+            "name": "Start transcription",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/video/call/:type/:id/start_transcription",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Starts transcription\n"
+        },
+        {
+          "info": {
+            "name": "Stop HLS broadcasting",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/video/call/:type/:id/stop_broadcasting",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Stops HLS broadcasting\n"
+        },
+        {
+          "info": {
+            "name": "Stop closed captions",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/video/call/:type/:id/stop_closed_captions",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Stops closed captions\n\nSends events:\n- call.transcription_stopped\n"
+        },
+        {
+          "info": {
+            "name": "Stop frame recording",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/video/call/:type/:id/stop_frame_recording",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Stops frame recording\n\nSends events:\n- call.frame_recording_stopped\n"
+        },
+        {
+          "info": {
+            "name": "Set call as not live",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/video/call/:type/:id/stop_live",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "\n\nSends events:\n- call.updated\n"
+        },
+        {
+          "info": {
+            "name": "Stop transcription",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/video/call/:type/:id/stop_transcription",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Stops transcription\n\nSends events:\n- call.transcription_stopped\n"
+        },
+        {
+          "info": {
+            "name": "List transcriptions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/video/call/:type/:id/transcriptions",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Lists transcriptions\n"
+        },
+        {
+          "info": {
+            "name": "Unblocks user on a call",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/video/call/:type/:id/unblock",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Removes the block for a user on a call. The user will be able to join the call again.\n\nSends events:\n- call.unblocked_user\n"
+        },
+        {
+          "info": {
+            "name": "Unpin",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/video/call/:type/:id/unpin",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Unpins a track for all users in the call.\n"
+        },
+        {
+          "info": {
+            "name": "Update user permissions",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/video/call/:type/:id/user_permissions",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates user permissions\n\nSends events:\n- call.permissions_updated\n"
+        },
+        {
+          "info": {
+            "name": "Query user reported feedback for the calls",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/video/call/feedback",
+            "params": [
+              {
+                "name": "full",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "\n"
+        },
+        {
+          "info": {
+            "name": "Query call members",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/video/call/members",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Query call members with filter query\n"
+        },
+        {
+          "info": {
+            "name": "Query Call Stats",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/video/call/stats",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "\n"
+        },
+        {
+          "info": {
+            "name": "Query call session stats",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/video/call_stats",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "\n"
+        },
+        {
+          "info": {
+            "name": "Map call participants by location",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/video/call_stats/:call_type/:call_id/:session/map",
+            "params": [
+              {
+                "name": "call_type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "call_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "session",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "start_time",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "end_time",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "exclude_publishers",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "exclude_subscribers",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "exclude_sfus",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "\n"
+        },
+        {
+          "info": {
+            "name": "Get call session participant stats details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/video/call_stats/:call_type/:call_id/:session/participant/:user/:user_session/details",
+            "params": [
+              {
+                "name": "call_type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "call_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "session",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "user",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "user_session",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "since",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "until",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "max_points",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "\n"
+        },
+        {
+          "info": {
+            "name": "Query call participant statistics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/video/call_stats/:call_type/:call_id/:session/participants",
+            "params": [
+              {
+                "name": "call_type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "call_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "session",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter_conditions",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "prev",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "next",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "\n"
+        },
+        {
+          "info": {
+            "name": "Get participant timeline events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/video/call_stats/:call_type/:call_id/:session/participants/:user/:user_session/timeline",
+            "params": [
+              {
+                "name": "call_type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "call_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "session",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "user",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "user_session",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "start_time",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "end_time",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "severity",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "\n"
+        },
+        {
+          "info": {
+            "name": "Query call",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/video/calls",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Query calls with filter query\n"
+        },
+        {
+          "info": {
+            "name": "List Call Type",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/video/calltypes"
+          },
+          "docs": "\n"
+        },
+        {
+          "info": {
+            "name": "Create Call Type",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/video/calltypes",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "\n"
+        },
+        {
+          "info": {
+            "name": "Get Call Type",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/video/calltypes/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "\n"
+        },
+        {
+          "info": {
+            "name": "Update Call Type",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://chat.stream-io-api.com/video/calltypes/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "\n"
+        },
+        {
+          "info": {
+            "name": "Delete Call Type",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://chat.stream-io-api.com/video/calltypes/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "\n"
+        },
+        {
+          "info": {
+            "name": "List devices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/video/devices",
+            "params": [
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns all available devices\n"
+        },
+        {
+          "info": {
+            "name": "Create device",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/video/devices",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Adds a new device to a user, if the same device already exists the call will have no effect\n"
+        },
+        {
+          "info": {
+            "name": "Delete device",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://chat.stream-io-api.com/video/devices",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Deletes one device\n"
+        },
+        {
+          "info": {
+            "name": "Get Edges",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/video/edges"
+          },
+          "docs": "Returns the list of all edges available for video calls.\n"
+        },
+        {
+          "info": {
+            "name": "List external storage",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/video/external_storage"
+          },
+          "docs": "Lists external storage\n"
+        },
+        {
+          "info": {
+            "name": "Create external storage",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/video/external_storage",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates new external storage\n"
+        },
+        {
+          "info": {
+            "name": "Update External Storage",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://chat.stream-io-api.com/video/external_storage/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "\n"
+        },
+        {
+          "info": {
+            "name": "Delete external storage",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://chat.stream-io-api.com/video/external_storage/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deletes external storage\n"
+        },
+        {
+          "info": {
+            "name": "Check External Storage",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/video/external_storage/:name/check",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "\n"
+        },
+        {
+          "info": {
+            "name": "Create Guest",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/video/guest",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "\n"
+        },
+        {
+          "info": {
+            "name": "Resolve SIP Auth",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/video/sip/auth",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Determine authentication requirements for an inbound SIP call before sending a digest challenge\n"
+        },
+        {
+          "info": {
+            "name": "List SIP Inbound Routing Rules",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/video/sip/inbound_routing_rules"
+          },
+          "docs": "List all SIP Inbound Routing Rules for the application\n"
+        },
+        {
+          "info": {
+            "name": "Create SIP Inbound Routing Rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/video/sip/inbound_routing_rules",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new SIP Inbound Routing Rule with either direct routing or PIN routing configuration\n"
+        },
+        {
+          "info": {
+            "name": "Update SIP Inbound Routing Rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://chat.stream-io-api.com/video/sip/inbound_routing_rules/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing SIP Inbound Routing Rule with new configuration\n"
+        },
+        {
+          "info": {
+            "name": "Delete SIP Inbound Routing Rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://chat.stream-io-api.com/video/sip/inbound_routing_rules/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a SIP Inbound Routing Rule for the application\n"
+        },
+        {
+          "info": {
+            "name": "List SIP Trunks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/video/sip/inbound_trunks"
+          },
+          "docs": "List all SIP trunks for the application\n"
+        },
+        {
+          "info": {
+            "name": "Create SIP Trunk",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/video/sip/inbound_trunks",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new SIP trunk for the application\n"
+        },
+        {
+          "info": {
+            "name": "Update SIP Trunk",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://chat.stream-io-api.com/video/sip/inbound_trunks/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a SIP trunk for the application\n"
+        },
+        {
+          "info": {
+            "name": "Delete SIP Trunk",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://chat.stream-io-api.com/video/sip/inbound_trunks/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a SIP trunk for the application\n"
+        },
+        {
+          "info": {
+            "name": "Resolve SIP Inbound Routing",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/video/sip/resolve",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Resolve SIP inbound routing based on trunk number, caller number, and challenge authentication\n"
+        },
+        {
+          "info": {
+            "name": "Query Aggregate call Stats",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/video/stats",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
