@@ -7,7 +7,7 @@ description: >-
   Hosted on a global edge network with native SDKs for web, mobile (iOS, Android, Flutter, React Native) and game
   engines (Unity, Unreal). Stream publishes full OpenAPI specifications for its Chat, Video and Moderation server-side
   APIs.
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
   - Realtime
   - Chat
@@ -26,7 +26,7 @@ apis:
     description: >-
       Server-side REST API for Stream Chat — channels, messages, users, threads, reactions, attachments, push
       notifications, search and import/export. JWT-based auth using a Stream API key/secret pair.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://getstream.io/chat/docs/
     baseURL: https://chat.stream-io-api.com
     tags:
@@ -52,7 +52,7 @@ apis:
     description: >-
       Server-side REST API for Stream Video — calls, audio rooms, livestreams, recordings, transcriptions, edge
       selection, push and SFU coordination. WebRTC backed by Stream's global edge network.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://getstream.io/video/docs/
     baseURL: https://video.stream-io-api.com
     tags:
@@ -77,7 +77,7 @@ apis:
     description: >-
       Server-side REST API for AI-powered content moderation across text, images and video — flagging, queues,
       automoderation policies, harms taxonomy and reviewer decisions.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://getstream.io/moderation/
     baseURL: https://chat.stream-io-api.com
     tags:
@@ -97,7 +97,7 @@ apis:
     description: >-
       Server-side REST API for activity feeds — flat, aggregated, notification and ranked feeds, follow graph, reactions
       and personalisation. Powered by Stream's original feed engine.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://getstream.io/activity-feeds/docs/
     baseURL: https://api.stream-io-api.com
     tags:
