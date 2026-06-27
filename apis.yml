@@ -45,7 +45,7 @@ apis:
         url: https://raw.githubusercontent.com/GetStream/protocol/main/openapi/chat-openapi.yaml
       - type: AsyncAPI
         url: asyncapi/stream-io-asyncapi.yml
-      - type: SDK
+      - type: SDKs
         url: https://getstream.io/chat/sdk/
   - aid: stream-io:video
     name: Stream Video & Audio API
@@ -70,7 +70,7 @@ apis:
         url: openapi/stream-io-video-openapi.yml
       - type: OpenAPISource
         url: https://raw.githubusercontent.com/GetStream/protocol/main/openapi/video-openapi.yaml
-      - type: SDK
+      - type: SDKs
         url: https://getstream.io/video/sdk/
   - aid: stream-io:moderation
     name: Stream Moderation API
