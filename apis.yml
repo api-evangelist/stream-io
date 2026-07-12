@@ -110,6 +110,14 @@ apis:
       - type: APIReference
         url: https://getstream.io/activity-feeds/docs/rest/
 common:
+  - type: TrustCenter
+    url: security/stream-io-trust-center.yml
+  - type: VulnerabilityDisclosure
+    url: security/stream-io-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/stream-io-domain-security.yml
+  - type: Authentication
+    url: authentication/stream-io-authentication.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/getstream
   - type: Website

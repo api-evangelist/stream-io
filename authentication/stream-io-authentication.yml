@@ -1,0 +1,60 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/stream-io-chat-openapi.yml, openapi/stream-io-moderation-openapi.yml, openapi/stream-io-serverside-openapi.yml,
+  openapi/stream-io-video-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+  - query
+schemes:
+- name: JWT
+  type: apiKey
+  in: header
+  parameter: Authorization
+  description: |-
+    JWT should be always provided when stream-auth-type=jwt.
+
+    Using JWT auth request could be authenticated as user or as server-side.
+
+    When using user authentication permission checking is going to be applied to requests based on the user that is
+    performing a request.
+
+    The `authorization` header should be a JWT string signed using the secret attached to the API key used to perform
+    requests.
+
+    **WARNIN
+  sources:
+  - openapi/stream-io-chat-openapi.yml
+  - openapi/stream-io-moderation-openapi.yml
+  - openapi/stream-io-serverside-openapi.yml
+  - openapi/stream-io-video-openapi.yml
+- name: api_key
+  type: apiKey
+  in: query
+  parameter: api_key
+  description: Application API key should be always set in order to authenticate the request.
+  sources:
+  - openapi/stream-io-chat-openapi.yml
+  - openapi/stream-io-moderation-openapi.yml
+  - openapi/stream-io-serverside-openapi.yml
+  - openapi/stream-io-video-openapi.yml
+- name: stream-auth-type
+  type: apiKey
+  in: header
+  parameter: Stream-Auth-Type
+  description: |-
+    Stream-Auth-Type should be always set in order to authenticate the request. Possible
+    values: `jwt` or `anonymous`.
+
+    `jwt` allows you to authenticate as a user. With this auth type you should also provide valid JWT in Authorization
+    header.
+
+    `anonymous` allows you to authenticate as anonymous user. Please note that most advanced features are not available
+    to anonymous users.
+  sources:
+  - openapi/stream-io-chat-openapi.yml
+  - openapi/stream-io-moderation-openapi.yml
+  - openapi/stream-io-serverside-openapi.yml
+  - openapi/stream-io-video-openapi.yml
