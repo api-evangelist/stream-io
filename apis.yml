@@ -7,7 +7,20 @@ description: >-
   Hosted on a global edge network with native SDKs for web, mobile (iOS, Android, Flutter, React Native) and game
   engines (Unity, Unreal). Stream publishes full OpenAPI specifications for its Chat, Video and Moderation server-side
   APIs.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/stream-io.png
 tags:
   - Realtime
   - Chat
@@ -21,94 +34,188 @@ created: '2026-05-08'
 modified: '2026-05-29'
 specificationVersion: '0.19'
 apis:
-  - aid: stream-io:chat
-    name: Stream Chat API
-    description: >-
-      Server-side REST API for Stream Chat — channels, messages, users, threads, reactions, attachments, push
-      notifications, search and import/export. JWT-based auth using a Stream API key/secret pair.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://getstream.io/chat/docs/
-    baseURL: https://chat.stream-io-api.com
-    tags:
-      - REST
-      - Chat
-      - Messaging
-      - WebSocket
-    properties:
-      - type: Documentation
-        url: https://getstream.io/chat/docs/
-      - type: APIReference
-        url: https://getstream.github.io/protocol/?urls.primaryName=Chat
-      - type: OpenAPI
-        url: openapi/stream-io-chat-openapi.yml
-      - type: OpenAPISource
-        url: https://raw.githubusercontent.com/GetStream/protocol/main/openapi/chat-openapi.yaml
-      - type: AsyncAPI
-        url: asyncapi/stream-io-asyncapi.yml
-      - type: SDKs
-        url: https://getstream.io/chat/sdk/
-  - aid: stream-io:video
-    name: Stream Video & Audio API
-    description: >-
-      Server-side REST API for Stream Video — calls, audio rooms, livestreams, recordings, transcriptions, edge
-      selection, push and SFU coordination. WebRTC backed by Stream's global edge network.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://getstream.io/video/docs/
-    baseURL: https://video.stream-io-api.com
-    tags:
-      - REST
-      - Video
-      - Audio
-      - WebRTC
-      - Livestream
-    properties:
-      - type: Documentation
-        url: https://getstream.io/video/docs/
-      - type: APIReference
-        url: https://getstream.github.io/protocol/?urls.primaryName=Video
-      - type: OpenAPI
-        url: openapi/stream-io-video-openapi.yml
-      - type: OpenAPISource
-        url: https://raw.githubusercontent.com/GetStream/protocol/main/openapi/video-openapi.yaml
-      - type: SDKs
-        url: https://getstream.io/video/sdk/
-  - aid: stream-io:moderation
-    name: Stream Moderation API
-    description: >-
-      Server-side REST API for AI-powered content moderation across text, images and video — flagging, queues,
-      automoderation policies, harms taxonomy and reviewer decisions.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://getstream.io/moderation/
-    baseURL: https://chat.stream-io-api.com
-    tags:
-      - REST
-      - Moderation
-      - Trust & Safety
-      - AI
-    properties:
-      - type: Documentation
-        url: https://getstream.io/moderation/docs/
-      - type: OpenAPI
-        url: openapi/stream-io-moderation-openapi.yml
-      - type: OpenAPISource
-        url: https://raw.githubusercontent.com/GetStream/protocol/main/openapi/moderation-openapi.yaml
-  - aid: stream-io:feeds
-    name: Stream Activity Feeds API
-    description: >-
-      Server-side REST API for activity feeds — flat, aggregated, notification and ranked feeds, follow graph, reactions
-      and personalisation. Powered by Stream's original feed engine.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://getstream.io/activity-feeds/docs/
-    baseURL: https://api.stream-io-api.com
-    tags:
-      - REST
-      - Activity Feeds
-      - Social
-    properties:
-      - type: Documentation
-        url: https://getstream.io/activity-feeds/docs/
-      - type: APIReference
-        url: https://getstream.io/activity-feeds/docs/rest/
+- aid: stream-io:feeds
+  name: Stream Activity Feeds API
+  description: >-
+    Server-side REST API for activity feeds — flat, aggregated, notification and ranked feeds, follow
+    graph, reactions and personalisation. Powered by Stream's original feed engine.
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://getstream.io/activity-feeds/docs/
+  baseURL: https://api.stream-io-api.com
+  tags:
+  - REST
+  - Activity Feeds
+  - Social
+  properties:
+  - type: Documentation
+    url: https://getstream.io/activity-feeds/docs/
+  - type: APIReference
+    url: https://getstream.io/activity-feeds/docs/rest/
+- aid: stream-io:stream-io-product-chat-api
+  name: Stream product:chat API
+  description: The product:chat API from Stream — 194 operation(s) for product:chat.
+  humanURL: https://getstream.io/chat/docs/
+  baseURL: https://chat.stream-io-api.com
+  tags:
+  - product:chat
+  properties:
+  - type: OpenAPI
+    url: openapi/stream-io-product-chat-api-openapi.yml
+  - type: Documentation
+    url: https://getstream.io/chat/docs/
+  - type: APIReference
+    url: https://getstream.github.io/protocol/?urls.primaryName=Chat
+  - type: OpenAPISource
+    url: https://raw.githubusercontent.com/GetStream/protocol/main/openapi/chat-openapi.yaml
+  - type: AsyncAPI
+    url: asyncapi/stream-io-asyncapi.yml
+  - type: SDKs
+    url: https://getstream.io/chat/sdk/
+  - type: Documentation
+    url: https://getstream.io/video/docs/
+  - type: APIReference
+    url: https://getstream.github.io/protocol/?urls.primaryName=Video
+  - type: OpenAPISource
+    url: https://raw.githubusercontent.com/GetStream/protocol/main/openapi/video-openapi.yaml
+  - type: SDKs
+    url: https://getstream.io/video/sdk/
+  - type: Documentation
+    url: https://getstream.io/moderation/docs/
+  - type: OpenAPISource
+    url: >-
+      https://raw.githubusercontent.com/GetStream/protocol/main/openapi/moderation-openapi.yaml
+- aid: stream-io:stream-io-product-common-api
+  name: Stream product:common API
+  description: The product:common API from Stream — 54 operation(s) for product:common.
+  humanURL: https://getstream.io/chat/docs/
+  baseURL: https://chat.stream-io-api.com
+  tags:
+  - product:common
+  properties:
+  - type: OpenAPI
+    url: openapi/stream-io-product-common-api-openapi.yml
+  - type: Documentation
+    url: https://getstream.io/chat/docs/
+  - type: APIReference
+    url: https://getstream.github.io/protocol/?urls.primaryName=Chat
+  - type: OpenAPISource
+    url: https://raw.githubusercontent.com/GetStream/protocol/main/openapi/chat-openapi.yaml
+  - type: AsyncAPI
+    url: asyncapi/stream-io-asyncapi.yml
+  - type: SDKs
+    url: https://getstream.io/chat/sdk/
+  - type: Documentation
+    url: https://getstream.io/video/docs/
+  - type: APIReference
+    url: https://getstream.github.io/protocol/?urls.primaryName=Video
+  - type: OpenAPISource
+    url: https://raw.githubusercontent.com/GetStream/protocol/main/openapi/video-openapi.yaml
+  - type: SDKs
+    url: https://getstream.io/video/sdk/
+  - type: Documentation
+    url: https://getstream.io/moderation/docs/
+  - type: OpenAPISource
+    url: >-
+      https://raw.githubusercontent.com/GetStream/protocol/main/openapi/moderation-openapi.yaml
+- aid: stream-io:stream-io-product-feeds-api
+  name: Stream product:feeds API
+  description: The product:feeds API from Stream — 69 operation(s) for product:feeds.
+  humanURL: https://getstream.io/chat/docs/
+  baseURL: https://chat.stream-io-api.com
+  tags:
+  - product:feeds
+  properties:
+  - type: OpenAPI
+    url: openapi/stream-io-product-feeds-api-openapi.yml
+  - type: Documentation
+    url: https://getstream.io/chat/docs/
+  - type: APIReference
+    url: https://getstream.github.io/protocol/?urls.primaryName=Chat
+  - type: OpenAPISource
+    url: https://raw.githubusercontent.com/GetStream/protocol/main/openapi/chat-openapi.yaml
+  - type: AsyncAPI
+    url: asyncapi/stream-io-asyncapi.yml
+  - type: SDKs
+    url: https://getstream.io/chat/sdk/
+  - type: Documentation
+    url: https://getstream.io/video/docs/
+  - type: APIReference
+    url: https://getstream.github.io/protocol/?urls.primaryName=Video
+  - type: OpenAPISource
+    url: https://raw.githubusercontent.com/GetStream/protocol/main/openapi/video-openapi.yaml
+  - type: SDKs
+    url: https://getstream.io/video/sdk/
+  - type: Documentation
+    url: https://getstream.io/moderation/docs/
+  - type: OpenAPISource
+    url: >-
+      https://raw.githubusercontent.com/GetStream/protocol/main/openapi/moderation-openapi.yaml
+- aid: stream-io:stream-io-product-moderation-api
+  name: Stream product:moderation API
+  description: The product:moderation API from Stream — 56 operation(s) for product:moderation.
+  humanURL: https://getstream.io/chat/docs/
+  baseURL: https://chat.stream-io-api.com
+  tags:
+  - product:moderation
+  properties:
+  - type: OpenAPI
+    url: openapi/stream-io-product-moderation-api-openapi.yml
+  - type: Documentation
+    url: https://getstream.io/chat/docs/
+  - type: APIReference
+    url: https://getstream.github.io/protocol/?urls.primaryName=Chat
+  - type: OpenAPISource
+    url: https://raw.githubusercontent.com/GetStream/protocol/main/openapi/chat-openapi.yaml
+  - type: AsyncAPI
+    url: asyncapi/stream-io-asyncapi.yml
+  - type: SDKs
+    url: https://getstream.io/chat/sdk/
+  - type: Documentation
+    url: https://getstream.io/video/docs/
+  - type: APIReference
+    url: https://getstream.github.io/protocol/?urls.primaryName=Video
+  - type: OpenAPISource
+    url: https://raw.githubusercontent.com/GetStream/protocol/main/openapi/video-openapi.yaml
+  - type: SDKs
+    url: https://getstream.io/video/sdk/
+  - type: Documentation
+    url: https://getstream.io/moderation/docs/
+  - type: OpenAPISource
+    url: >-
+      https://raw.githubusercontent.com/GetStream/protocol/main/openapi/moderation-openapi.yaml
+- aid: stream-io:stream-io-product-video-api
+  name: Stream product:video API
+  description: The product:video API from Stream — 121 operation(s) for product:video.
+  humanURL: https://getstream.io/chat/docs/
+  baseURL: https://chat.stream-io-api.com
+  tags:
+  - product:video
+  properties:
+  - type: OpenAPI
+    url: openapi/stream-io-product-video-api-openapi.yml
+  - type: Documentation
+    url: https://getstream.io/chat/docs/
+  - type: APIReference
+    url: https://getstream.github.io/protocol/?urls.primaryName=Chat
+  - type: OpenAPISource
+    url: https://raw.githubusercontent.com/GetStream/protocol/main/openapi/chat-openapi.yaml
+  - type: AsyncAPI
+    url: asyncapi/stream-io-asyncapi.yml
+  - type: SDKs
+    url: https://getstream.io/chat/sdk/
+  - type: Documentation
+    url: https://getstream.io/video/docs/
+  - type: APIReference
+    url: https://getstream.github.io/protocol/?urls.primaryName=Video
+  - type: OpenAPISource
+    url: https://raw.githubusercontent.com/GetStream/protocol/main/openapi/video-openapi.yaml
+  - type: SDKs
+    url: https://getstream.io/video/sdk/
+  - type: Documentation
+    url: https://getstream.io/moderation/docs/
+  - type: OpenAPISource
+    url: >-
+      https://raw.githubusercontent.com/GetStream/protocol/main/openapi/moderation-openapi.yaml
 common:
   - type: AgenticAccess
     url: agentic-access/stream-io-agentic-access.yml
