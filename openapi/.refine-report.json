@@ -1,0 +1,22 @@
+{
+  "provider": "stream-io",
+  "sources": [
+    "stream-io-product-chat-api-openapi.yml",
+    "stream-io-product-common-api-openapi.yml",
+    "stream-io-product-feeds-api-openapi.yml",
+    "stream-io-product-moderation-api-openapi.yml",
+    "stream-io-product-video-api-openapi.yml"
+  ],
+  "outputs": [
+    "stream-io-product-chat-api-openapi.yml",
+    "stream-io-product-common-api-openapi.yml",
+    "stream-io-product-feeds-api-openapi.yml",
+    "stream-io-product-moderation-api-openapi.yml",
+    "stream-io-product-video-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
