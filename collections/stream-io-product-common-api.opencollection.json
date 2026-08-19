@@ -1,0 +1,1562 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Stream product:chat product:common API",
+    "version": "v228.3.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "product:common",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get App Settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/api/v2/app"
+          },
+          "docs": "This Method returns the application settings\n"
+        },
+        {
+          "info": {
+            "name": "Update App Settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://chat.stream-io-api.com/api/v2/app",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This Method updates one or more application settings\n"
+        },
+        {
+          "info": {
+            "name": "List block lists",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/api/v2/blocklists",
+            "params": [
+              {
+                "name": "team",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns all available block lists\n"
+        },
+        {
+          "info": {
+            "name": "Create block list",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/blocklists",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new application blocklist, once created the blocklist can be used by any channel type\n"
+        },
+        {
+          "info": {
+            "name": "Get block list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/api/v2/blocklists/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "team",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns block list by given name\n"
+        },
+        {
+          "info": {
+            "name": "Update block list",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://chat.stream-io-api.com/api/v2/blocklists/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates contents of the block list\n"
+        },
+        {
+          "info": {
+            "name": "Delete block list",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://chat.stream-io-api.com/api/v2/blocklists/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "team",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Deletes previously created application blocklist\n"
+        },
+        {
+          "info": {
+            "name": "Check push",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/check_push",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sends a test message via push, this is a test endpoint to verify your push settings\n"
+        },
+        {
+          "info": {
+            "name": "Check SNS",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/check_sns",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Validates Amazon SNS configuration\n"
+        },
+        {
+          "info": {
+            "name": "Check SQS",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/check_sqs",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Validates Amazon SQS credentials\n"
+        },
+        {
+          "info": {
+            "name": "List devices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/api/v2/devices",
+            "params": [
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns all available devices\n"
+        },
+        {
+          "info": {
+            "name": "Create device",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/devices",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Adds a new device to a user, if the same device already exists the call will have no effect\n"
+        },
+        {
+          "info": {
+            "name": "Delete device",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://chat.stream-io-api.com/api/v2/devices",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Deletes one device\n"
+        },
+        {
+          "info": {
+            "name": "Export users",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/export/users",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Exports user profile, reactions and messages for list of given users\n"
+        },
+        {
+          "info": {
+            "name": "List external storage",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/api/v2/external_storage"
+          },
+          "docs": "Lists external storage\n"
+        },
+        {
+          "info": {
+            "name": "Create external storage",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/external_storage",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates new external storage\n"
+        },
+        {
+          "info": {
+            "name": "Update External Storage",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://chat.stream-io-api.com/api/v2/external_storage/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "\n"
+        },
+        {
+          "info": {
+            "name": "Delete external storage",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://chat.stream-io-api.com/api/v2/external_storage/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deletes external storage\n"
+        },
+        {
+          "info": {
+            "name": "Check External Storage",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/api/v2/external_storage/:name/check",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "\n"
+        },
+        {
+          "info": {
+            "name": "Create Guest",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/guest",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "\n"
+        },
+        {
+          "info": {
+            "name": "Create import URL",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/import_urls",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new import URL\n"
+        },
+        {
+          "info": {
+            "name": "Get import",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/api/v2/imports"
+          },
+          "docs": "Gets an import\n"
+        },
+        {
+          "info": {
+            "name": "Create import",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/imports",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new import\n"
+        },
+        {
+          "info": {
+            "name": "Get import",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/api/v2/imports/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Gets an import\n"
+        },
+        {
+          "info": {
+            "name": "List import v2 tasks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/api/v2/imports/v2",
+            "params": [
+              {
+                "name": "state",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Lists all import v2 tasks for the app\n"
+        },
+        {
+          "info": {
+            "name": "Create import v2 task",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/imports/v2",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new import v2 task\n"
+        },
+        {
+          "info": {
+            "name": "Get import v2 task",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/api/v2/imports/v2/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Gets a single import v2 task by ID\n"
+        },
+        {
+          "info": {
+            "name": "Delete import v2 task",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://chat.stream-io-api.com/api/v2/imports/v2/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deletes an import v2 task. Can only delete tasks in queued state.\n"
+        },
+        {
+          "info": {
+            "name": "Get external storage",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/api/v2/imports/v2/external-storage"
+          },
+          "docs": "Returns the current external storage configuration for the app. Returns 404 if no configuration exists.\n"
+        },
+        {
+          "info": {
+            "name": "Upsert external storage",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://chat.stream-io-api.com/api/v2/imports/v2/external-storage",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates or updates the external storage configuration for the app. Currently only AWS S3 (via cross-account IAM role assumption) is supported.\n"
+        },
+        {
+          "info": {
+            "name": "Delete external storage",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://chat.stream-io-api.com/api/v2/imports/v2/external-storage"
+          },
+          "docs": "Removes the external storage configuration for the app. Idempotent: succeeds even if no configuration exists.\n"
+        },
+        {
+          "info": {
+            "name": "Validate external storage",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/imports/v2/external-storage/validate"
+          },
+          "docs": "Validates the configured external S3 storage by performing a live STS AssumeRole and S3 ListObjectsV2 check.\n"
+        },
+        {
+          "info": {
+            "name": "Get OG",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/api/v2/og",
+            "params": [
+              {
+                "name": "url",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get an OpenGraph attachment for a link\n"
+        },
+        {
+          "info": {
+            "name": "List permissions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/api/v2/permissions"
+          },
+          "docs": "Lists all available permissions\n"
+        },
+        {
+          "info": {
+            "name": "Get permission",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/api/v2/permissions/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Gets custom permission\n"
+        },
+        {
+          "info": {
+            "name": "Create poll",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/polls",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new poll\n"
+        },
+        {
+          "info": {
+            "name": "Update poll",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://chat.stream-io-api.com/api/v2/polls",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates a poll\n\nSends events:\n- feeds.poll.closed\n- feeds.poll.updated\n- poll.closed\n- poll.updated\n"
+        },
+        {
+          "info": {
+            "name": "Get poll",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/api/v2/polls/:poll_id",
+            "params": [
+              {
+                "name": "poll_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieves a poll\n"
+        },
+        {
+          "info": {
+            "name": "Partial update poll",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://chat.stream-io-api.com/api/v2/polls/:poll_id",
+            "params": [
+              {
+                "name": "poll_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates a poll partially\n\nSends events:\n- feeds.poll.closed\n- feeds.poll.updated\n- poll.closed\n- poll.updated\n"
+        },
+        {
+          "info": {
+            "name": "Delete poll",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://chat.stream-io-api.com/api/v2/polls/:poll_id",
+            "params": [
+              {
+                "name": "poll_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Deletes a poll\n\nSends events:\n- feeds.poll.deleted\n- poll.deleted\n"
+        },
+        {
+          "info": {
+            "name": "Create poll option",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/polls/:poll_id/options",
+            "params": [
+              {
+                "name": "poll_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a poll option\n\nSends events:\n- feeds.poll.updated\n- poll.updated\n"
+        },
+        {
+          "info": {
+            "name": "Update poll option",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://chat.stream-io-api.com/api/v2/polls/:poll_id/options",
+            "params": [
+              {
+                "name": "poll_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates a poll option\n\nSends events:\n- feeds.poll.updated\n- poll.updated\n"
+        },
+        {
+          "info": {
+            "name": "Get poll option",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/api/v2/polls/:poll_id/options/:option_id",
+            "params": [
+              {
+                "name": "poll_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "option_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieves a poll option\n"
+        },
+        {
+          "info": {
+            "name": "Delete poll option",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://chat.stream-io-api.com/api/v2/polls/:poll_id/options/:option_id",
+            "params": [
+              {
+                "name": "poll_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "option_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Deletes a poll option\n\nSends events:\n- feeds.poll.updated\n- poll.updated\n"
+        },
+        {
+          "info": {
+            "name": "Query votes",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/polls/:poll_id/votes",
+            "params": [
+              {
+                "name": "poll_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Queries votes\n"
+        },
+        {
+          "info": {
+            "name": "Query polls",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/polls/query",
+            "params": [
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Queries polls\n"
+        },
+        {
+          "info": {
+            "name": "Push notification preferences",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/push_preferences",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Upserts the push preferences for a user and or channel member. Set to all, mentions or none\n"
+        },
+        {
+          "info": {
+            "name": "List push providers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/api/v2/push_providers"
+          },
+          "docs": "List details of all push providers.\n"
+        },
+        {
+          "info": {
+            "name": "Upsert a push provider",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/push_providers",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Upsert a push provider for v2 with multi bundle/package support\n"
+        },
+        {
+          "info": {
+            "name": "Delete a push provider",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://chat.stream-io-api.com/api/v2/push_providers/:type/:name",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a push provider from v2 with multi bundle/package support. v1 isn't supported in this endpoint\n"
+        },
+        {
+          "info": {
+            "name": "Get push notification templates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/api/v2/push_templates",
+            "params": [
+              {
+                "name": "push_provider_name",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "push_provider_type",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve push notification templates for Chat.\n"
+        },
+        {
+          "info": {
+            "name": "Upsert a push notification template",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/push_templates",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create or update a push notification template for a specific event type and push provider\n"
+        },
+        {
+          "info": {
+            "name": "Get rate limits",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/api/v2/rate_limits",
+            "params": [
+              {
+                "name": "server_side",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "android",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "ios",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "web",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "endpoints",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get rate limits usage and quotas\n"
+        },
+        {
+          "info": {
+            "name": "List roles",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/api/v2/roles"
+          },
+          "docs": "Lists all available roles\n"
+        },
+        {
+          "info": {
+            "name": "Create role",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/roles",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates custom role\n"
+        },
+        {
+          "info": {
+            "name": "Delete role",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://chat.stream-io-api.com/api/v2/roles/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deletes custom role\n"
+        },
+        {
+          "info": {
+            "name": "Get status of a task",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/api/v2/tasks/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Gets status of a task\n"
+        },
+        {
+          "info": {
+            "name": "Upload file",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/uploads/file",
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            }
+          },
+          "docs": "Uploads file\n"
+        },
+        {
+          "info": {
+            "name": "Delete file",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://chat.stream-io-api.com/api/v2/uploads/file",
+            "params": [
+              {
+                "name": "url",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Deletes previously uploaded file\n"
+        },
+        {
+          "info": {
+            "name": "Upload image",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/uploads/image",
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            }
+          },
+          "docs": "Uploads image\n"
+        },
+        {
+          "info": {
+            "name": "Delete image",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://chat.stream-io-api.com/api/v2/uploads/image",
+            "params": [
+              {
+                "name": "url",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Deletes previously uploaded image\n"
+        },
+        {
+          "info": {
+            "name": "List user groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/api/v2/usergroups",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id_gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created_at_gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "team_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Lists user groups with cursor-based pagination\n"
+        },
+        {
+          "info": {
+            "name": "Create user group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/usergroups",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new user group, optionally with initial members\n"
+        },
+        {
+          "info": {
+            "name": "Get user group",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/api/v2/usergroups/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "team_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Gets a user group by ID, including its members\n"
+        },
+        {
+          "info": {
+            "name": "Update user group",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://chat.stream-io-api.com/api/v2/usergroups/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates a user group's name and/or description. team_id is immutable.\n"
+        },
+        {
+          "info": {
+            "name": "Delete user group",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://chat.stream-io-api.com/api/v2/usergroups/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "team_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Deletes a user group and all its members\n"
+        },
+        {
+          "info": {
+            "name": "Add user group members",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/usergroups/:id/members",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Adds members to a user group. All user IDs must exist. The operation is all-or-nothing.\n"
+        },
+        {
+          "info": {
+            "name": "Remove user group members",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/usergroups/:id/members/delete",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Removes members from a user group. Users already not in the group are silently ignored.\n"
+        },
+        {
+          "info": {
+            "name": "Search user groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/api/v2/usergroups/search",
+            "params": [
+              {
+                "name": "query",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "name_gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id_gt",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "team_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Searches user groups by name prefix for autocomplete\n"
+        },
+        {
+          "info": {
+            "name": "Query users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/api/v2/users",
+            "params": [
+              {
+                "name": "payload",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Find and filter users\n"
+        },
+        {
+          "info": {
+            "name": "Upsert users",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/users",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update or create users in bulk\n\nSends events:\n- user.updated\n"
+        },
+        {
+          "info": {
+            "name": "Partially update user",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://chat.stream-io-api.com/api/v2/users",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates certain fields of the user\n\nSends events:\n- user.presence.changed\n- user.updated\n"
+        },
+        {
+          "info": {
+            "name": "Deactivate user",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/users/:user_id/deactivate",
+            "params": [
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Deactivates user with possibility to activate it back\n\nSends events:\n- user.deactivated\n"
+        },
+        {
+          "info": {
+            "name": "Export user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/api/v2/users/:user_id/export",
+            "params": [
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Exports the user's profile, reactions and messages. Raises an error if a user has more than 10k messages or reactions\n"
+        },
+        {
+          "info": {
+            "name": "Reactivate user",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/users/:user_id/reactivate",
+            "params": [
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Activates user who's been deactivated previously\n\nSends events:\n- user.reactivated\n"
+        },
+        {
+          "info": {
+            "name": "Get list of blocked Users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/api/v2/users/block",
+            "params": [
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get list of blocked Users\n"
+        },
+        {
+          "info": {
+            "name": "Block user",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/users/block",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Block users\n"
+        },
+        {
+          "info": {
+            "name": "Deactivate users",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/users/deactivate",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Deactivate users in batches\n\nSends events:\n- user.deactivated\n"
+        },
+        {
+          "info": {
+            "name": "Delete Users",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/users/delete",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Deletes users and optionally all their belongings asynchronously.\n\nSends events:\n- channel.deleted\n- user.deleted\n"
+        },
+        {
+          "info": {
+            "name": "Get user live locations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/api/v2/users/live_locations",
+            "params": [
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieves all active live locations for a user\n"
+        },
+        {
+          "info": {
+            "name": "Update live location",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://chat.stream-io-api.com/api/v2/users/live_locations",
+            "params": [
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing live location with new coordinates or expiration time\n"
+        },
+        {
+          "info": {
+            "name": "Reactivate users",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/users/reactivate",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Reactivate users in batches\n\nSends events:\n- user.reactivated\n"
+        },
+        {
+          "info": {
+            "name": "Restore users",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/users/restore",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Restore soft deleted users\n"
+        },
+        {
+          "info": {
+            "name": "Unblock user",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/users/unblock",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Unblock users\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

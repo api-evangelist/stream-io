@@ -1,0 +1,1015 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Stream product:chat product:moderation API",
+    "version": "v228.3.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "product:moderation",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Submit Chat Message Task",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v1/moderation/chat_message_tasks",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Submits a chat message task\n"
+        },
+        {
+          "info": {
+            "name": "ListBlockedMessages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/api/v1/moderation/dashboard/blocked_messages"
+          },
+          "docs": "TODO\n"
+        },
+        {
+          "info": {
+            "name": "FlagFeedback",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v1/moderation/dashboard/flag_feedback"
+          },
+          "docs": "TODO\n"
+        },
+        {
+          "info": {
+            "name": "ListModerationLogs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/api/v1/moderation/dashboard/moderation_log"
+          },
+          "docs": "TODO\n"
+        },
+        {
+          "info": {
+            "name": "UpdateFlags",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v1/moderation/dashboard/update_flags"
+          },
+          "docs": "TODO\n"
+        },
+        {
+          "info": {
+            "name": "ListBlockedMessages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/api/v1/moderation/moderation/blocked_messages"
+          },
+          "docs": "TODO\n"
+        },
+        {
+          "info": {
+            "name": "FlagFeedback",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v1/moderation/moderation/flag_feedback"
+          },
+          "docs": "TODO\n"
+        },
+        {
+          "info": {
+            "name": "ListModerationLogs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/api/v1/moderation/moderation/moderation_log"
+          },
+          "docs": "TODO\n"
+        },
+        {
+          "info": {
+            "name": "UpdateFlags",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v1/moderation/moderation/update_flags"
+          },
+          "docs": "TODO\n"
+        },
+        {
+          "info": {
+            "name": "List Tasks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/api/v1/moderation/tasks"
+          },
+          "docs": "Lists all tasks\n"
+        },
+        {
+          "info": {
+            "name": "Submit Task",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v1/moderation/tasks",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Submits a task\n"
+        },
+        {
+          "info": {
+            "name": "Get Task",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/api/v1/moderation/tasks/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Fetches moderation task\n"
+        },
+        {
+          "info": {
+            "name": "Update Task",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v1/moderation/tasks/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates a task\n"
+        },
+        {
+          "info": {
+            "name": "Submit Chat Message Task",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/automod/v1/chat_message_tasks",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Submits a chat message task\n"
+        },
+        {
+          "info": {
+            "name": "ListBlockedMessages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/automod/v1/dashboard/blocked_messages"
+          },
+          "docs": "TODO\n"
+        },
+        {
+          "info": {
+            "name": "FlagFeedback",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/automod/v1/dashboard/flag_feedback"
+          },
+          "docs": "TODO\n"
+        },
+        {
+          "info": {
+            "name": "ListModerationLogs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/automod/v1/dashboard/moderation_log"
+          },
+          "docs": "TODO\n"
+        },
+        {
+          "info": {
+            "name": "UpdateFlags",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/automod/v1/dashboard/update_flags"
+          },
+          "docs": "TODO\n"
+        },
+        {
+          "info": {
+            "name": "ListBlockedMessages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/automod/v1/moderation/blocked_messages"
+          },
+          "docs": "TODO\n"
+        },
+        {
+          "info": {
+            "name": "FlagFeedback",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/automod/v1/moderation/flag_feedback"
+          },
+          "docs": "TODO\n"
+        },
+        {
+          "info": {
+            "name": "ListModerationLogs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/automod/v1/moderation/moderation_log"
+          },
+          "docs": "TODO\n"
+        },
+        {
+          "info": {
+            "name": "UpdateFlags",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/automod/v1/moderation/update_flags"
+          },
+          "docs": "TODO\n"
+        },
+        {
+          "info": {
+            "name": "List Tasks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/automod/v1/tasks"
+          },
+          "docs": "Lists all tasks\n"
+        },
+        {
+          "info": {
+            "name": "Submit Task",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/automod/v1/tasks",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Submits a task\n"
+        },
+        {
+          "info": {
+            "name": "Get Task",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/automod/v1/tasks/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Fetches moderation task\n"
+        },
+        {
+          "info": {
+            "name": "Update Task",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/automod/v1/tasks/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates a task\n"
+        },
+        {
+          "info": {
+            "name": "Get moderation action configs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/api/v2/moderation/action_config",
+            "params": [
+              {
+                "name": "queue_type",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "entity_type",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "exclude_defaults",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "only_defaults",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns moderation action configs grouped by entity type, sorted by order ascending. Supports fetching DB-configured actions, hardcoded defaults, or both.\n"
+        },
+        {
+          "info": {
+            "name": "Create or update a moderation action config",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/moderation/action_config",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new moderation action config entry or update an existing one. Action configs control the action buttons displayed in the moderation dashboard for each entity type.\n"
+        },
+        {
+          "info": {
+            "name": "Delete a moderation action config",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://chat.stream-io-api.com/api/v2/moderation/action_config/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Delete a specific moderation action config entry by its UUID.\n"
+        },
+        {
+          "info": {
+            "name": "Bulk create or update moderation action configs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/moderation/action_config/bulk",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create or update multiple moderation action config entries in a single request. Omit the ID field to create; provide an ID to update.\n"
+        },
+        {
+          "info": {
+            "name": "Bulk delete moderation action configs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/moderation/action_config/bulk_delete",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Delete multiple moderation action config entries by UUID in a single request.\n"
+        },
+        {
+          "info": {
+            "name": "Insert moderation action log",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/moderation/action_logs",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Insert a moderation action log entry. Server-side only. Used by product services to log moderation-related actions.\n"
+        },
+        {
+          "info": {
+            "name": "Appeal against the moderation decision",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/moderation/appeal",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Appeal against the moderation decision\n"
+        },
+        {
+          "info": {
+            "name": "Get appeal item",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/api/v2/moderation/appeal/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a specific appeal item by its ID\n"
+        },
+        {
+          "info": {
+            "name": "Query Appeals",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/moderation/appeals",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Query Appeals\n"
+        },
+        {
+          "info": {
+            "name": "Ban",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/moderation/ban",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Ban a user from a channel or the entire app\n"
+        },
+        {
+          "info": {
+            "name": "Bulk image moderation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/moderation/bulk_image_moderation",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Moderate multiple images in bulk using a CSV file\n"
+        },
+        {
+          "info": {
+            "name": "Bypass Moderation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/moderation/bypass",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Enable or disable moderation bypass for a user. This endpoint is server-side only.\n"
+        },
+        {
+          "info": {
+            "name": "Check",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/moderation/check",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Run moderation checks on the provided content\n"
+        },
+        {
+          "info": {
+            "name": "Check S3 image access",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/moderation/check_s3_access",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Verifies that the configured IAM role ARN can access private S3 images for moderation. Optionally accepts a stream+s3:// URL to check access to a specific object.\n"
+        },
+        {
+          "info": {
+            "name": "Create or update moderation configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/moderation/config",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new moderation configuration or update an existing one. Configure settings for content filtering, AI analysis, toxicity detection, and other moderation features.\n"
+        },
+        {
+          "info": {
+            "name": "Get moderation configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/api/v2/moderation/config/:key",
+            "params": [
+              {
+                "name": "key",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "team",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve a specific moderation configuration by its key and team. This configuration contains settings for various moderation features like toxicity detection, AI analysis, and filtering rules.\n"
+        },
+        {
+          "info": {
+            "name": "Delete a moderation policy",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://chat.stream-io-api.com/api/v2/moderation/config/:key",
+            "params": [
+              {
+                "name": "key",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "team",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Delete a specific moderation policy by its name\n"
+        },
+        {
+          "info": {
+            "name": "Query moderation configurations",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/moderation/configs",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search and filter moderation configurations across your application. This endpoint is designed for building moderation dashboards and managing multiple configuration sets.\n"
+        },
+        {
+          "info": {
+            "name": "Custom check endpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/moderation/custom_check",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Custom check, add your own AI model reports to the review queue\n"
+        },
+        {
+          "info": {
+            "name": "Query feed moderation templates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/api/v2/moderation/feeds_moderation_template"
+          },
+          "docs": "Retrieve a list of feed moderation templates that define preset moderation rules and configurations. Limited to 100 templates per request.\n"
+        },
+        {
+          "info": {
+            "name": "Upsert feeds template",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/moderation/feeds_moderation_template",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Upsert feeds template for moderation\n"
+        },
+        {
+          "info": {
+            "name": "Delete a moderation template",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://chat.stream-io-api.com/api/v2/moderation/feeds_moderation_template"
+          },
+          "docs": "Delete a specific moderation template by its name\n"
+        },
+        {
+          "info": {
+            "name": "Flag content for moderation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/moderation/flag",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Flag any type of content (messages, users, channels, activities) for moderation review. Supports custom content types and additional metadata for flagged content.\n"
+        },
+        {
+          "info": {
+            "name": "Get flag count for a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/moderation/flag_count",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns the number of moderation flags created against a specific user's content. Optionally filter by entity type.\n"
+        },
+        {
+          "info": {
+            "name": "Query moderation flags",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/moderation/flags",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Query flags associated with moderation items. This is used for building a moderation dashboard.\n"
+        },
+        {
+          "info": {
+            "name": "Labels",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/moderation/labels",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Run moderation on text and return labels\n"
+        },
+        {
+          "info": {
+            "name": "Query label results",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/moderation/labels/results",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search and filter moderation label results with support for pagination and sorting. View the history of moderation labels applied to content.\n"
+        },
+        {
+          "info": {
+            "name": "Query moderation action logs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/moderation/logs",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search and filter moderation action logs with support for pagination. View the history of moderation actions taken, including who performed them and when.\n"
+        },
+        {
+          "info": {
+            "name": "Upsert moderation rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/moderation/moderation_rule",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create or update a moderation rule that can apply app-wide or to specific moderation configs\n"
+        },
+        {
+          "info": {
+            "name": "Get moderation rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/api/v2/moderation/moderation_rule/:id"
+          },
+          "docs": "Get a specific moderation rule by ID\n"
+        },
+        {
+          "info": {
+            "name": "Delete moderation rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://chat.stream-io-api.com/api/v2/moderation/moderation_rule/:id",
+            "params": [
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Delete an existing moderation rule\n"
+        },
+        {
+          "info": {
+            "name": "Query moderation rules",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/moderation/moderation_rules",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search and filter moderation rules across your application. This endpoint is designed for building moderation dashboards and managing multiple rule sets.\n"
+        },
+        {
+          "info": {
+            "name": "Mute",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/moderation/mute",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Mute a user. Mutes are generally not visible to the user you mute, while block is something you notice.\n"
+        },
+        {
+          "info": {
+            "name": "Query review queue items",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/moderation/review_queue",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Query review queue items allows you to filter the review queue items. This is used for building a moderation dashboard.\n"
+        },
+        {
+          "info": {
+            "name": "Get review queue item",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/api/v2/moderation/review_queue/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a specific review queue item by its ID\n"
+        },
+        {
+          "info": {
+            "name": "Submit moderation action",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/moderation/submit_action",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Take action on flagged content, such as marking content as safe, deleting content, banning users, or executing custom moderation actions. Supports various action types with configurable parameters.\n"
+        },
+        {
+          "info": {
+            "name": "Submit moderation feedback",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/moderation/submit_moderation_feedback",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Forward a moderator-supplied correction to the moderation feedback pipeline. Server-side only.\n"
+        },
+        {
+          "info": {
+            "name": "Unban",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/moderation/unban",
+            "params": [
+              {
+                "name": "target_user_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "channel_cid",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "created_by",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Unban a user from a channel or globally.\n"
+        },
+        {
+          "info": {
+            "name": "Unmute a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/moderation/unmute",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Unmute a user\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,2160 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Stream product:chat product:feeds API",
+    "version": "v228.3.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "product:feeds",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Add a single activity",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/activities",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new activity or update an existing one\n"
+        },
+        {
+          "info": {
+            "name": "Add bookmark",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/activities/:activity_id/bookmarks",
+            "params": [
+              {
+                "name": "activity_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Adds a bookmark to an activity\n"
+        },
+        {
+          "info": {
+            "name": "Update bookmark",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/activities/:activity_id/bookmarks",
+            "params": [
+              {
+                "name": "activity_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates a bookmark for an activity\n"
+        },
+        {
+          "info": {
+            "name": "Delete a bookmark",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/activities/:activity_id/bookmarks",
+            "params": [
+              {
+                "name": "activity_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "folder_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Deletes a bookmark from an activity\n"
+        },
+        {
+          "info": {
+            "name": "Provide feedback on an activity",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/activities/:activity_id/feedback",
+            "params": [
+              {
+                "name": "activity_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Submit feedback for an activity including options to show less, hide, report, or mute the user\n"
+        },
+        {
+          "info": {
+            "name": "Cast vote",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/activities/:activity_id/polls/:poll_id/vote",
+            "params": [
+              {
+                "name": "activity_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "poll_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Cast a vote on a poll\n\nSends events:\n- feeds.poll.vote_casted\n- feeds.poll.vote_changed\n- feeds.poll.vote_removed\n- poll.vote_casted\n- poll.vote_changed\n- poll.vote_removed\n"
+        },
+        {
+          "info": {
+            "name": "Delete vote",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/activities/:activity_id/polls/:poll_id/vote/:vote_id",
+            "params": [
+              {
+                "name": "activity_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "poll_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "vote_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Delete a vote from a poll\n\nSends events:\n- feeds.poll.vote_removed\n- poll.vote_removed\n"
+        },
+        {
+          "info": {
+            "name": "Add reaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/activities/:activity_id/reactions",
+            "params": [
+              {
+                "name": "activity_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Adds a reaction to an activity\n"
+        },
+        {
+          "info": {
+            "name": "Remove reaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/activities/:activity_id/reactions/:type",
+            "params": [
+              {
+                "name": "activity_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "delete_notification_activity",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Removes a reaction from an activity\n"
+        },
+        {
+          "info": {
+            "name": "Query activity reactions",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/activities/:activity_id/reactions/query",
+            "params": [
+              {
+                "name": "activity_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Query activity reactions\n"
+        },
+        {
+          "info": {
+            "name": "Get activity",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/activities/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "comment_sort",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "comment_limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns activity by ID\n"
+        },
+        {
+          "info": {
+            "name": "Full activity update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/activities/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Replaces an activity with the provided data. Use this to update text, attachments, reply restrictions ('restrict_replies'), mentioned users, and other activity fields. Note: This is a full update - any fields not provided will be cleared.\n\nSends events:\n- feeds.activity.updated\n"
+        },
+        {
+          "info": {
+            "name": "Partial activity update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/activities/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates certain fields of the activity. Use 'set' to update specific fields and 'unset' to remove fields. This allows you to update only the fields you need without replacing the entire activity. Useful for updating reply restrictions ('restrict_replies'), mentioned users, or custom data.\n\nSends events:\n- feeds.activity.updated\n"
+        },
+        {
+          "info": {
+            "name": "Delete a single activity",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/activities/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "hard_delete",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "delete_notification_activity",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Delete a single activity by its ID\n"
+        },
+        {
+          "info": {
+            "name": "Restore an activity",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/activities/:id/restore",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "enrich_own_fields",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Restores a soft-deleted, moderation-removed, or shadow-blocked activity by its ID. Deleted activities can be restored by the owner (client-side). Moderation-blocked activities can only be restored server-side.\n"
+        },
+        {
+          "info": {
+            "name": "Upsert multiple activities",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/activities/batch",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create new activities or update existing ones in a batch operation\n"
+        },
+        {
+          "info": {
+            "name": "Batch partial activity update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/activities/batch/partial",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates certain fields of multiple activities in a batch. Use 'set' to update specific fields and 'unset' to remove fields. Activities that fail due to not found, permission denied, or no changes detected are silently skipped and not included in the response. However, validation errors (e.g., updating reserved fields, invalid field values) will fail the entire batch request.\n\nSends events:\n- feeds.activity.updated\n"
+        },
+        {
+          "info": {
+            "name": "Remove multiple activities",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/activities/delete",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Delete one or more activities by their IDs\n"
+        },
+        {
+          "info": {
+            "name": "Track activity metrics",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/activities/metrics/track",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Track metric events (views, clicks, impressions) for activities. Supports batching up to 100 events per request. Each event is independently rate-limited per user per activity per metric. Server-side calls must include user_id.\n"
+        },
+        {
+          "info": {
+            "name": "Query activities",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/activities/query",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Query activities based on filters with pagination and sorting options\n"
+        },
+        {
+          "info": {
+            "name": "Update a bookmark folder",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/bookmark_folders/:folder_id",
+            "params": [
+              {
+                "name": "folder_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a bookmark folder by its ID\n"
+        },
+        {
+          "info": {
+            "name": "Delete a bookmark folder",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/bookmark_folders/:folder_id",
+            "params": [
+              {
+                "name": "folder_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a bookmark folder by its ID\n"
+        },
+        {
+          "info": {
+            "name": "Query bookmark folders",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/bookmark_folders/query",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Query bookmark folders with filter query\n"
+        },
+        {
+          "info": {
+            "name": "Query bookmarks",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/bookmarks/query",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Query bookmarks with filter query\n"
+        },
+        {
+          "info": {
+            "name": "Read collections",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/collections",
+            "params": [
+              {
+                "name": "collection_refs",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Read collections by their references. By default, users can only read their own collections.\n"
+        },
+        {
+          "info": {
+            "name": "Create multiple collections",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/collections",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create new collections in a batch operation. Collections are data objects that can be attached to activities for managing shared data across multiple activities.\n"
+        },
+        {
+          "info": {
+            "name": "Upsert multiple collections",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/collections",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Insert new collections or update existing ones in a batch operation. Only the custom data field is updatable for existing collections.\n"
+        },
+        {
+          "info": {
+            "name": "Update multiple collections",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/collections",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update existing collections in a batch operation. Only the custom data field is updatable. Users can only update their own collections.\n"
+        },
+        {
+          "info": {
+            "name": "Delete multiple collections",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/collections",
+            "params": [
+              {
+                "name": "collection_refs",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Delete collections in a batch operation. Users can only delete their own collections.\n"
+        },
+        {
+          "info": {
+            "name": "Query collections",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/collections/query",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Query collections with filter query\n"
+        },
+        {
+          "info": {
+            "name": "Get comments for an object",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/comments",
+            "params": [
+              {
+                "name": "object_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "object_type",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "depth",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "replies_limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id_around",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "prev",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "next",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve a threaded list of comments for a specific object (e.g., activity), with configurable depth, sorting, and pagination\n"
+        },
+        {
+          "info": {
+            "name": "Add a comment or reply",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/comments",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Adds a comment to an object (e.g., activity) or a reply to an existing comment, and broadcasts appropriate events\n"
+        },
+        {
+          "info": {
+            "name": "Add comment bookmark",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/comments/:comment_id/bookmarks",
+            "params": [
+              {
+                "name": "comment_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Adds a bookmark to a comment\n"
+        },
+        {
+          "info": {
+            "name": "Update comment bookmark",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/comments/:comment_id/bookmarks",
+            "params": [
+              {
+                "name": "comment_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates a bookmark for a comment\n"
+        },
+        {
+          "info": {
+            "name": "Delete a comment bookmark",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/comments/:comment_id/bookmarks",
+            "params": [
+              {
+                "name": "comment_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "folder_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Deletes a bookmark from a comment\n"
+        },
+        {
+          "info": {
+            "name": "Get comment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/comments/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get a comment by ID\n"
+        },
+        {
+          "info": {
+            "name": "Update a comment",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/comments/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates a comment on an object (e.g., activity) and broadcasts appropriate events\n"
+        },
+        {
+          "info": {
+            "name": "Delete a comment",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/comments/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "hard_delete",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "delete_notification_activity",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Deletes a comment from an object (e.g., activity) and broadcasts appropriate events\n"
+        },
+        {
+          "info": {
+            "name": "Partial comment update",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/comments/:id/partial",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates certain fields of the comment. Use 'set' to update specific fields and 'unset' to remove fields.\n\nSends events:\n- feeds.activity.updated\n- feeds.comment.updated\n"
+        },
+        {
+          "info": {
+            "name": "Add comment reaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/comments/:id/reactions",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Adds a reaction to a comment\n"
+        },
+        {
+          "info": {
+            "name": "Delete comment reaction",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/comments/:id/reactions/:type",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "delete_notification_activity",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Deletes a reaction from a comment\n"
+        },
+        {
+          "info": {
+            "name": "Query comment reactions",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/comments/:id/reactions/query",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Query comment reactions\n"
+        },
+        {
+          "info": {
+            "name": "Get replies for a comment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/comments/:id/replies",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "depth",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "replies_limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "id_around",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "prev",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "next",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve a threaded list of replies for a single comment, with configurable depth, sorting, and pagination\n"
+        },
+        {
+          "info": {
+            "name": "Restore a comment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/comments/:id/restore",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Restores a soft-deleted, moderation-removed, or shadow-blocked comment by its ID. The comment and all its descendants are restored. Deleted comments can be restored client-side. Moderation-blocked comments can only be restored server-side.\n"
+        },
+        {
+          "info": {
+            "name": "Add multiple comments in a batch",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/comments/batch",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Adds multiple comments in a single request. Each comment must specify the object type and ID.\n"
+        },
+        {
+          "info": {
+            "name": "Query comments",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/comments/query",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Query comments using MongoDB-style filters with pagination and sorting options\n"
+        },
+        {
+          "info": {
+            "name": "List all feed groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/feed_groups",
+            "params": [
+              {
+                "name": "include_soft_deleted",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List all feed groups for the application\n"
+        },
+        {
+          "info": {
+            "name": "Create a new feed group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/feed_groups",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new feed group with the specified configuration\n"
+        },
+        {
+          "info": {
+            "name": "Create a new feed",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/feed_groups/:feed_group_id/feeds/:feed_id",
+            "params": [
+              {
+                "name": "feed_group_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "feed_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a single feed for a given feed group\n"
+        },
+        {
+          "info": {
+            "name": "Update a feed",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/feed_groups/:feed_group_id/feeds/:feed_id",
+            "params": [
+              {
+                "name": "feed_group_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "feed_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing feed\n"
+        },
+        {
+          "info": {
+            "name": "Delete a single feed",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/feed_groups/:feed_group_id/feeds/:feed_id",
+            "params": [
+              {
+                "name": "feed_group_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "feed_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "hard_delete",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Delete a single feed by its ID\n"
+        },
+        {
+          "info": {
+            "name": "Pin an activity to a feed",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/feed_groups/:feed_group_id/feeds/:feed_id/activities/:activity_id/pin",
+            "params": [
+              {
+                "name": "feed_group_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "feed_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "activity_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Pin an activity to a feed. Pinned activities are typically displayed at the top of a feed.\n"
+        },
+        {
+          "info": {
+            "name": "Unpin an activity from a feed",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/feed_groups/:feed_group_id/feeds/:feed_id/activities/:activity_id/pin",
+            "params": [
+              {
+                "name": "feed_group_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "feed_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "activity_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "enrich_own_fields",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Unpin an activity from a feed. This removes the pin, so the activity will no longer be displayed at the top of the feed.\n"
+        },
+        {
+          "info": {
+            "name": "Mark activities as read/seen/watched",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/feed_groups/:feed_group_id/feeds/:feed_id/activities/mark/batch",
+            "params": [
+              {
+                "name": "feed_group_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "feed_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Mark activities as read/seen/watched. Can mark by timestamp (seen), activity IDs (read), or all as read.\n"
+        },
+        {
+          "info": {
+            "name": "Change a feed's visibility",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/feed_groups/:feed_group_id/feeds/:feed_id/change_visibility",
+            "params": [
+              {
+                "name": "feed_group_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "feed_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Changes the visibility of an existing feed. Follow reconciliation (rewriting pending follows on loosening, or removing disallowed follows/members on tightening) runs asynchronously in the background; the response returns optimistically with the intended visibility.\n"
+        },
+        {
+          "info": {
+            "name": "Update feed members",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/feed_groups/:feed_group_id/feeds/:feed_id/members",
+            "params": [
+              {
+                "name": "feed_group_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "feed_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add, remove, or set members for a feed\n"
+        },
+        {
+          "info": {
+            "name": "Accept a feed member request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/feed_groups/:feed_group_id/feeds/:feed_id/members/accept",
+            "params": [
+              {
+                "name": "feed_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "feed_group_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Accepts a pending feed member request\n"
+        },
+        {
+          "info": {
+            "name": "Query feed members",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/feed_groups/:feed_group_id/feeds/:feed_id/members/query",
+            "params": [
+              {
+                "name": "feed_group_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "feed_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Query feed members based on filters with pagination and sorting options\n"
+        },
+        {
+          "info": {
+            "name": "Reject an invite to become a feed member",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/feed_groups/:feed_group_id/feeds/:feed_id/members/reject",
+            "params": [
+              {
+                "name": "feed_group_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "feed_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Rejects a pending feed member request\n"
+        },
+        {
+          "info": {
+            "name": "Query pinned activities",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/feed_groups/:feed_group_id/feeds/:feed_id/pinned_activities/query",
+            "params": [
+              {
+                "name": "feed_group_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "feed_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Query pinned activities for a feed with filter query\n"
+        },
+        {
+          "info": {
+            "name": "Get follow suggestions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/feed_groups/:feed_group_id/follow_suggestions",
+            "params": [
+              {
+                "name": "feed_group_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get follow suggestions for a feed group\n"
+        },
+        {
+          "info": {
+            "name": "Restore a feed group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/feed_groups/:feed_group_id/restore",
+            "params": [
+              {
+                "name": "feed_group_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Restores a soft-deleted feed group by its ID. Only clears DeletedAt in the database; no other fields are updated.\n"
+        },
+        {
+          "info": {
+            "name": "Get a feed group",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/feed_groups/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "include_soft_deleted",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get a feed group by ID\n"
+        },
+        {
+          "info": {
+            "name": "Get or create a feed group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/feed_groups/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get an existing feed group or create a new one if it doesn't exist\n"
+        },
+        {
+          "info": {
+            "name": "Update a feed group",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/feed_groups/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a feed group by ID\n"
+        },
+        {
+          "info": {
+            "name": "Delete a feed group",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/feed_groups/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "hard_delete",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Delete a feed group by its ID. Can perform a soft delete (default) or hard delete.\n"
+        },
+        {
+          "info": {
+            "name": "List all feed views",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/feed_views"
+          },
+          "docs": "List all feed views for a feed group\n"
+        },
+        {
+          "info": {
+            "name": "Create a new feed view",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/feed_views",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a custom view for a feed group with specific selectors, ranking, or aggregation options\n"
+        },
+        {
+          "info": {
+            "name": "Get a feed view",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/feed_views/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a feed view by its ID\n"
+        },
+        {
+          "info": {
+            "name": "Get or create a feed view",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/feed_views/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get an existing feed view or create a new one if it doesn't exist\n"
+        },
+        {
+          "info": {
+            "name": "Update a feed view",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/feed_views/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update an existing custom feed view with new selectors, ranking, or aggregation options\n"
+        },
+        {
+          "info": {
+            "name": "Delete a feed view",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/feed_views/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete an existing custom feed view\n"
+        },
+        {
+          "info": {
+            "name": "List feed visibilities",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/feed_visibilities"
+          },
+          "docs": "Gets all available feed visibility configurations and their permissions\n"
+        },
+        {
+          "info": {
+            "name": "Get feed visibility",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/feed_visibilities/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Gets feed visibility configuration and permissions\n"
+        },
+        {
+          "info": {
+            "name": "Update Feed Visibility",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/feed_visibilities/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing predefined feed visibility configuration\n"
+        },
+        {
+          "info": {
+            "name": "Create multiple feeds at once",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/feeds/batch",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create multiple feeds at once for a given feed group\n"
+        },
+        {
+          "info": {
+            "name": "Delete multiple feeds",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/feeds/delete",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Delete multiple feeds by their IDs. All feeds must exist. This endpoint is server-side only.\n"
+        },
+        {
+          "info": {
+            "name": "Get own fields for multiple feeds",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/feeds/own/batch",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieves own_follows, own_capabilities, and/or own_membership for multiple feeds in a single request. If fields are not specified, all three fields are returned.\n"
+        },
+        {
+          "info": {
+            "name": "Query feeds",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/feeds/query",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Query feeds with filter query\n"
+        },
+        {
+          "info": {
+            "name": "Get Feeds Rate Limits",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/feeds/rate_limits",
+            "params": [
+              {
+                "name": "endpoints",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "android",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "ios",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "web",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "server_side",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve current rate limit status for feeds operations.\nReturns information about limits, usage, and remaining quota for various feed operations.\n"
+        },
+        {
+          "info": {
+            "name": "Create a follow",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/follows",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a follow and broadcasts FollowAddedEvent\n"
+        },
+        {
+          "info": {
+            "name": "Update a follow",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/follows",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates a follow's custom data, push preference, and follower role. Source owner can update custom data and push preference. Follower role can only be updated via server-side requests.\n"
+        },
+        {
+          "info": {
+            "name": "Unfollow a feed",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/follows/:source/:target",
+            "params": [
+              {
+                "name": "source",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "target",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "delete_notification_activity",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "keep_history",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "enrich_own_fields",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Removes a follow and broadcasts FollowRemovedEvent\n"
+        },
+        {
+          "info": {
+            "name": "Accept a follow request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/follows/accept",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Accepts a pending follow request\n"
+        },
+        {
+          "info": {
+            "name": "Create multiple follows at once",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/follows/batch",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates multiple follows at once and broadcasts FollowAddedEvent for each follow\n"
+        },
+        {
+          "info": {
+            "name": "Upsert multiple follows at once",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/follows/batch/upsert",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates or updates multiple follows at once. Does not return an error if follows already exist. Broadcasts FollowAddedEvent only for newly created follows.\n"
+        },
+        {
+          "info": {
+            "name": "Query follows",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/follows/query",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Query follows based on filters with pagination and sorting options\n"
+        },
+        {
+          "info": {
+            "name": "Reject a follow request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/follows/reject",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Rejects a pending follow request\n"
+        },
+        {
+          "info": {
+            "name": "Create membership level",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/membership_levels",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new membership level with tag-based access controls\n"
+        },
+        {
+          "info": {
+            "name": "Update membership level",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/membership_levels/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a membership level with partial updates. Only specified fields will be updated.\n"
+        },
+        {
+          "info": {
+            "name": "Delete membership level",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/membership_levels/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete a membership level by its UUID. This operation is irreversible.\n"
+        },
+        {
+          "info": {
+            "name": "Query membership levels",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/membership_levels/query",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Query membership levels with filter query\n"
+        },
+        {
+          "info": {
+            "name": "Query revision history",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/revisions/query",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Queries revision history for activities and comments\n"
+        },
+        {
+          "info": {
+            "name": "Query Feed Usage Statistics",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/stats/usage",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve usage statistics for feeds including activity count, follow count, and API request count.\nReturns data aggregated by day with pagination support via from/to date parameters.\nThis endpoint is server-side only.\n"
+        },
+        {
+          "info": {
+            "name": "Unfollow multiple feeds at once",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/unfollow/batch",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Removes multiple follows at once and broadcasts FollowRemovedEvent for each one\n"
+        },
+        {
+          "info": {
+            "name": "Unfollow multiple feeds (idempotent)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/unfollow/batch/upsert",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Removes multiple follows and broadcasts FollowRemovedEvent for each. Does not return an error if follows don't exist.\n"
+        },
+        {
+          "info": {
+            "name": "Delete all feed data for a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/users/:user_id/delete",
+            "params": [
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Delete all feed data for a user including: feeds, activities, follows, comments, feed reactions, bookmark folders, bookmarks, and collections owned by the user\n"
+        },
+        {
+          "info": {
+            "name": "Export all feed data for a user",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://chat.stream-io-api.com/api/v2/feeds/users/:user_id/export",
+            "params": [
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Export all feed data for a user including: user profile, feeds, activities, follows, comments, feed reactions, bookmark folders, bookmarks, and collections owned by the user\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
