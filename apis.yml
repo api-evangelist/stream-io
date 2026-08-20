@@ -22,6 +22,15 @@ accessModel:
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/stream-io.png
 tags:
+  - Real-Time
+  - Chat
+  - Messaging
+  - Video
+  - Audio
+  - Activity Feeds
+  - Moderation
+  - SDK
+tags_raw:
   - Realtime
   - Chat
   - Messaging
@@ -123,6 +132,8 @@ apis:
   humanURL: https://getstream.io/chat/docs/
   baseURL: https://chat.stream-io-api.com
   tags:
+  - Product Feeds
+  tags_raw:
   - product:feeds
   properties:
   - type: OpenAPI
