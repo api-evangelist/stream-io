@@ -1,0 +1,26 @@
+slug: stream-io
+provider: Stream
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Media, Entertainment & Telecom Content
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 1
+edges:
+- tag: product:moderation
+  spec_file: stream-io-product-moderation-api-openapi.yml
+  capability_id: BC-3780.40
+  capability_id_l1: BC-3780
+  capability_name: User-Generated Content Moderation
+  confidence: 0.88
+  evidence: POST /api/v1/moderation/chat_message_tasks SubmitChatMessageTask; GET /api/v1/moderation/dashboard/blocked_messages
+    ListBlockedMessages; GetReviewQueueItemResponse
+  reason: Operations submit content for automated moderation tasks, list blocked messages, manage flags
+    and a human review queue — exactly moderation of user-generated content through automated triage and
+    human review.

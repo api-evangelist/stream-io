@@ -240,6 +240,9 @@ apis:
     url: >-
       https://raw.githubusercontent.com/GetStream/protocol/main/openapi/moderation-openapi.yaml
 common:
+  - type: CapabilityMap
+    url: capabilities/stream-io-capability-edges.yml
+    name: Stream Business Capability Map
   - type: AgenticAccess
     url: agentic-access/stream-io-agentic-access.yml
   - type: TrustCenter
