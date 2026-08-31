@@ -144,7 +144,7 @@ apis:
   humanURL: https://getstream.io/chat/docs/
   baseURL: https://chat.stream-io-api.com
   tags:
-  - Product Feeds
+  - product:feeds
   tags_raw:
   - product:feeds
   properties:
